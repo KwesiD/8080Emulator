@@ -36,6 +36,8 @@ function disassemble(hexdump,pc){
 		case 3:
 			line +=  hexdump[pc+1] + " " + hexdump[pc+2] + "\t" + opcodeTable[ele].name + " " + hexdump[pc+2] + "" + hexdump[pc+1] + '\n';
 			break;
+		default:
+			opbytes = 1;
 	}
 	console.log(line);
 

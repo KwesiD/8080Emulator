@@ -1,0 +1,11122 @@
+Loading OpCodes
+Loading game rom
+0	00 NOP
+
+1	00 NOP
+
+2	00 NOP
+
+3	c3 d4 18	JMP adr 18d4
+
+6	00 NOP
+
+7	00 NOP
+
+8	f5 PUSH PSW
+
+9	c5 PUSH B
+
+a	d5 PUSH D
+
+b	e5 PUSH H
+
+c	c3 8c 00	JMP adr 008c
+
+f	00 NOP
+
+10	f5 PUSH PSW
+
+11	c5 PUSH B
+
+12	d5 PUSH D
+
+13	e5 PUSH H
+
+14	3e 80	MVI A,D8 80
+
+16	32 72 20	STA adr 2072
+
+19	21 c0 20	LXI H,D16 20c0
+
+1c	35 DCR M
+
+1d	cd cd 17	CALL adr 17cd
+
+20	db 01	IN D8 01
+
+22	0f RRC
+
+23	da 67 00	JC adr 0067
+
+26	3a ea 20	LDA adr 20ea
+
+29	a7 ANA A
+
+2a	ca 42 00	JZ adr 0042
+
+2d	3a eb 20	LDA adr 20eb
+
+30	fe 99	CPI D8 99
+
+32	ca 3e 00	JZ adr 003e
+
+35	c6 01	ADI D8 01
+
+37	27 DAA
+
+38	32 eb 20	STA adr 20eb
+
+3b	cd 47 19	CALL adr 1947
+
+3e	af XRA A
+
+3f	32 ea 20	STA adr 20ea
+
+42	3a e9 20	LDA adr 20e9
+
+45	a7 ANA A
+
+46	ca 82 00	JZ adr 0082
+
+49	3a ef 20	LDA adr 20ef
+
+4c	a7 ANA A
+
+4d	c2 6f 00	JNZ adr 006f
+
+50	3a eb 20	LDA adr 20eb
+
+53	a7 ANA A
+
+54	c2 5d 00	JNZ adr 005d
+
+57	cd bf 0a	CALL adr 0abf
+
+5a	c3 82 00	JMP adr 0082
+
+5d	3a 93 20	LDA adr 2093
+
+60	a7 ANA A
+
+61	c2 82 00	JNZ adr 0082
+
+64	c3 65 07	JMP adr 0765
+
+67	3e 01	MVI A,D8 01
+
+69	32 ea 20	STA adr 20ea
+
+6c	c3 3f 00	JMP adr 003f
+
+6f	cd 40 17	CALL adr 1740
+
+72	3a 32 20	LDA adr 2032
+
+75	32 80 20	STA adr 2080
+
+78	cd 00 01	CALL adr 0100
+
+7b	cd 48 02	CALL adr 0248
+
+7e	cd 13 09	CALL adr 0913
+
+81	00 NOP
+
+82	e1 POP H
+
+83	d1 POP D
+
+84	c1 POP B
+
+85	f1 POP PSW
+
+86	fb EI
+
+87	c9 RET
+
+88	00 NOP
+
+89	00 NOP
+
+8a	00 NOP
+
+8b	00 NOP
+
+8c	af XRA A
+
+8d	32 72 20	STA adr 2072
+
+90	3a e9 20	LDA adr 20e9
+
+93	a7 ANA A
+
+94	ca 82 00	JZ adr 0082
+
+97	3a ef 20	LDA adr 20ef
+
+9a	a7 ANA A
+
+9b	c2 a5 00	JNZ adr 00a5
+
+9e	3a c1 20	LDA adr 20c1
+
+a1	0f RRC
+
+a2	d2 82 00	JNC adr 0082
+
+a5	21 20 20	LXI H,D16 2020
+
+a8	cd 4b 02	CALL adr 024b
+
+ab	cd 41 01	CALL adr 0141
+
+ae	c3 82 00	JMP adr 0082
+
+b1	cd 86 08	CALL adr 0886
+
+b4	e5 PUSH H
+
+b5	7e MOV A,M
+
+b6	23 INX H
+
+b7	66 MOV H,M
+
+b8	6f MOV L,A
+
+b9	22 09 20	SHLD adr 2009
+
+bc	22 0b 20	SHLD adr 200b
+
+bf	e1 POP H
+
+c0	2b DCX H
+
+c1	7e MOV A,M
+
+c2	fe 03	CPI D8 03
+
+c4	c2 c8 00	JNZ adr 00c8
+
+c7	3d DCR A
+
+c8	32 08 20	STA adr 2008
+
+cb	fe fe	CPI D8 fe
+
+cd	3e 00	MVI A,D8 00
+
+cf	c2 d3 00	JNZ adr 00d3
+
+d2	3c INR A
+
+d3	32 0d 20	STA adr 200d
+
+d6	c9 RET
+
+d7	3e 02	MVI A,D8 02
+
+d9	32 fb 21	STA adr 21fb
+
+dc	32 fb 22	STA adr 22fb
+
+df	c3 e4 08	JMP adr 08e4
+
+e2	00 NOP
+
+e3	00 NOP
+
+e4	00 NOP
+
+e5	00 NOP
+
+e6	00 NOP
+
+e7	00 NOP
+
+e8	00 NOP
+
+e9	00 NOP
+
+ea	00 NOP
+
+eb	00 NOP
+
+ec	00 NOP
+
+ed	00 NOP
+
+ee	00 NOP
+
+ef	00 NOP
+
+f0	00 NOP
+
+f1	00 NOP
+
+f2	00 NOP
+
+f3	00 NOP
+
+f4	00 NOP
+
+f5	00 NOP
+
+f6	00 NOP
+
+f7	00 NOP
+
+f8	00 NOP
+
+f9	00 NOP
+
+fa	00 NOP
+
+fb	00 NOP
+
+fc	00 NOP
+
+fd	00 NOP
+
+fe	00 NOP
+
+ff	00 NOP
+
+100	21 02 20	LXI H,D16 2002
+
+103	7e MOV A,M
+
+104	a7 ANA A
+
+105	c2 38 15	JNZ adr 1538
+
+108	e5 PUSH H
+
+109	3a 06 20	LDA adr 2006
+
+10c	6f MOV L,A
+
+10d	3a 67 20	LDA adr 2067
+
+110	67 MOV H,A
+
+111	7e MOV A,M
+
+112	a7 ANA A
+
+113	e1 POP H
+
+114	ca 36 01	JZ adr 0136
+
+117	23 INX H
+
+118	23 INX H
+
+119	7e MOV A,M
+
+11a	23 INX H
+
+11b	46 MOV B,M
+
+11c	e6 fe	ANI D8 fe
+
+11e	07 RLC
+
+11f	07 RLC
+
+120	07 RLC
+
+121	5f MOV E,A
+
+122	16 00	MVI D, D8 00
+
+124	21 00 1c	LXI H,D16 1c00
+
+127	19 DAD D
+
+128	eb XCHG
+
+129	78 MOV A,B
+
+12a	a7 ANA A
+
+12b	c4 3b 01	CNZ adr 013b
+
+12e	2a 0b 20	LHLD adr 200b
+
+131	06 10	MVI B, D8 10
+
+133	cd d3 15	CALL adr 15d3
+
+136	af XRA A
+
+137	32 00 20	STA adr 2000
+
+13a	c9 RET
+
+13b	21 30 00	LXI H,D16 0030
+
+13e	19 DAD D
+
+13f	eb XCHG
+
+140	c9 RET
+
+141	3a 68 20	LDA adr 2068
+
+144	a7 ANA A
+
+145	c8 RZ
+
+146	3a 00 20	LDA adr 2000
+
+149	a7 ANA A
+
+14a	c0 RNZ
+
+14b	3a 67 20	LDA adr 2067
+
+14e	67 MOV H,A
+
+14f	3a 06 20	LDA adr 2006
+
+152	16 02	MVI D, D8 02
+
+154	3c INR A
+
+155	fe 37	CPI D8 37
+
+157	cc a1 01	CZ adr 01a1
+
+15a	6f MOV L,A
+
+15b	46 MOV B,M
+
+15c	05 DCR B
+
+15d	c2 54 01	JNZ adr 0154
+
+160	32 06 20	STA adr 2006
+
+163	cd 7a 01	CALL adr 017a
+
+166	61 MOV H,C
+
+167	22 0b 20	SHLD adr 200b
+
+16a	7d MOV A,L
+
+16b	fe 28	CPI D8 28
+
+16d	da 71 19	JC adr 1971
+
+170	7a MOV A,D
+
+171	32 04 20	STA adr 2004
+
+174	3e 01	MVI A,D8 01
+
+176	32 00 20	STA adr 2000
+
+179	c9 RET
+
+17a	16 00	MVI D, D8 00
+
+17c	7d MOV A,L
+
+17d	21 09 20	LXI H,D16 2009
+
+180	46 MOV B,M
+
+181	23 INX H
+
+182	4e MOV C,M
+
+183	fe 0b	CPI D8 0b
+
+185	fa 94 01	JM adr 0194
+
+188	de 0b	SBI D8 0b
+
+18a	5f MOV E,A
+
+18b	78 MOV A,B
+
+18c	c6 10	ADI D8 10
+
+18e	47 MOV B,A
+
+18f	7b MOV A,E
+
+190	14 INR D
+
+191	c3 83 01	JMP adr 0183
+
+194	68 MOV L,B
+
+195	a7 ANA A
+
+196	c8 RZ
+
+197	5f MOV E,A
+
+198	79 MOV A,C
+
+199	c6 10	ADI D8 10
+
+19b	4f MOV C,A
+
+19c	7b MOV A,E
+
+19d	3d DCR A
+
+19e	c3 95 01	JMP adr 0195
+
+1a1	15 DCR D
+
+1a2	ca cd 01	JZ adr 01cd
+
+1a5	21 06 20	LXI H,D16 2006
+
+1a8	36 00	MVI M,D8 00
+
+1aa	23 INX H
+
+1ab	4e MOV C,M
+
+1ac	36 00	MVI M,D8 00
+
+1ae	cd d9 01	CALL adr 01d9
+
+1b1	21 05 20	LXI H,D16 2005
+
+1b4	7e MOV A,M
+
+1b5	3c INR A
+
+1b6	e6 01	ANI D8 01
+
+1b8	77 MOV M,A
+
+1b9	af XRA A
+
+1ba	21 67 20	LXI H,D16 2067
+
+1bd	66 MOV H,M
+
+1be	c9 RET
+
+1bf	00 NOP
+
+1c0	21 00 21	LXI H,D16 2100
+
+1c3	06 37	MVI B, D8 37
+
+1c5	36 01	MVI M,D8 01
+
+1c7	23 INX H
+
+1c8	05 DCR B
+
+1c9	c2 c5 01	JNZ adr 01c5
+
+1cc	c9 RET
+
+1cd	e1 POP H
+
+1ce	c9 RET
+
+1cf	3e 01	MVI A,D8 01
+
+1d1	06 e0	MVI B, D8 e0
+
+1d3	21 02 24	LXI H,D16 2402
+
+1d6	c3 cc 14	JMP adr 14cc
+
+1d9	23 INX H
+
+1da	46 MOV B,M
+
+1db	23 INX H
+
+1dc	79 MOV A,C
+
+1dd	86 ADD M
+
+1de	77 MOV M,A
+
+1df	23 INX H
+
+1e0	78 MOV A,B
+
+1e1	86 ADD M
+
+1e2	77 MOV M,A
+
+1e3	c9 RET
+
+1e4	06 c0	MVI B, D8 c0
+
+1e6	11 00 1b	LXI D,D16 1b00
+
+1e9	21 00 20	LXI H,D16 2000
+
+1ec	c3 32 1a	JMP adr 1a32
+
+1ef	21 42 21	LXI H,D16 2142
+
+1f2	c3 f8 01	JMP adr 01f8
+
+1f5	21 42 22	LXI H,D16 2242
+
+1f8	0e 04	MVI C,D8 04
+
+1fa	11 20 1d	LXI D,D16 1d20
+
+1fd	d5 PUSH D
+
+1fe	06 2c	MVI B, D8 2c
+
+200	cd 32 1a	CALL adr 1a32
+
+203	d1 POP D
+
+204	0d DCR C
+
+205	c2 fd 01	JNZ adr 01fd
+
+208	c9 RET
+
+209	3e 01	MVI A,D8 01
+
+20b	c3 1b 02	JMP adr 021b
+
+20e	3e 01	MVI A,D8 01
+
+210	c3 14 02	JMP adr 0214
+
+213	af XRA A
+
+214	11 42 22	LXI D,D16 2242
+
+217	c3 1e 02	JMP adr 021e
+
+21a	af XRA A
+
+21b	11 42 21	LXI D,D16 2142
+
+21e	32 81 20	STA adr 2081
+
+221	01 02 16	LXI B,D16 1602
+
+224	21 06 28	LXI H,D16 2806
+
+227	3e 04	MVI A,D8 04
+
+229	f5 PUSH PSW
+
+22a	c5 PUSH B
+
+22b	3a 81 20	LDA adr 2081
+
+22e	a7 ANA A
+
+22f	c2 42 02	JNZ adr 0242
+
+232	cd 69 1a	CALL adr 1a69
+
+235	c1 POP B
+
+236	f1 POP PSW
+
+237	3d DCR A
+
+238	c8 RZ
+
+239	d5 PUSH D
+
+23a	11 e0 02	LXI D,D16 02e0
+
+23d	19 DAD D
+
+23e	d1 POP D
+
+23f	c3 29 02	JMP adr 0229
+
+242	cd 7c 14	CALL adr 147c
+
+245	c3 35 02	JMP adr 0235
+
+248	21 10 20	LXI H,D16 2010
+
+24b	7e MOV A,M
+
+24c	fe ff	CPI D8 ff
+
+24e	c8 RZ
+
+24f	fe fe	CPI D8 fe
+
+251	ca 81 02	JZ adr 0281
+
+254	23 INX H
+
+255	46 MOV B,M
+
+256	4f MOV C,A
+
+257	b0 ORA B
+
+258	79 MOV A,C
+
+259	c2 77 02	JNZ adr 0277
+
+25c	23 INX H
+
+25d	7e MOV A,M
+
+25e	a7 ANA A
+
+25f	c2 88 02	JNZ adr 0288
+
+262	23 INX H
+
+263	5e MOV E,M
+
+264	23 INX H
+
+265	56 MOV D,M
+
+266	e5 PUSH H
+
+267	eb XCHG
+
+268	e5 PUSH H
+
+269	21 6f 02	LXI H,D16 026f
+
+26c	e3 XTHL
+
+26d	d5 PUSH D
+
+26e	e9 PCHL
+
+26f	e1 POP H
+
+270	11 0c 00	LXI D,D16 000c
+
+273	19 DAD D
+
+274	c3 4b 02	JMP adr 024b
+
+277	05 DCR B
+
+278	04 INR B
+
+279	c2 7d 02	JNZ adr 027d
+
+27c	3d DCR A
+
+27d	05 DCR B
+
+27e	70 MOV M,B
+
+27f	2b DCX H
+
+280	77 MOV M,A
+
+281	11 10 00	LXI D,D16 0010
+
+284	19 DAD D
+
+285	c3 4b 02	JMP adr 024b
+
+288	35 DCR M
+
+289	2b DCX H
+
+28a	2b DCX H
+
+28b	c3 81 02	JMP adr 0281
+
+28e	e1 POP H
+
+28f	23 INX H
+
+290	7e MOV A,M
+
+291	fe ff	CPI D8 ff
+
+293	ca 3b 03	JZ adr 033b
+
+296	23 INX H
+
+297	35 DCR M
+
+298	c0 RNZ
+
+299	47 MOV B,A
+
+29a	af XRA A
+
+29b	32 68 20	STA adr 2068
+
+29e	32 69 20	STA adr 2069
+
+2a1	3e 30	MVI A,D8 30
+
+2a3	32 6a 20	STA adr 206a
+
+2a6	78 MOV A,B
+
+2a7	36 05	MVI M,D8 05
+
+2a9	23 INX H
+
+2aa	35 DCR M
+
+2ab	c2 9b 03	JNZ adr 039b
+
+2ae	2a 1a 20	LHLD adr 201a
+
+2b1	06 10	MVI B, D8 10
+
+2b3	cd 24 14	CALL adr 1424
+
+2b6	21 10 20	LXI H,D16 2010
+
+2b9	11 10 1b	LXI D,D16 1b10
+
+2bc	06 10	MVI B, D8 10
+
+2be	cd 32 1a	CALL adr 1a32
+
+2c1	06 00	MVI B, D8 00
+
+2c3	cd dc 19	CALL adr 19dc
+
+2c6	3a 6d 20	LDA adr 206d
+
+2c9	a7 ANA A
+
+2ca	c0 RNZ
+
+2cb	3a ef 20	LDA adr 20ef
+
+2ce	a7 ANA A
+
+2cf	c8 RZ
+
+2d0	31 00 24	LXI SP, D16 2400
+
+2d3	fb EI
+
+2d4	cd d7 19	CALL adr 19d7
+
+2d7	cd 2e 09	CALL adr 092e
+
+2da	a7 ANA A
+
+2db	ca 6d 16	JZ adr 166d
+
+2de	cd e7 18	CALL adr 18e7
+
+2e1	7e MOV A,M
+
+2e2	a7 ANA A
+
+2e3	ca 2c 03	JZ adr 032c
+
+2e6	3a ce 20	LDA adr 20ce
+
+2e9	a7 ANA A
+
+2ea	ca 2c 03	JZ adr 032c
+
+2ed	3a 67 20	LDA adr 2067
+
+2f0	f5 PUSH PSW
+
+2f1	0f RRC
+
+2f2	da 32 03	JC adr 0332
+
+2f5	cd 0e 02	CALL adr 020e
+
+2f8	cd 78 08	CALL adr 0878
+
+2fb	73 MOV M,E
+
+2fc	23 INX H
+
+2fd	72 MOV M,D
+
+2fe	2b DCX H
+
+2ff	2b DCX H
+
+300	70 MOV M,B
+
+301	00 NOP
+
+302	cd e4 01	CALL adr 01e4
+
+305	f1 POP PSW
+
+306	0f RRC
+
+307	3e 21	MVI A,D8 21
+
+309	06 00	MVI B, D8 00
+
+30b	d2 12 03	JNC adr 0312
+
+30e	06 20	MVI B, D8 20
+
+310	3e 22	MVI A,D8 22
+
+312	32 67 20	STA adr 2067
+
+315	cd b6 0a	CALL adr 0ab6
+
+318	af XRA A
+
+319	32 11 20	STA adr 2011
+
+31c	78 MOV A,B
+
+31d	d3 05	OUT D8 05
+
+31f	3c INR A
+
+320	32 98 20	STA adr 2098
+
+323	cd d6 09	CALL adr 09d6
+
+326	cd 7f 1a	CALL adr 1a7f
+
+329	c3 f9 07	JMP adr 07f9
+
+32c	cd 7f 1a	CALL adr 1a7f
+
+32f	c3 17 08	JMP adr 0817
+
+332	cd 09 02	CALL adr 0209
+
+335	c3 f8 02	JMP adr 02f8
+
+338	00 NOP
+
+339	00 NOP
+
+33a	00 NOP
+
+33b	21 68 20	LXI H,D16 2068
+
+33e	36 01	MVI M,D8 01
+
+340	23 INX H
+
+341	7e MOV A,M
+
+342	a7 ANA A
+
+343	c3 b0 03	JMP adr 03b0
+
+346	00 NOP
+
+347	2b DCX H
+
+348	36 01	MVI M,D8 01
+
+34a	3a 1b 20	LDA adr 201b
+
+34d	47 MOV B,A
+
+34e	3a ef 20	LDA adr 20ef
+
+351	a7 ANA A
+
+352	c2 63 03	JNZ adr 0363
+
+355	3a 1d 20	LDA adr 201d
+
+358	0f RRC
+
+359	da 81 03	JC adr 0381
+
+35c	0f RRC
+
+35d	da 8e 03	JC adr 038e
+
+360	c3 6f 03	JMP adr 036f
+
+363	cd c0 17	CALL adr 17c0
+
+366	07 RLC
+
+367	07 RLC
+
+368	da 81 03	JC adr 0381
+
+36b	07 RLC
+
+36c	da 8e 03	JC adr 038e
+
+36f	21 18 20	LXI H,D16 2018
+
+372	cd 3b 1a	CALL adr 1a3b
+
+375	cd 47 1a	CALL adr 1a47
+
+378	cd 39 14	CALL adr 1439
+
+37b	3e 00	MVI A,D8 00
+
+37d	32 12 20	STA adr 2012
+
+380	c9 RET
+
+381	78 MOV A,B
+
+382	fe d9	CPI D8 d9
+
+384	ca 6f 03	JZ adr 036f
+
+387	3c INR A
+
+388	32 1b 20	STA adr 201b
+
+38b	c3 6f 03	JMP adr 036f
+
+38e	78 MOV A,B
+
+38f	fe 30	CPI D8 30
+
+391	ca 6f 03	JZ adr 036f
+
+394	3d DCR A
+
+395	32 1b 20	STA adr 201b
+
+398	c3 6f 03	JMP adr 036f
+
+39b	3c INR A
+
+39c	e6 01	ANI D8 01
+
+39e	32 15 20	STA adr 2015
+
+3a1	07 RLC
+
+3a2	07 RLC
+
+3a3	07 RLC
+
+3a4	07 RLC
+
+3a5	21 70 1c	LXI H,D16 1c70
+
+3a8	85 ADD L
+
+3a9	6f MOV L,A
+
+3aa	22 18 20	SHLD adr 2018
+
+3ad	c3 6f 03	JMP adr 036f
+
+3b0	c2 4a 03	JNZ adr 034a
+
+3b3	23 INX H
+
+3b4	35 DCR M
+
+3b5	c2 4a 03	JNZ adr 034a
+
+3b8	c3 46 03	JMP adr 0346
+
+3bb	11 2a 20	LXI D,D16 202a
+
+3be	cd 06 1a	CALL adr 1a06
+
+3c1	e1 POP H
+
+3c2	d0 RNC
+
+3c3	23 INX H
+
+3c4	7e MOV A,M
+
+3c5	a7 ANA A
+
+3c6	c8 RZ
+
+3c7	fe 01	CPI D8 01
+
+3c9	ca fa 03	JZ adr 03fa
+
+3cc	fe 02	CPI D8 02
+
+3ce	ca 0a 04	JZ adr 040a
+
+3d1	23 INX H
+
+3d2	fe 03	CPI D8 03
+
+3d4	c2 2a 04	JNZ adr 042a
+
+3d7	35 DCR M
+
+3d8	ca 36 04	JZ adr 0436
+
+3db	7e MOV A,M
+
+3dc	fe 0f	CPI D8 0f
+
+3de	c0 RNZ
+
+3df	e5 PUSH H
+
+3e0	cd 30 04	CALL adr 0430
+
+3e3	cd 52 14	CALL adr 1452
+
+3e6	e1 POP H
+
+3e7	23 INX H
+
+3e8	34 INR M
+
+3e9	23 INX H
+
+3ea	23 INX H
+
+3eb	35 DCR M
+
+3ec	35 DCR M
+
+3ed	23 INX H
+
+3ee	35 DCR M
+
+3ef	35 DCR M
+
+3f0	35 DCR M
+
+3f1	23 INX H
+
+3f2	36 08	MVI M,D8 08
+
+3f4	cd 30 04	CALL adr 0430
+
+3f7	c3 00 14	JMP adr 1400
+
+3fa	3c INR A
+
+3fb	77 MOV M,A
+
+3fc	3a 1b 20	LDA adr 201b
+
+3ff	c6 08	ADI D8 08
+
+401	32 2a 20	STA adr 202a
+
+404	cd 30 04	CALL adr 0430
+
+407	c3 00 14	JMP adr 1400
+
+40a	cd 30 04	CALL adr 0430
+
+40d	d5 PUSH D
+
+40e	e5 PUSH H
+
+40f	c5 PUSH B
+
+410	cd 52 14	CALL adr 1452
+
+413	c1 POP B
+
+414	e1 POP H
+
+415	d1 POP D
+
+416	3a 2c 20	LDA adr 202c
+
+419	85 ADD L
+
+41a	6f MOV L,A
+
+41b	32 29 20	STA adr 2029
+
+41e	cd 91 14	CALL adr 1491
+
+421	3a 61 20	LDA adr 2061
+
+424	a7 ANA A
+
+425	c8 RZ
+
+426	32 02 20	STA adr 2002
+
+429	c9 RET
+
+42a	fe 05	CPI D8 05
+
+42c	c8 RZ
+
+42d	c3 36 04	JMP adr 0436
+
+430	21 27 20	LXI H,D16 2027
+
+433	c3 3b 1a	JMP adr 1a3b
+
+436	cd 30 04	CALL adr 0430
+
+439	cd 52 14	CALL adr 1452
+
+43c	21 25 20	LXI H,D16 2025
+
+43f	11 25 1b	LXI D,D16 1b25
+
+442	06 07	MVI B, D8 07
+
+444	cd 32 1a	CALL adr 1a32
+
+447	2a 8d 20	LHLD adr 208d
+
+44a	2c INR L
+
+44b	7d MOV A,L
+
+44c	fe 63	CPI D8 63
+
+44e	da 53 04	JC adr 0453
+
+451	2e 54	MVI L, D8 54
+
+453	22 8d 20	SHLD adr 208d
+
+456	2a 8f 20	LHLD adr 208f
+
+459	2c INR L
+
+45a	22 8f 20	SHLD adr 208f
+
+45d	3a 84 20	LDA adr 2084
+
+460	a7 ANA A
+
+461	c0 RNZ
+
+462	7e MOV A,M
+
+463	e6 01	ANI D8 01
+
+465	01 29 02	LXI B,D16 0229
+
+468	c2 6e 04	JNZ adr 046e
+
+46b	01 e0 fe	LXI B,D16 fee0
+
+46e	21 8a 20	LXI H,D16 208a
+
+471	71 MOV M,C
+
+472	23 INX H
+
+473	23 INX H
+
+474	70 MOV M,B
+
+475	c9 RET
+
+476	e1 POP H
+
+477	3a 32 1b	LDA adr 1b32
+
+47a	32 32 20	STA adr 2032
+
+47d	2a 38 20	LHLD adr 2038
+
+480	7d MOV A,L
+
+481	b4 ORA H
+
+482	c2 8a 04	JNZ adr 048a
+
+485	2b DCX H
+
+486	22 38 20	SHLD adr 2038
+
+489	c9 RET
+
+48a	11 35 20	LXI D,D16 2035
+
+48d	3e f9	MVI A,D8 f9
+
+48f	cd 50 05	CALL adr 0550
+
+492	3a 46 20	LDA adr 2046
+
+495	32 70 20	STA adr 2070
+
+498	3a 56 20	LDA adr 2056
+
+49b	32 71 20	STA adr 2071
+
+49e	cd 63 05	CALL adr 0563
+
+4a1	3a 78 20	LDA adr 2078
+
+4a4	a7 ANA A
+
+4a5	21 35 20	LXI H,D16 2035
+
+4a8	c2 5b 05	JNZ adr 055b
+
+4ab	11 30 1b	LXI D,D16 1b30
+
+4ae	21 30 20	LXI H,D16 2030
+
+4b1	06 10	MVI B, D8 10
+
+4b3	c3 32 1a	JMP adr 1a32
+
+4b6	e1 POP H
+
+4b7	3a 6e 20	LDA adr 206e
+
+4ba	a7 ANA A
+
+4bb	c0 RNZ
+
+4bc	3a 80 20	LDA adr 2080
+
+4bf	fe 01	CPI D8 01
+
+4c1	c0 RNZ
+
+4c2	11 45 20	LXI D,D16 2045
+
+4c5	3e ed	MVI A,D8 ed
+
+4c7	cd 50 05	CALL adr 0550
+
+4ca	3a 36 20	LDA adr 2036
+
+4cd	32 70 20	STA adr 2070
+
+4d0	3a 56 20	LDA adr 2056
+
+4d3	32 71 20	STA adr 2071
+
+4d6	cd 63 05	CALL adr 0563
+
+4d9	3a 76 20	LDA adr 2076
+
+4dc	fe 10	CPI D8 10
+
+4de	da e7 04	JC adr 04e7
+
+4e1	3a 48 1b	LDA adr 1b48
+
+4e4	32 76 20	STA adr 2076
+
+4e7	3a 78 20	LDA adr 2078
+
+4ea	a7 ANA A
+
+4eb	21 45 20	LXI H,D16 2045
+
+4ee	c2 5b 05	JNZ adr 055b
+
+4f1	11 40 1b	LXI D,D16 1b40
+
+4f4	21 40 20	LXI H,D16 2040
+
+4f7	06 10	MVI B, D8 10
+
+4f9	cd 32 1a	CALL adr 1a32
+
+4fc	3a 82 20	LDA adr 2082
+
+4ff	3d DCR A
+
+500	c2 08 05	JNZ adr 0508
+
+503	3e 01	MVI A,D8 01
+
+505	32 6e 20	STA adr 206e
+
+508	2a 76 20	LHLD adr 2076
+
+50b	c3 7e 06	JMP adr 067e
+
+50e	e1 POP H
+
+50f	11 55 20	LXI D,D16 2055
+
+512	3e db	MVI A,D8 db
+
+514	cd 50 05	CALL adr 0550
+
+517	3a 46 20	LDA adr 2046
+
+51a	32 70 20	STA adr 2070
+
+51d	3a 36 20	LDA adr 2036
+
+520	32 71 20	STA adr 2071
+
+523	cd 63 05	CALL adr 0563
+
+526	3a 76 20	LDA adr 2076
+
+529	fe 15	CPI D8 15
+
+52b	da 34 05	JC adr 0534
+
+52e	3a 58 1b	LDA adr 1b58
+
+531	32 76 20	STA adr 2076
+
+534	3a 78 20	LDA adr 2078
+
+537	a7 ANA A
+
+538	21 55 20	LXI H,D16 2055
+
+53b	c2 5b 05	JNZ adr 055b
+
+53e	11 50 1b	LXI D,D16 1b50
+
+541	21 50 20	LXI H,D16 2050
+
+544	06 10	MVI B, D8 10
+
+546	cd 32 1a	CALL adr 1a32
+
+549	2a 76 20	LHLD adr 2076
+
+54c	22 58 20	SHLD adr 2058
+
+54f	c9 RET
+
+550	32 7f 20	STA adr 207f
+
+553	21 73 20	LXI H,D16 2073
+
+556	06 0b	MVI B, D8 0b
+
+558	c3 32 1a	JMP adr 1a32
+
+55b	11 73 20	LXI D,D16 2073
+
+55e	06 0b	MVI B, D8 0b
+
+560	c3 32 1a	JMP adr 1a32
+
+563	21 73 20	LXI H,D16 2073
+
+566	7e MOV A,M
+
+567	e6 80	ANI D8 80
+
+569	c2 c1 05	JNZ adr 05c1
+
+56c	3a c1 20	LDA adr 20c1
+
+56f	fe 04	CPI D8 04
+
+571	3a 69 20	LDA adr 2069
+
+574	ca b7 05	JZ adr 05b7
+
+577	a7 ANA A
+
+578	c8 RZ
+
+579	23 INX H
+
+57a	36 00	MVI M,D8 00
+
+57c	3a 70 20	LDA adr 2070
+
+57f	a7 ANA A
+
+580	ca 89 05	JZ adr 0589
+
+583	47 MOV B,A
+
+584	3a cf 20	LDA adr 20cf
+
+587	b8 CMP B
+
+588	d0 RNC
+
+589	3a 71 20	LDA adr 2071
+
+58c	a7 ANA A
+
+58d	ca 96 05	JZ adr 0596
+
+590	47 MOV B,A
+
+591	3a cf 20	LDA adr 20cf
+
+594	b8 CMP B
+
+595	d0 RNC
+
+596	23 INX H
+
+597	7e MOV A,M
+
+598	a7 ANA A
+
+599	ca 1b 06	JZ adr 061b
+
+59c	2a 76 20	LHLD adr 2076
+
+59f	4e MOV C,M
+
+5a0	23 INX H
+
+5a1	00 NOP
+
+5a2	22 76 20	SHLD adr 2076
+
+5a5	cd 2f 06	CALL adr 062f
+
+5a8	d0 RNC
+
+5a9	cd 7a 01	CALL adr 017a
+
+5ac	79 MOV A,C
+
+5ad	c6 07	ADI D8 07
+
+5af	67 MOV H,A
+
+5b0	7d MOV A,L
+
+5b1	d6 0a	SUI D8 0a
+
+5b3	6f MOV L,A
+
+5b4	22 7b 20	SHLD adr 207b
+
+5b7	21 73 20	LXI H,D16 2073
+
+5ba	7e MOV A,M
+
+5bb	f6 80	ORI D8 80
+
+5bd	77 MOV M,A
+
+5be	23 INX H
+
+5bf	34 INR M
+
+5c0	c9 RET
+
+5c1	11 7c 20	LXI D,D16 207c
+
+5c4	cd 06 1a	CALL adr 1a06
+
+5c7	d0 RNC
+
+5c8	23 INX H
+
+5c9	7e MOV A,M
+
+5ca	e6 01	ANI D8 01
+
+5cc	c2 44 06	JNZ adr 0644
+
+5cf	23 INX H
+
+5d0	34 INR M
+
+5d1	cd 75 06	CALL adr 0675
+
+5d4	3a 79 20	LDA adr 2079
+
+5d7	c6 03	ADI D8 03
+
+5d9	21 7f 20	LXI H,D16 207f
+
+5dc	be CMP M
+
+5dd	da e2 05	JC adr 05e2
+
+5e0	d6 0c	SUI D8 0c
+
+5e2	32 79 20	STA adr 2079
+
+5e5	3a 7b 20	LDA adr 207b
+
+5e8	47 MOV B,A
+
+5e9	3a 7e 20	LDA adr 207e
+
+5ec	80 ADD B
+
+5ed	32 7b 20	STA adr 207b
+
+5f0	cd 6c 06	CALL adr 066c
+
+5f3	3a 7b 20	LDA adr 207b
+
+5f6	fe 15	CPI D8 15
+
+5f8	da 12 06	JC adr 0612
+
+5fb	3a 61 20	LDA adr 2061
+
+5fe	a7 ANA A
+
+5ff	c8 RZ
+
+600	3a 7b 20	LDA adr 207b
+
+603	fe 1e	CPI D8 1e
+
+605	da 12 06	JC adr 0612
+
+608	fe 27	CPI D8 27
+
+60a	00 NOP
+
+60b	d2 12 06	JNC adr 0612
+
+60e	97 SUB A
+
+60f	32 15 20	STA adr 2015
+
+612	3a 73 20	LDA adr 2073
+
+615	f6 01	ORI D8 01
+
+617	32 73 20	STA adr 2073
+
+61a	c9 RET
+
+61b	3a 1b 20	LDA adr 201b
+
+61e	c6 08	ADI D8 08
+
+620	67 MOV H,A
+
+621	cd 6f 15	CALL adr 156f
+
+624	79 MOV A,C
+
+625	fe 0c	CPI D8 0c
+
+627	da a5 05	JC adr 05a5
+
+62a	0e 0b	MVI C,D8 0b
+
+62c	c3 a5 05	JMP adr 05a5
+
+62f	0d DCR C
+
+630	3a 67 20	LDA adr 2067
+
+633	67 MOV H,A
+
+634	69 MOV L,C
+
+635	16 05	MVI D, D8 05
+
+637	7e MOV A,M
+
+638	a7 ANA A
+
+639	37 STC
+
+63a	c0 RNZ
+
+63b	7d MOV A,L
+
+63c	c6 0b	ADI D8 0b
+
+63e	6f MOV L,A
+
+63f	15 DCR D
+
+640	c2 37 06	JNZ adr 0637
+
+643	c9 RET
+
+644	21 78 20	LXI H,D16 2078
+
+647	35 DCR M
+
+648	7e MOV A,M
+
+649	fe 03	CPI D8 03
+
+64b	c2 67 06	JNZ adr 0667
+
+64e	cd 75 06	CALL adr 0675
+
+651	21 dc 1c	LXI H,D16 1cdc
+
+654	22 79 20	SHLD adr 2079
+
+657	21 7c 20	LXI H,D16 207c
+
+65a	35 DCR M
+
+65b	35 DCR M
+
+65c	2b DCX H
+
+65d	35 DCR M
+
+65e	35 DCR M
+
+65f	3e 06	MVI A,D8 06
+
+661	32 7d 20	STA adr 207d
+
+664	c3 6c 06	JMP adr 066c
+
+667	a7 ANA A
+
+668	c0 RNZ
+
+669	c3 75 06	JMP adr 0675
+
+66c	21 79 20	LXI H,D16 2079
+
+66f	cd 3b 1a	CALL adr 1a3b
+
+672	c3 91 14	JMP adr 1491
+
+675	21 79 20	LXI H,D16 2079
+
+678	cd 3b 1a	CALL adr 1a3b
+
+67b	c3 52 14	JMP adr 1452
+
+67e	22 48 20	SHLD adr 2048
+
+681	c9 RET
+
+682	e1 POP H
+
+683	3a 80 20	LDA adr 2080
+
+686	fe 02	CPI D8 02
+
+688	c0 RNZ
+
+689	21 83 20	LXI H,D16 2083
+
+68c	7e MOV A,M
+
+68d	a7 ANA A
+
+68e	ca 0f 05	JZ adr 050f
+
+691	3a 56 20	LDA adr 2056
+
+694	a7 ANA A
+
+695	c2 0f 05	JNZ adr 050f
+
+698	23 INX H
+
+699	7e MOV A,M
+
+69a	a7 ANA A
+
+69b	c2 ab 06	JNZ adr 06ab
+
+69e	3a 82 20	LDA adr 2082
+
+6a1	fe 08	CPI D8 08
+
+6a3	da 0f 05	JC adr 050f
+
+6a6	36 01	MVI M,D8 01
+
+6a8	cd 3c 07	CALL adr 073c
+
+6ab	11 8a 20	LXI D,D16 208a
+
+6ae	cd 06 1a	CALL adr 1a06
+
+6b1	d0 RNC
+
+6b2	21 85 20	LXI H,D16 2085
+
+6b5	7e MOV A,M
+
+6b6	a7 ANA A
+
+6b7	c2 d6 06	JNZ adr 06d6
+
+6ba	21 8a 20	LXI H,D16 208a
+
+6bd	7e MOV A,M
+
+6be	23 INX H
+
+6bf	23 INX H
+
+6c0	86 ADD M
+
+6c1	32 8a 20	STA adr 208a
+
+6c4	cd 3c 07	CALL adr 073c
+
+6c7	21 8a 20	LXI H,D16 208a
+
+6ca	7e MOV A,M
+
+6cb	fe 28	CPI D8 28
+
+6cd	da f9 06	JC adr 06f9
+
+6d0	fe e1	CPI D8 e1
+
+6d2	d2 f9 06	JNC adr 06f9
+
+6d5	c9 RET
+
+6d6	06 fe	MVI B, D8 fe
+
+6d8	cd dc 19	CALL adr 19dc
+
+6db	23 INX H
+
+6dc	35 DCR M
+
+6dd	7e MOV A,M
+
+6de	fe 1f	CPI D8 1f
+
+6e0	ca 4b 07	JZ adr 074b
+
+6e3	fe 18	CPI D8 18
+
+6e5	ca 0c 07	JZ adr 070c
+
+6e8	a7 ANA A
+
+6e9	c0 RNZ
+
+6ea	06 ef	MVI B, D8 ef
+
+6ec	21 98 20	LXI H,D16 2098
+
+6ef	7e MOV A,M
+
+6f0	a0 ANA B
+
+6f1	77 MOV M,A
+
+6f2	e6 20	ANI D8 20
+
+6f4	d3 05	OUT D8 05
+
+6f6	00 NOP
+
+6f7	00 NOP
+
+6f8	00 NOP
+
+6f9	cd 42 07	CALL adr 0742
+
+6fc	cd cb 14	CALL adr 14cb
+
+6ff	21 83 20	LXI H,D16 2083
+
+702	06 0a	MVI B, D8 0a
+
+704	cd 5f 07	CALL adr 075f
+
+707	06 fe	MVI B, D8 fe
+
+709	c3 dc 19	JMP adr 19dc
+
+70c	3e 01	MVI A,D8 01
+
+70e	32 f1 20	STA adr 20f1
+
+711	2a 8d 20	LHLD adr 208d
+
+714	46 MOV B,M
+
+715	0e 04	MVI C,D8 04
+
+717	21 50 1d	LXI H,D16 1d50
+
+71a	11 4c 1d	LXI D,D16 1d4c
+
+71d	1a LDAX D
+
+71e	b8 CMP B
+
+71f	ca 28 07	JZ adr 0728
+
+722	23 INX H
+
+723	13 INX D
+
+724	0d DCR C
+
+725	c2 1d 07	JNZ adr 071d
+
+728	7e MOV A,M
+
+729	32 87 20	STA adr 2087
+
+72c	26 00	MVI H,D8 00
+
+72e	68 MOV L,B
+
+72f	29 DAD H
+
+730	29 DAD H
+
+731	29 DAD H
+
+732	29 DAD H
+
+733	22 f2 20	SHLD adr 20f2
+
+736	cd 42 07	CALL adr 0742
+
+739	c3 f1 08	JMP adr 08f1
+
+73c	cd 42 07	CALL adr 0742
+
+73f	c3 39 14	JMP adr 1439
+
+742	21 87 20	LXI H,D16 2087
+
+745	cd 3b 1a	CALL adr 1a3b
+
+748	c3 47 1a	JMP adr 1a47
+
+74b	06 10	MVI B, D8 10
+
+74d	21 98 20	LXI H,D16 2098
+
+750	7e MOV A,M
+
+751	b0 ORA B
+
+752	77 MOV M,A
+
+753	cd 70 17	CALL adr 1770
+
+756	21 7c 1d	LXI H,D16 1d7c
+
+759	22 87 20	SHLD adr 2087
+
+75c	c3 3c 07	JMP adr 073c
+
+75f	11 83 1b	LXI D,D16 1b83
+
+762	c3 32 1a	JMP adr 1a32
+
+765	3e 01	MVI A,D8 01
+
+767	32 93 20	STA adr 2093
+
+76a	31 00 24	LXI SP, D16 2400
+
+76d	fb EI
+
+76e	cd 79 19	CALL adr 1979
+
+771	cd d6 09	CALL adr 09d6
+
+774	21 13 30	LXI H,D16 3013
+
+777	11 f3 1f	LXI D,D16 1ff3
+
+77a	0e 04	MVI C,D8 04
+
+77c	cd f3 08	CALL adr 08f3
+
+77f	3a eb 20	LDA adr 20eb
+
+782	3d DCR A
+
+783	21 10 28	LXI H,D16 2810
+
+786	0e 14	MVI C,D8 14
+
+788	c2 57 08	JNZ adr 0857
+
+78b	11 cf 1a	LXI D,D16 1acf
+
+78e	cd f3 08	CALL adr 08f3
+
+791	db 01	IN D8 01
+
+793	e6 04	ANI D8 04
+
+795	ca 7f 07	JZ adr 077f
+
+798	06 99	MVI B, D8 99
+
+79a	af XRA A
+
+79b	32 ce 20	STA adr 20ce
+
+79e	3a eb 20	LDA adr 20eb
+
+7a1	80 ADD B
+
+7a2	27 DAA
+
+7a3	32 eb 20	STA adr 20eb
+
+7a6	cd 47 19	CALL adr 1947
+
+7a9	21 00 00	LXI H,D16 0000
+
+7ac	22 f8 20	SHLD adr 20f8
+
+7af	22 fc 20	SHLD adr 20fc
+
+7b2	cd 25 19	CALL adr 1925
+
+7b5	cd 2b 19	CALL adr 192b
+
+7b8	cd d7 19	CALL adr 19d7
+
+7bb	21 01 01	LXI H,D16 0101
+
+7be	7c MOV A,H
+
+7bf	32 ef 20	STA adr 20ef
+
+7c2	22 e7 20	SHLD adr 20e7
+
+7c5	22 e5 20	SHLD adr 20e5
+
+7c8	cd 56 19	CALL adr 1956
+
+7cb	cd ef 01	CALL adr 01ef
+
+7ce	cd f5 01	CALL adr 01f5
+
+7d1	cd d1 08	CALL adr 08d1
+
+7d4	32 ff 21	STA adr 21ff
+
+7d7	32 ff 22	STA adr 22ff
+
+7da	cd d7 00	CALL adr 00d7
+
+7dd	af XRA A
+
+7de	32 fe 21	STA adr 21fe
+
+7e1	32 fe 22	STA adr 22fe
+
+7e4	cd c0 01	CALL adr 01c0
+
+7e7	cd 04 19	CALL adr 1904
+
+7ea	21 78 38	LXI H,D16 3878
+
+7ed	22 fc 21	SHLD adr 21fc
+
+7f0	22 fc 22	SHLD adr 22fc
+
+7f3	cd e4 01	CALL adr 01e4
+
+7f6	cd 7f 1a	CALL adr 1a7f
+
+7f9	cd 8d 08	CALL adr 088d
+
+7fc	cd d6 09	CALL adr 09d6
+
+7ff	00 NOP
+
+800	af XRA A
+
+801	32 c1 20	STA adr 20c1
+
+804	cd cf 01	CALL adr 01cf
+
+807	3a 67 20	LDA adr 2067
+
+80a	0f RRC
+
+80b	da 72 08	JC adr 0872
+
+80e	cd 13 02	CALL adr 0213
+
+811	cd cf 01	CALL adr 01cf
+
+814	cd b1 00	CALL adr 00b1
+
+817	cd d1 19	CALL adr 19d1
+
+81a	06 20	MVI B, D8 20
+
+81c	cd fa 18	CALL adr 18fa
+
+81f	cd 18 16	CALL adr 1618
+
+822	cd 0a 19	CALL adr 190a
+
+825	cd f3 15	CALL adr 15f3
+
+828	cd 88 09	CALL adr 0988
+
+82b	3a 82 20	LDA adr 2082
+
+82e	a7 ANA A
+
+82f	ca ef 09	JZ adr 09ef
+
+832	cd 0e 17	CALL adr 170e
+
+835	cd 35 09	CALL adr 0935
+
+838	cd d8 08	CALL adr 08d8
+
+83b	cd 2c 17	CALL adr 172c
+
+83e	cd 59 0a	CALL adr 0a59
+
+841	ca 49 08	JZ adr 0849
+
+844	06 04	MVI B, D8 04
+
+846	cd fa 18	CALL adr 18fa
+
+849	cd 75 17	CALL adr 1775
+
+84c	d3 06	OUT D8 06
+
+84e	cd 04 18	CALL adr 1804
+
+851	c3 1f 08	JMP adr 081f
+
+854	00 NOP
+
+855	00 NOP
+
+856	00 NOP
+
+857	11 ba 1a	LXI D,D16 1aba
+
+85a	cd f3 08	CALL adr 08f3
+
+85d	06 98	MVI B, D8 98
+
+85f	db 01	IN D8 01
+
+861	0f RRC
+
+862	0f RRC
+
+863	da 6d 08	JC adr 086d
+
+866	0f RRC
+
+867	da 98 07	JC adr 0798
+
+86a	c3 7f 07	JMP adr 077f
+
+86d	3e 01	MVI A,D8 01
+
+86f	c3 9b 07	JMP adr 079b
+
+872	cd 1a 02	CALL adr 021a
+
+875	c3 14 08	JMP adr 0814
+
+878	3a 08 20	LDA adr 2008
+
+87b	47 MOV B,A
+
+87c	2a 09 20	LHLD adr 2009
+
+87f	eb XCHG
+
+880	c3 86 08	JMP adr 0886
+
+883	00 NOP
+
+884	00 NOP
+
+885	00 NOP
+
+886	3a 67 20	LDA adr 2067
+
+889	67 MOV H,A
+
+88a	2e fc	MVI L, D8 fc
+
+88c	c9 RET
+
+88d	21 11 2b	LXI H,D16 2b11
+
+890	11 70 1b	LXI D,D16 1b70
+
+893	0e 0e	MVI C,D8 0e
+
+895	cd f3 08	CALL adr 08f3
+
+898	3a 67 20	LDA adr 2067
+
+89b	0f RRC
+
+89c	3e 1c	MVI A,D8 1c
+
+89e	21 11 37	LXI H,D16 3711
+
+8a1	d4 ff 08	CNC adr 08ff
+
+8a4	3e b0	MVI A,D8 b0
+
+8a6	32 c0 20	STA adr 20c0
+
+8a9	3a c0 20	LDA adr 20c0
+
+8ac	a7 ANA A
+
+8ad	c8 RZ
+
+8ae	e6 04	ANI D8 04
+
+8b0	c2 bc 08	JNZ adr 08bc
+
+8b3	cd ca 09	CALL adr 09ca
+
+8b6	cd 31 19	CALL adr 1931
+
+8b9	c3 a9 08	JMP adr 08a9
+
+8bc	06 20	MVI B, D8 20
+
+8be	21 1c 27	LXI H,D16 271c
+
+8c1	3a 67 20	LDA adr 2067
+
+8c4	0f RRC
+
+8c5	da cb 08	JC adr 08cb
+
+8c8	21 1c 39	LXI H,D16 391c
+
+8cb	cd cb 14	CALL adr 14cb
+
+8ce	c3 a9 08	JMP adr 08a9
+
+8d1	db 02	IN D8 02
+
+8d3	e6 03	ANI D8 03
+
+8d5	c6 03	ADI D8 03
+
+8d7	c9 RET
+
+8d8	3a 82 20	LDA adr 2082
+
+8db	fe 09	CPI D8 09
+
+8dd	d0 RNC
+
+8de	3e fb	MVI A,D8 fb
+
+8e0	32 7e 20	STA adr 207e
+
+8e3	c9 RET
+
+8e4	3a ce 20	LDA adr 20ce
+
+8e7	a7 ANA A
+
+8e8	c0 RNZ
+
+8e9	21 1c 39	LXI H,D16 391c
+
+8ec	06 20	MVI B, D8 20
+
+8ee	c3 cb 14	JMP adr 14cb
+
+8f1	0e 03	MVI C,D8 03
+
+8f3	1a LDAX D
+
+8f4	d5 PUSH D
+
+8f5	cd ff 08	CALL adr 08ff
+
+8f8	d1 POP D
+
+8f9	13 INX D
+
+8fa	0d DCR C
+
+8fb	c2 f3 08	JNZ adr 08f3
+
+8fe	c9 RET
+
+8ff	11 00 1e	LXI D,D16 1e00
+
+902	e5 PUSH H
+
+903	26 00	MVI H,D8 00
+
+905	6f MOV L,A
+
+906	29 DAD H
+
+907	29 DAD H
+
+908	29 DAD H
+
+909	19 DAD D
+
+90a	eb XCHG
+
+90b	e1 POP H
+
+90c	06 08	MVI B, D8 08
+
+90e	d3 06	OUT D8 06
+
+910	c3 39 14	JMP adr 1439
+
+913	3a 09 20	LDA adr 2009
+
+916	fe 78	CPI D8 78
+
+918	d0 RNC
+
+919	2a 91 20	LHLD adr 2091
+
+91c	7d MOV A,L
+
+91d	b4 ORA H
+
+91e	c2 29 09	JNZ adr 0929
+
+921	21 00 06	LXI H,D16 0600
+
+924	3e 01	MVI A,D8 01
+
+926	32 83 20	STA adr 2083
+
+929	2b DCX H
+
+92a	22 91 20	SHLD adr 2091
+
+92d	c9 RET
+
+92e	cd 11 16	CALL adr 1611
+
+931	2e ff	MVI L, D8 ff
+
+933	7e MOV A,M
+
+934	c9 RET
+
+935	cd 10 19	CALL adr 1910
+
+938	2b DCX H
+
+939	2b DCX H
+
+93a	7e MOV A,M
+
+93b	a7 ANA A
+
+93c	c8 RZ
+
+93d	06 15	MVI B, D8 15
+
+93f	db 02	IN D8 02
+
+941	e6 08	ANI D8 08
+
+943	ca 48 09	JZ adr 0948
+
+946	06 10	MVI B, D8 10
+
+948	cd ca 09	CALL adr 09ca
+
+94b	23 INX H
+
+94c	7e MOV A,M
+
+94d	b8 CMP B
+
+94e	d8 RC
+
+94f	cd 2e 09	CALL adr 092e
+
+952	34 INR M
+
+953	7e MOV A,M
+
+954	f5 PUSH PSW
+
+955	21 01 25	LXI H,D16 2501
+
+958	24 INR H
+
+959	24 INR H
+
+95a	3d DCR A
+
+95b	c2 58 09	JNZ adr 0958
+
+95e	06 10	MVI B, D8 10
+
+960	11 60 1c	LXI D,D16 1c60
+
+963	cd 39 14	CALL adr 1439
+
+966	f1 POP PSW
+
+967	3c INR A
+
+968	cd 8b 1a	CALL adr 1a8b
+
+96b	cd 10 19	CALL adr 1910
+
+96e	2b DCX H
+
+96f	2b DCX H
+
+970	36 00	MVI M,D8 00
+
+972	3e ff	MVI A,D8 ff
+
+974	32 99 20	STA adr 2099
+
+977	06 10	MVI B, D8 10
+
+979	c3 fa 18	JMP adr 18fa
+
+97c	21 a0 1d	LXI H,D16 1da0
+
+97f	fe 02	CPI D8 02
+
+981	d8 RC
+
+982	23 INX H
+
+983	fe 04	CPI D8 04
+
+985	d8 RC
+
+986	23 INX H
+
+987	c9 RET
+
+988	cd ca 09	CALL adr 09ca
+
+98b	3a f1 20	LDA adr 20f1
+
+98e	a7 ANA A
+
+98f	c8 RZ
+
+990	af XRA A
+
+991	32 f1 20	STA adr 20f1
+
+994	e5 PUSH H
+
+995	2a f2 20	LHLD adr 20f2
+
+998	eb XCHG
+
+999	e1 POP H
+
+99a	7e MOV A,M
+
+99b	83 ADD E
+
+99c	27 DAA
+
+99d	77 MOV M,A
+
+99e	5f MOV E,A
+
+99f	23 INX H
+
+9a0	7e MOV A,M
+
+9a1	8a ADC D
+
+9a2	27 DAA
+
+9a3	77 MOV M,A
+
+9a4	57 MOV D,A
+
+9a5	23 INX H
+
+9a6	7e MOV A,M
+
+9a7	23 INX H
+
+9a8	66 MOV H,M
+
+9a9	6f MOV L,A
+
+9aa	c3 ad 09	JMP adr 09ad
+
+9ad	7a MOV A,D
+
+9ae	cd b2 09	CALL adr 09b2
+
+9b1	7b MOV A,E
+
+9b2	d5 PUSH D
+
+9b3	f5 PUSH PSW
+
+9b4	0f RRC
+
+9b5	0f RRC
+
+9b6	0f RRC
+
+9b7	0f RRC
+
+9b8	e6 0f	ANI D8 0f
+
+9ba	cd c5 09	CALL adr 09c5
+
+9bd	f1 POP PSW
+
+9be	e6 0f	ANI D8 0f
+
+9c0	cd c5 09	CALL adr 09c5
+
+9c3	d1 POP D
+
+9c4	c9 RET
+
+9c5	c6 1a	ADI D8 1a
+
+9c7	c3 ff 08	JMP adr 08ff
+
+9ca	3a 67 20	LDA adr 2067
+
+9cd	0f RRC
+
+9ce	21 f8 20	LXI H,D16 20f8
+
+9d1	d8 RC
+
+9d2	21 fc 20	LXI H,D16 20fc
+
+9d5	c9 RET
+
+9d6	21 02 24	LXI H,D16 2402
+
+9d9	36 00	MVI M,D8 00
+
+9db	23 INX H
+
+9dc	7d MOV A,L
+
+9dd	e6 1f	ANI D8 1f
+
+9df	fe 1c	CPI D8 1c
+
+9e1	da e8 09	JC adr 09e8
+
+9e4	11 06 00	LXI D,D16 0006
+
+9e7	19 DAD D
+
+9e8	7c MOV A,H
+
+9e9	fe 40	CPI D8 40
+
+9eb	da d9 09	JC adr 09d9
+
+9ee	c9 RET
+
+9ef	cd 3c 0a	CALL adr 0a3c
+
+9f2	af XRA A
+
+9f3	32 e9 20	STA adr 20e9
+
+9f6	cd d6 09	CALL adr 09d6
+
+9f9	3a 67 20	LDA adr 2067
+
+9fc	f5 PUSH PSW
+
+9fd	cd e4 01	CALL adr 01e4
+
+a00	f1 POP PSW
+
+a01	32 67 20	STA adr 2067
+
+a04	3a 67 20	LDA adr 2067
+
+a07	67 MOV H,A
+
+a08	e5 PUSH H
+
+a09	2e fe	MVI L, D8 fe
+
+a0b	7e MOV A,M
+
+a0c	e6 07	ANI D8 07
+
+a0e	3c INR A
+
+a0f	77 MOV M,A
+
+a10	21 a2 1d	LXI H,D16 1da2
+
+a13	23 INX H
+
+a14	3d DCR A
+
+a15	c2 13 0a	JNZ adr 0a13
+
+a18	7e MOV A,M
+
+a19	e1 POP H
+
+a1a	2e fc	MVI L, D8 fc
+
+a1c	77 MOV M,A
+
+a1d	23 INX H
+
+a1e	36 38	MVI M,D8 38
+
+a20	7c MOV A,H
+
+a21	0f RRC
+
+a22	da 33 0a	JC adr 0a33
+
+a25	3e 21	MVI A,D8 21
+
+a27	32 98 20	STA adr 2098
+
+a2a	cd f5 01	CALL adr 01f5
+
+a2d	cd 04 19	CALL adr 1904
+
+a30	c3 04 08	JMP adr 0804
+
+a33	cd ef 01	CALL adr 01ef
+
+a36	cd c0 01	CALL adr 01c0
+
+a39	c3 04 08	JMP adr 0804
+
+a3c	cd 59 0a	CALL adr 0a59
+
+a3f	c2 52 0a	JNZ adr 0a52
+
+a42	3e 30	MVI A,D8 30
+
+a44	32 c0 20	STA adr 20c0
+
+a47	3a c0 20	LDA adr 20c0
+
+a4a	a7 ANA A
+
+a4b	c8 RZ
+
+a4c	cd 59 0a	CALL adr 0a59
+
+a4f	ca 47 0a	JZ adr 0a47
+
+a52	cd 59 0a	CALL adr 0a59
+
+a55	c2 52 0a	JNZ adr 0a52
+
+a58	c9 RET
+
+a59	3a 15 20	LDA adr 2015
+
+a5c	fe ff	CPI D8 ff
+
+a5e	c9 RET
+
+a5f	3a ef 20	LDA adr 20ef
+
+a62	a7 ANA A
+
+a63	ca 7c 0a	JZ adr 0a7c
+
+a66	48 MOV C,B
+
+a67	06 08	MVI B, D8 08
+
+a69	cd fa 18	CALL adr 18fa
+
+a6c	41 MOV B,C
+
+a6d	78 MOV A,B
+
+a6e	cd 7c 09	CALL adr 097c
+
+a71	7e MOV A,M
+
+a72	21 f3 20	LXI H,D16 20f3
+
+a75	36 00	MVI M,D8 00
+
+a77	2b DCX H
+
+a78	77 MOV M,A
+
+a79	2b DCX H
+
+a7a	36 01	MVI M,D8 01
+
+a7c	21 62 20	LXI H,D16 2062
+
+a7f	c9 RET
+
+a80	3e 02	MVI A,D8 02
+
+a82	32 c1 20	STA adr 20c1
+
+a85	d3 06	OUT D8 06
+
+a87	3a cb 20	LDA adr 20cb
+
+a8a	a7 ANA A
+
+a8b	ca 85 0a	JZ adr 0a85
+
+a8e	af XRA A
+
+a8f	32 c1 20	STA adr 20c1
+
+a92	c9 RET
+
+a93	d5 PUSH D
+
+a94	1a LDAX D
+
+a95	cd ff 08	CALL adr 08ff
+
+a98	d1 POP D
+
+a99	3e 07	MVI A,D8 07
+
+a9b	32 c0 20	STA adr 20c0
+
+a9e	3a c0 20	LDA adr 20c0
+
+aa1	3d DCR A
+
+aa2	c2 9e 0a	JNZ adr 0a9e
+
+aa5	13 INX D
+
+aa6	0d DCR C
+
+aa7	c2 93 0a	JNZ adr 0a93
+
+aaa	c9 RET
+
+aab	21 50 20	LXI H,D16 2050
+
+aae	c3 4b 02	JMP adr 024b
+
+ab1	3e 40	MVI A,D8 40
+
+ab3	c3 d7 0a	JMP adr 0ad7
+
+ab6	3e 80	MVI A,D8 80
+
+ab8	c3 d7 0a	JMP adr 0ad7
+
+abb	e1 POP H
+
+abc	c3 72 00	JMP adr 0072
+
+abf	3a c1 20	LDA adr 20c1
+
+ac2	0f RRC
+
+ac3	da bb 0a	JC adr 0abb
+
+ac6	0f RRC
+
+ac7	da 68 18	JC adr 1868
+
+aca	0f RRC
+
+acb	da ab 0a	JC adr 0aab
+
+ace	c9 RET
+
+acf	21 14 2b	LXI H,D16 2b14
+
+ad2	0e 0f	MVI C,D8 0f
+
+ad4	c3 93 0a	JMP adr 0a93
+
+ad7	32 c0 20	STA adr 20c0
+
+ada	3a c0 20	LDA adr 20c0
+
+add	a7 ANA A
+
+ade	c2 da 0a	JNZ adr 0ada
+
+ae1	c9 RET
+
+ae2	21 c2 20	LXI H,D16 20c2
+
+ae5	06 0c	MVI B, D8 0c
+
+ae7	c3 32 1a	JMP adr 1a32
+
+aea	af XRA A
+
+aeb	d3 03	OUT D8 03
+
+aed	d3 05	OUT D8 05
+
+aef	cd 82 19	CALL adr 1982
+
+af2	fb EI
+
+af3	cd b1 0a	CALL adr 0ab1
+
+af6	3a ec 20	LDA adr 20ec
+
+af9	a7 ANA A
+
+afa	21 17 30	LXI H,D16 3017
+
+afd	0e 04	MVI C,D8 04
+
+aff	c2 e8 0b	JNZ adr 0be8
+
+b02	11 fa 1c	LXI D,D16 1cfa
+
+b05	cd 93 0a	CALL adr 0a93
+
+b08	11 af 1d	LXI D,D16 1daf
+
+b0b	cd cf 0a	CALL adr 0acf
+
+b0e	cd b1 0a	CALL adr 0ab1
+
+b11	cd 15 18	CALL adr 1815
+
+b14	cd b6 0a	CALL adr 0ab6
+
+b17	3a ec 20	LDA adr 20ec
+
+b1a	a7 ANA A
+
+b1b	c2 4a 0b	JNZ adr 0b4a
+
+b1e	11 95 1a	LXI D,D16 1a95
+
+b21	cd e2 0a	CALL adr 0ae2
+
+b24	cd 80 0a	CALL adr 0a80
+
+b27	11 b0 1b	LXI D,D16 1bb0
+
+b2a	cd e2 0a	CALL adr 0ae2
+
+b2d	cd 80 0a	CALL adr 0a80
+
+b30	cd b1 0a	CALL adr 0ab1
+
+b33	11 c9 1f	LXI D,D16 1fc9
+
+b36	cd e2 0a	CALL adr 0ae2
+
+b39	cd 80 0a	CALL adr 0a80
+
+b3c	cd b1 0a	CALL adr 0ab1
+
+b3f	21 b7 33	LXI H,D16 33b7
+
+b42	06 0a	MVI B, D8 0a
+
+b44	cd cb 14	CALL adr 14cb
+
+b47	cd b6 0a	CALL adr 0ab6
+
+b4a	cd d6 09	CALL adr 09d6
+
+b4d	3a ff 21	LDA adr 21ff
+
+b50	a7 ANA A
+
+b51	c2 5d 0b	JNZ adr 0b5d
+
+b54	cd d1 08	CALL adr 08d1
+
+b57	32 ff 21	STA adr 21ff
+
+b5a	cd 7f 1a	CALL adr 1a7f
+
+b5d	cd e4 01	CALL adr 01e4
+
+b60	cd c0 01	CALL adr 01c0
+
+b63	cd ef 01	CALL adr 01ef
+
+b66	cd 1a 02	CALL adr 021a
+
+b69	3e 01	MVI A,D8 01
+
+b6b	32 c1 20	STA adr 20c1
+
+b6e	cd cf 01	CALL adr 01cf
+
+b71	cd 18 16	CALL adr 1618
+
+b74	cd f1 0b	CALL adr 0bf1
+
+b77	d3 06	OUT D8 06
+
+b79	cd 59 0a	CALL adr 0a59
+
+b7c	ca 71 0b	JZ adr 0b71
+
+b7f	af XRA A
+
+b80	32 25 20	STA adr 2025
+
+b83	cd 59 0a	CALL adr 0a59
+
+b86	c2 83 0b	JNZ adr 0b83
+
+b89	af XRA A
+
+b8a	32 c1 20	STA adr 20c1
+
+b8d	cd b1 0a	CALL adr 0ab1
+
+b90	cd 88 19	CALL adr 1988
+
+b93	0e 0c	MVI C,D8 0c
+
+b95	21 11 2c	LXI H,D16 2c11
+
+b98	11 90 1f	LXI D,D16 1f90
+
+b9b	cd f3 08	CALL adr 08f3
+
+b9e	3a ec 20	LDA adr 20ec
+
+ba1	fe 00	CPI D8 00
+
+ba3	c2 ae 0b	JNZ adr 0bae
+
+ba6	21 11 33	LXI H,D16 3311
+
+ba9	3e 02	MVI A,D8 02
+
+bab	cd ff 08	CALL adr 08ff
+
+bae	01 9c 1f	LXI B,D16 1f9c
+
+bb1	cd 56 18	CALL adr 1856
+
+bb4	cd 4c 18	CALL adr 184c
+
+bb7	db 02	IN D8 02
+
+bb9	07 RLC
+
+bba	da c3 0b	JC adr 0bc3
+
+bbd	01 a0 1f	LXI B,D16 1fa0
+
+bc0	cd 3a 18	CALL adr 183a
+
+bc3	cd b6 0a	CALL adr 0ab6
+
+bc6	3a ec 20	LDA adr 20ec
+
+bc9	fe 00	CPI D8 00
+
+bcb	c2 da 0b	JNZ adr 0bda
+
+bce	11 d5 1f	LXI D,D16 1fd5
+
+bd1	cd e2 0a	CALL adr 0ae2
+
+bd4	cd 80 0a	CALL adr 0a80
+
+bd7	cd 9e 18	CALL adr 189e
+
+bda	21 ec 20	LXI H,D16 20ec
+
+bdd	7e MOV A,M
+
+bde	3c INR A
+
+bdf	e6 01	ANI D8 01
+
+be1	77 MOV M,A
+
+be2	cd d6 09	CALL adr 09d6
+
+be5	c3 df 18	JMP adr 18df
+
+be8	11 ab 1d	LXI D,D16 1dab
+
+beb	cd 93 0a	CALL adr 0a93
+
+bee	c3 0b 0b	JMP adr 0b0b
+
+bf1	cd 0a 19	CALL adr 190a
+
+bf4	c3 9a 19	JMP adr 199a
+
+bf7	13 INX D
+
+bf8	00 NOP
+
+bf9	08 
+bfa	13 INX D
+
+bfb	0e 26	MVI C,D8 26
+
+bfd	02 STAX B
+
+bfe	0e 0f	MVI C,D8 0f
+
+c00	00 NOP
+
+c01	00 NOP
+
+c02	00 NOP
+
+c03	00 NOP
+
+c04	00 NOP
+
+c05	00 NOP
+
+c06	00 NOP
+
+c07	00 NOP
+
+c08	00 NOP
+
+c09	00 NOP
+
+c0a	00 NOP
+
+c0b	00 NOP
+
+c0c	00 NOP
+
+c0d	00 NOP
+
+c0e	00 NOP
+
+c0f	00 NOP
+
+c10	00 NOP
+
+c11	00 NOP
+
+c12	00 NOP
+
+c13	00 NOP
+
+c14	00 NOP
+
+c15	00 NOP
+
+c16	00 NOP
+
+c17	00 NOP
+
+c18	00 NOP
+
+c19	00 NOP
+
+c1a	00 NOP
+
+c1b	00 NOP
+
+c1c	00 NOP
+
+c1d	00 NOP
+
+c1e	00 NOP
+
+c1f	00 NOP
+
+c20	00 NOP
+
+c21	00 NOP
+
+c22	00 NOP
+
+c23	00 NOP
+
+c24	00 NOP
+
+c25	00 NOP
+
+c26	00 NOP
+
+c27	00 NOP
+
+c28	00 NOP
+
+c29	00 NOP
+
+c2a	00 NOP
+
+c2b	00 NOP
+
+c2c	00 NOP
+
+c2d	00 NOP
+
+c2e	00 NOP
+
+c2f	00 NOP
+
+c30	00 NOP
+
+c31	00 NOP
+
+c32	00 NOP
+
+c33	00 NOP
+
+c34	00 NOP
+
+c35	00 NOP
+
+c36	00 NOP
+
+c37	00 NOP
+
+c38	00 NOP
+
+c39	00 NOP
+
+c3a	00 NOP
+
+c3b	00 NOP
+
+c3c	00 NOP
+
+c3d	00 NOP
+
+c3e	00 NOP
+
+c3f	00 NOP
+
+c40	00 NOP
+
+c41	00 NOP
+
+c42	00 NOP
+
+c43	00 NOP
+
+c44	00 NOP
+
+c45	00 NOP
+
+c46	00 NOP
+
+c47	00 NOP
+
+c48	00 NOP
+
+c49	00 NOP
+
+c4a	00 NOP
+
+c4b	00 NOP
+
+c4c	00 NOP
+
+c4d	00 NOP
+
+c4e	00 NOP
+
+c4f	00 NOP
+
+c50	00 NOP
+
+c51	00 NOP
+
+c52	00 NOP
+
+c53	00 NOP
+
+c54	00 NOP
+
+c55	00 NOP
+
+c56	00 NOP
+
+c57	00 NOP
+
+c58	00 NOP
+
+c59	00 NOP
+
+c5a	00 NOP
+
+c5b	00 NOP
+
+c5c	00 NOP
+
+c5d	00 NOP
+
+c5e	00 NOP
+
+c5f	00 NOP
+
+c60	00 NOP
+
+c61	00 NOP
+
+c62	00 NOP
+
+c63	00 NOP
+
+c64	00 NOP
+
+c65	00 NOP
+
+c66	00 NOP
+
+c67	00 NOP
+
+c68	00 NOP
+
+c69	00 NOP
+
+c6a	00 NOP
+
+c6b	00 NOP
+
+c6c	00 NOP
+
+c6d	00 NOP
+
+c6e	00 NOP
+
+c6f	00 NOP
+
+c70	00 NOP
+
+c71	00 NOP
+
+c72	00 NOP
+
+c73	00 NOP
+
+c74	00 NOP
+
+c75	00 NOP
+
+c76	00 NOP
+
+c77	00 NOP
+
+c78	00 NOP
+
+c79	00 NOP
+
+c7a	00 NOP
+
+c7b	00 NOP
+
+c7c	00 NOP
+
+c7d	00 NOP
+
+c7e	00 NOP
+
+c7f	00 NOP
+
+c80	00 NOP
+
+c81	00 NOP
+
+c82	00 NOP
+
+c83	00 NOP
+
+c84	00 NOP
+
+c85	00 NOP
+
+c86	00 NOP
+
+c87	00 NOP
+
+c88	00 NOP
+
+c89	00 NOP
+
+c8a	00 NOP
+
+c8b	00 NOP
+
+c8c	00 NOP
+
+c8d	00 NOP
+
+c8e	00 NOP
+
+c8f	00 NOP
+
+c90	00 NOP
+
+c91	00 NOP
+
+c92	00 NOP
+
+c93	00 NOP
+
+c94	00 NOP
+
+c95	00 NOP
+
+c96	00 NOP
+
+c97	00 NOP
+
+c98	00 NOP
+
+c99	00 NOP
+
+c9a	00 NOP
+
+c9b	00 NOP
+
+c9c	00 NOP
+
+c9d	00 NOP
+
+c9e	00 NOP
+
+c9f	00 NOP
+
+ca0	00 NOP
+
+ca1	00 NOP
+
+ca2	00 NOP
+
+ca3	00 NOP
+
+ca4	00 NOP
+
+ca5	00 NOP
+
+ca6	00 NOP
+
+ca7	00 NOP
+
+ca8	00 NOP
+
+ca9	00 NOP
+
+caa	00 NOP
+
+cab	00 NOP
+
+cac	00 NOP
+
+cad	00 NOP
+
+cae	00 NOP
+
+caf	00 NOP
+
+cb0	00 NOP
+
+cb1	00 NOP
+
+cb2	00 NOP
+
+cb3	00 NOP
+
+cb4	00 NOP
+
+cb5	00 NOP
+
+cb6	00 NOP
+
+cb7	00 NOP
+
+cb8	00 NOP
+
+cb9	00 NOP
+
+cba	00 NOP
+
+cbb	00 NOP
+
+cbc	00 NOP
+
+cbd	00 NOP
+
+cbe	00 NOP
+
+cbf	00 NOP
+
+cc0	00 NOP
+
+cc1	00 NOP
+
+cc2	00 NOP
+
+cc3	00 NOP
+
+cc4	00 NOP
+
+cc5	00 NOP
+
+cc6	00 NOP
+
+cc7	00 NOP
+
+cc8	00 NOP
+
+cc9	00 NOP
+
+cca	00 NOP
+
+ccb	00 NOP
+
+ccc	00 NOP
+
+ccd	00 NOP
+
+cce	00 NOP
+
+ccf	00 NOP
+
+cd0	00 NOP
+
+cd1	00 NOP
+
+cd2	00 NOP
+
+cd3	00 NOP
+
+cd4	00 NOP
+
+cd5	00 NOP
+
+cd6	00 NOP
+
+cd7	00 NOP
+
+cd8	00 NOP
+
+cd9	00 NOP
+
+cda	00 NOP
+
+cdb	00 NOP
+
+cdc	00 NOP
+
+cdd	00 NOP
+
+cde	00 NOP
+
+cdf	00 NOP
+
+ce0	00 NOP
+
+ce1	00 NOP
+
+ce2	00 NOP
+
+ce3	00 NOP
+
+ce4	00 NOP
+
+ce5	00 NOP
+
+ce6	00 NOP
+
+ce7	00 NOP
+
+ce8	00 NOP
+
+ce9	00 NOP
+
+cea	00 NOP
+
+ceb	00 NOP
+
+cec	00 NOP
+
+ced	00 NOP
+
+cee	00 NOP
+
+cef	00 NOP
+
+cf0	00 NOP
+
+cf1	00 NOP
+
+cf2	00 NOP
+
+cf3	00 NOP
+
+cf4	00 NOP
+
+cf5	00 NOP
+
+cf6	00 NOP
+
+cf7	00 NOP
+
+cf8	00 NOP
+
+cf9	00 NOP
+
+cfa	00 NOP
+
+cfb	00 NOP
+
+cfc	00 NOP
+
+cfd	00 NOP
+
+cfe	00 NOP
+
+cff	00 NOP
+
+d00	00 NOP
+
+d01	00 NOP
+
+d02	00 NOP
+
+d03	00 NOP
+
+d04	00 NOP
+
+d05	00 NOP
+
+d06	00 NOP
+
+d07	00 NOP
+
+d08	00 NOP
+
+d09	00 NOP
+
+d0a	00 NOP
+
+d0b	00 NOP
+
+d0c	00 NOP
+
+d0d	00 NOP
+
+d0e	00 NOP
+
+d0f	00 NOP
+
+d10	00 NOP
+
+d11	00 NOP
+
+d12	00 NOP
+
+d13	00 NOP
+
+d14	00 NOP
+
+d15	00 NOP
+
+d16	00 NOP
+
+d17	00 NOP
+
+d18	00 NOP
+
+d19	00 NOP
+
+d1a	00 NOP
+
+d1b	00 NOP
+
+d1c	00 NOP
+
+d1d	00 NOP
+
+d1e	00 NOP
+
+d1f	00 NOP
+
+d20	00 NOP
+
+d21	00 NOP
+
+d22	00 NOP
+
+d23	00 NOP
+
+d24	00 NOP
+
+d25	00 NOP
+
+d26	00 NOP
+
+d27	00 NOP
+
+d28	00 NOP
+
+d29	00 NOP
+
+d2a	00 NOP
+
+d2b	00 NOP
+
+d2c	00 NOP
+
+d2d	00 NOP
+
+d2e	00 NOP
+
+d2f	00 NOP
+
+d30	00 NOP
+
+d31	00 NOP
+
+d32	00 NOP
+
+d33	00 NOP
+
+d34	00 NOP
+
+d35	00 NOP
+
+d36	00 NOP
+
+d37	00 NOP
+
+d38	00 NOP
+
+d39	00 NOP
+
+d3a	00 NOP
+
+d3b	00 NOP
+
+d3c	00 NOP
+
+d3d	00 NOP
+
+d3e	00 NOP
+
+d3f	00 NOP
+
+d40	00 NOP
+
+d41	00 NOP
+
+d42	00 NOP
+
+d43	00 NOP
+
+d44	00 NOP
+
+d45	00 NOP
+
+d46	00 NOP
+
+d47	00 NOP
+
+d48	00 NOP
+
+d49	00 NOP
+
+d4a	00 NOP
+
+d4b	00 NOP
+
+d4c	00 NOP
+
+d4d	00 NOP
+
+d4e	00 NOP
+
+d4f	00 NOP
+
+d50	00 NOP
+
+d51	00 NOP
+
+d52	00 NOP
+
+d53	00 NOP
+
+d54	00 NOP
+
+d55	00 NOP
+
+d56	00 NOP
+
+d57	00 NOP
+
+d58	00 NOP
+
+d59	00 NOP
+
+d5a	00 NOP
+
+d5b	00 NOP
+
+d5c	00 NOP
+
+d5d	00 NOP
+
+d5e	00 NOP
+
+d5f	00 NOP
+
+d60	00 NOP
+
+d61	00 NOP
+
+d62	00 NOP
+
+d63	00 NOP
+
+d64	00 NOP
+
+d65	00 NOP
+
+d66	00 NOP
+
+d67	00 NOP
+
+d68	00 NOP
+
+d69	00 NOP
+
+d6a	00 NOP
+
+d6b	00 NOP
+
+d6c	00 NOP
+
+d6d	00 NOP
+
+d6e	00 NOP
+
+d6f	00 NOP
+
+d70	00 NOP
+
+d71	00 NOP
+
+d72	00 NOP
+
+d73	00 NOP
+
+d74	00 NOP
+
+d75	00 NOP
+
+d76	00 NOP
+
+d77	00 NOP
+
+d78	00 NOP
+
+d79	00 NOP
+
+d7a	00 NOP
+
+d7b	00 NOP
+
+d7c	00 NOP
+
+d7d	00 NOP
+
+d7e	00 NOP
+
+d7f	00 NOP
+
+d80	00 NOP
+
+d81	00 NOP
+
+d82	00 NOP
+
+d83	00 NOP
+
+d84	00 NOP
+
+d85	00 NOP
+
+d86	00 NOP
+
+d87	00 NOP
+
+d88	00 NOP
+
+d89	00 NOP
+
+d8a	00 NOP
+
+d8b	00 NOP
+
+d8c	00 NOP
+
+d8d	00 NOP
+
+d8e	00 NOP
+
+d8f	00 NOP
+
+d90	00 NOP
+
+d91	00 NOP
+
+d92	00 NOP
+
+d93	00 NOP
+
+d94	00 NOP
+
+d95	00 NOP
+
+d96	00 NOP
+
+d97	00 NOP
+
+d98	00 NOP
+
+d99	00 NOP
+
+d9a	00 NOP
+
+d9b	00 NOP
+
+d9c	00 NOP
+
+d9d	00 NOP
+
+d9e	00 NOP
+
+d9f	00 NOP
+
+da0	00 NOP
+
+da1	00 NOP
+
+da2	00 NOP
+
+da3	00 NOP
+
+da4	00 NOP
+
+da5	00 NOP
+
+da6	00 NOP
+
+da7	00 NOP
+
+da8	00 NOP
+
+da9	00 NOP
+
+daa	00 NOP
+
+dab	00 NOP
+
+dac	00 NOP
+
+dad	00 NOP
+
+dae	00 NOP
+
+daf	00 NOP
+
+db0	00 NOP
+
+db1	00 NOP
+
+db2	00 NOP
+
+db3	00 NOP
+
+db4	00 NOP
+
+db5	00 NOP
+
+db6	00 NOP
+
+db7	00 NOP
+
+db8	00 NOP
+
+db9	00 NOP
+
+dba	00 NOP
+
+dbb	00 NOP
+
+dbc	00 NOP
+
+dbd	00 NOP
+
+dbe	00 NOP
+
+dbf	00 NOP
+
+dc0	00 NOP
+
+dc1	00 NOP
+
+dc2	00 NOP
+
+dc3	00 NOP
+
+dc4	00 NOP
+
+dc5	00 NOP
+
+dc6	00 NOP
+
+dc7	00 NOP
+
+dc8	00 NOP
+
+dc9	00 NOP
+
+dca	00 NOP
+
+dcb	00 NOP
+
+dcc	00 NOP
+
+dcd	00 NOP
+
+dce	00 NOP
+
+dcf	00 NOP
+
+dd0	00 NOP
+
+dd1	00 NOP
+
+dd2	00 NOP
+
+dd3	00 NOP
+
+dd4	00 NOP
+
+dd5	00 NOP
+
+dd6	00 NOP
+
+dd7	00 NOP
+
+dd8	00 NOP
+
+dd9	00 NOP
+
+dda	00 NOP
+
+ddb	00 NOP
+
+ddc	00 NOP
+
+ddd	00 NOP
+
+dde	00 NOP
+
+ddf	00 NOP
+
+de0	00 NOP
+
+de1	00 NOP
+
+de2	00 NOP
+
+de3	00 NOP
+
+de4	00 NOP
+
+de5	00 NOP
+
+de6	00 NOP
+
+de7	00 NOP
+
+de8	00 NOP
+
+de9	00 NOP
+
+dea	00 NOP
+
+deb	00 NOP
+
+dec	00 NOP
+
+ded	00 NOP
+
+dee	00 NOP
+
+def	00 NOP
+
+df0	00 NOP
+
+df1	00 NOP
+
+df2	00 NOP
+
+df3	00 NOP
+
+df4	00 NOP
+
+df5	00 NOP
+
+df6	00 NOP
+
+df7	00 NOP
+
+df8	00 NOP
+
+df9	00 NOP
+
+dfa	00 NOP
+
+dfb	00 NOP
+
+dfc	00 NOP
+
+dfd	00 NOP
+
+dfe	00 NOP
+
+dff	00 NOP
+
+e00	00 NOP
+
+e01	00 NOP
+
+e02	00 NOP
+
+e03	00 NOP
+
+e04	00 NOP
+
+e05	00 NOP
+
+e06	00 NOP
+
+e07	00 NOP
+
+e08	00 NOP
+
+e09	00 NOP
+
+e0a	00 NOP
+
+e0b	00 NOP
+
+e0c	00 NOP
+
+e0d	00 NOP
+
+e0e	00 NOP
+
+e0f	00 NOP
+
+e10	00 NOP
+
+e11	00 NOP
+
+e12	00 NOP
+
+e13	00 NOP
+
+e14	00 NOP
+
+e15	00 NOP
+
+e16	00 NOP
+
+e17	00 NOP
+
+e18	00 NOP
+
+e19	00 NOP
+
+e1a	00 NOP
+
+e1b	00 NOP
+
+e1c	00 NOP
+
+e1d	00 NOP
+
+e1e	00 NOP
+
+e1f	00 NOP
+
+e20	00 NOP
+
+e21	00 NOP
+
+e22	00 NOP
+
+e23	00 NOP
+
+e24	00 NOP
+
+e25	00 NOP
+
+e26	00 NOP
+
+e27	00 NOP
+
+e28	00 NOP
+
+e29	00 NOP
+
+e2a	00 NOP
+
+e2b	00 NOP
+
+e2c	00 NOP
+
+e2d	00 NOP
+
+e2e	00 NOP
+
+e2f	00 NOP
+
+e30	00 NOP
+
+e31	00 NOP
+
+e32	00 NOP
+
+e33	00 NOP
+
+e34	00 NOP
+
+e35	00 NOP
+
+e36	00 NOP
+
+e37	00 NOP
+
+e38	00 NOP
+
+e39	00 NOP
+
+e3a	00 NOP
+
+e3b	00 NOP
+
+e3c	00 NOP
+
+e3d	00 NOP
+
+e3e	00 NOP
+
+e3f	00 NOP
+
+e40	00 NOP
+
+e41	00 NOP
+
+e42	00 NOP
+
+e43	00 NOP
+
+e44	00 NOP
+
+e45	00 NOP
+
+e46	00 NOP
+
+e47	00 NOP
+
+e48	00 NOP
+
+e49	00 NOP
+
+e4a	00 NOP
+
+e4b	00 NOP
+
+e4c	00 NOP
+
+e4d	00 NOP
+
+e4e	00 NOP
+
+e4f	00 NOP
+
+e50	00 NOP
+
+e51	00 NOP
+
+e52	00 NOP
+
+e53	00 NOP
+
+e54	00 NOP
+
+e55	00 NOP
+
+e56	00 NOP
+
+e57	00 NOP
+
+e58	00 NOP
+
+e59	00 NOP
+
+e5a	00 NOP
+
+e5b	00 NOP
+
+e5c	00 NOP
+
+e5d	00 NOP
+
+e5e	00 NOP
+
+e5f	00 NOP
+
+e60	00 NOP
+
+e61	00 NOP
+
+e62	00 NOP
+
+e63	00 NOP
+
+e64	00 NOP
+
+e65	00 NOP
+
+e66	00 NOP
+
+e67	00 NOP
+
+e68	00 NOP
+
+e69	00 NOP
+
+e6a	00 NOP
+
+e6b	00 NOP
+
+e6c	00 NOP
+
+e6d	00 NOP
+
+e6e	00 NOP
+
+e6f	00 NOP
+
+e70	00 NOP
+
+e71	00 NOP
+
+e72	00 NOP
+
+e73	00 NOP
+
+e74	00 NOP
+
+e75	00 NOP
+
+e76	00 NOP
+
+e77	00 NOP
+
+e78	00 NOP
+
+e79	00 NOP
+
+e7a	00 NOP
+
+e7b	00 NOP
+
+e7c	00 NOP
+
+e7d	00 NOP
+
+e7e	00 NOP
+
+e7f	00 NOP
+
+e80	00 NOP
+
+e81	00 NOP
+
+e82	00 NOP
+
+e83	00 NOP
+
+e84	00 NOP
+
+e85	00 NOP
+
+e86	00 NOP
+
+e87	00 NOP
+
+e88	00 NOP
+
+e89	00 NOP
+
+e8a	00 NOP
+
+e8b	00 NOP
+
+e8c	00 NOP
+
+e8d	00 NOP
+
+e8e	00 NOP
+
+e8f	00 NOP
+
+e90	00 NOP
+
+e91	00 NOP
+
+e92	00 NOP
+
+e93	00 NOP
+
+e94	00 NOP
+
+e95	00 NOP
+
+e96	00 NOP
+
+e97	00 NOP
+
+e98	00 NOP
+
+e99	00 NOP
+
+e9a	00 NOP
+
+e9b	00 NOP
+
+e9c	00 NOP
+
+e9d	00 NOP
+
+e9e	00 NOP
+
+e9f	00 NOP
+
+ea0	00 NOP
+
+ea1	00 NOP
+
+ea2	00 NOP
+
+ea3	00 NOP
+
+ea4	00 NOP
+
+ea5	00 NOP
+
+ea6	00 NOP
+
+ea7	00 NOP
+
+ea8	00 NOP
+
+ea9	00 NOP
+
+eaa	00 NOP
+
+eab	00 NOP
+
+eac	00 NOP
+
+ead	00 NOP
+
+eae	00 NOP
+
+eaf	00 NOP
+
+eb0	00 NOP
+
+eb1	00 NOP
+
+eb2	00 NOP
+
+eb3	00 NOP
+
+eb4	00 NOP
+
+eb5	00 NOP
+
+eb6	00 NOP
+
+eb7	00 NOP
+
+eb8	00 NOP
+
+eb9	00 NOP
+
+eba	00 NOP
+
+ebb	00 NOP
+
+ebc	00 NOP
+
+ebd	00 NOP
+
+ebe	00 NOP
+
+ebf	00 NOP
+
+ec0	00 NOP
+
+ec1	00 NOP
+
+ec2	00 NOP
+
+ec3	00 NOP
+
+ec4	00 NOP
+
+ec5	00 NOP
+
+ec6	00 NOP
+
+ec7	00 NOP
+
+ec8	00 NOP
+
+ec9	00 NOP
+
+eca	00 NOP
+
+ecb	00 NOP
+
+ecc	00 NOP
+
+ecd	00 NOP
+
+ece	00 NOP
+
+ecf	00 NOP
+
+ed0	00 NOP
+
+ed1	00 NOP
+
+ed2	00 NOP
+
+ed3	00 NOP
+
+ed4	00 NOP
+
+ed5	00 NOP
+
+ed6	00 NOP
+
+ed7	00 NOP
+
+ed8	00 NOP
+
+ed9	00 NOP
+
+eda	00 NOP
+
+edb	00 NOP
+
+edc	00 NOP
+
+edd	00 NOP
+
+ede	00 NOP
+
+edf	00 NOP
+
+ee0	00 NOP
+
+ee1	00 NOP
+
+ee2	00 NOP
+
+ee3	00 NOP
+
+ee4	00 NOP
+
+ee5	00 NOP
+
+ee6	00 NOP
+
+ee7	00 NOP
+
+ee8	00 NOP
+
+ee9	00 NOP
+
+eea	00 NOP
+
+eeb	00 NOP
+
+eec	00 NOP
+
+eed	00 NOP
+
+eee	00 NOP
+
+eef	00 NOP
+
+ef0	00 NOP
+
+ef1	00 NOP
+
+ef2	00 NOP
+
+ef3	00 NOP
+
+ef4	00 NOP
+
+ef5	00 NOP
+
+ef6	00 NOP
+
+ef7	00 NOP
+
+ef8	00 NOP
+
+ef9	00 NOP
+
+efa	00 NOP
+
+efb	00 NOP
+
+efc	00 NOP
+
+efd	00 NOP
+
+efe	00 NOP
+
+eff	00 NOP
+
+f00	00 NOP
+
+f01	00 NOP
+
+f02	00 NOP
+
+f03	00 NOP
+
+f04	00 NOP
+
+f05	00 NOP
+
+f06	00 NOP
+
+f07	00 NOP
+
+f08	00 NOP
+
+f09	00 NOP
+
+f0a	00 NOP
+
+f0b	00 NOP
+
+f0c	00 NOP
+
+f0d	00 NOP
+
+f0e	00 NOP
+
+f0f	00 NOP
+
+f10	00 NOP
+
+f11	00 NOP
+
+f12	00 NOP
+
+f13	00 NOP
+
+f14	00 NOP
+
+f15	00 NOP
+
+f16	00 NOP
+
+f17	00 NOP
+
+f18	00 NOP
+
+f19	00 NOP
+
+f1a	00 NOP
+
+f1b	00 NOP
+
+f1c	00 NOP
+
+f1d	00 NOP
+
+f1e	00 NOP
+
+f1f	00 NOP
+
+f20	00 NOP
+
+f21	00 NOP
+
+f22	00 NOP
+
+f23	00 NOP
+
+f24	00 NOP
+
+f25	00 NOP
+
+f26	00 NOP
+
+f27	00 NOP
+
+f28	00 NOP
+
+f29	00 NOP
+
+f2a	00 NOP
+
+f2b	00 NOP
+
+f2c	00 NOP
+
+f2d	00 NOP
+
+f2e	00 NOP
+
+f2f	00 NOP
+
+f30	00 NOP
+
+f31	00 NOP
+
+f32	00 NOP
+
+f33	00 NOP
+
+f34	00 NOP
+
+f35	00 NOP
+
+f36	00 NOP
+
+f37	00 NOP
+
+f38	00 NOP
+
+f39	00 NOP
+
+f3a	00 NOP
+
+f3b	00 NOP
+
+f3c	00 NOP
+
+f3d	00 NOP
+
+f3e	00 NOP
+
+f3f	00 NOP
+
+f40	00 NOP
+
+f41	00 NOP
+
+f42	00 NOP
+
+f43	00 NOP
+
+f44	00 NOP
+
+f45	00 NOP
+
+f46	00 NOP
+
+f47	00 NOP
+
+f48	00 NOP
+
+f49	00 NOP
+
+f4a	00 NOP
+
+f4b	00 NOP
+
+f4c	00 NOP
+
+f4d	00 NOP
+
+f4e	00 NOP
+
+f4f	00 NOP
+
+f50	00 NOP
+
+f51	00 NOP
+
+f52	00 NOP
+
+f53	00 NOP
+
+f54	00 NOP
+
+f55	00 NOP
+
+f56	00 NOP
+
+f57	00 NOP
+
+f58	00 NOP
+
+f59	00 NOP
+
+f5a	00 NOP
+
+f5b	00 NOP
+
+f5c	00 NOP
+
+f5d	00 NOP
+
+f5e	00 NOP
+
+f5f	00 NOP
+
+f60	00 NOP
+
+f61	00 NOP
+
+f62	00 NOP
+
+f63	00 NOP
+
+f64	00 NOP
+
+f65	00 NOP
+
+f66	00 NOP
+
+f67	00 NOP
+
+f68	00 NOP
+
+f69	00 NOP
+
+f6a	00 NOP
+
+f6b	00 NOP
+
+f6c	00 NOP
+
+f6d	00 NOP
+
+f6e	00 NOP
+
+f6f	00 NOP
+
+f70	00 NOP
+
+f71	00 NOP
+
+f72	00 NOP
+
+f73	00 NOP
+
+f74	00 NOP
+
+f75	00 NOP
+
+f76	00 NOP
+
+f77	00 NOP
+
+f78	00 NOP
+
+f79	00 NOP
+
+f7a	00 NOP
+
+f7b	00 NOP
+
+f7c	00 NOP
+
+f7d	00 NOP
+
+f7e	00 NOP
+
+f7f	00 NOP
+
+f80	00 NOP
+
+f81	00 NOP
+
+f82	00 NOP
+
+f83	00 NOP
+
+f84	00 NOP
+
+f85	00 NOP
+
+f86	00 NOP
+
+f87	00 NOP
+
+f88	00 NOP
+
+f89	00 NOP
+
+f8a	00 NOP
+
+f8b	00 NOP
+
+f8c	00 NOP
+
+f8d	00 NOP
+
+f8e	00 NOP
+
+f8f	00 NOP
+
+f90	00 NOP
+
+f91	00 NOP
+
+f92	00 NOP
+
+f93	00 NOP
+
+f94	00 NOP
+
+f95	00 NOP
+
+f96	00 NOP
+
+f97	00 NOP
+
+f98	00 NOP
+
+f99	00 NOP
+
+f9a	00 NOP
+
+f9b	00 NOP
+
+f9c	00 NOP
+
+f9d	00 NOP
+
+f9e	00 NOP
+
+f9f	00 NOP
+
+fa0	00 NOP
+
+fa1	00 NOP
+
+fa2	00 NOP
+
+fa3	00 NOP
+
+fa4	00 NOP
+
+fa5	00 NOP
+
+fa6	00 NOP
+
+fa7	00 NOP
+
+fa8	00 NOP
+
+fa9	00 NOP
+
+faa	00 NOP
+
+fab	00 NOP
+
+fac	00 NOP
+
+fad	00 NOP
+
+fae	00 NOP
+
+faf	00 NOP
+
+fb0	00 NOP
+
+fb1	00 NOP
+
+fb2	00 NOP
+
+fb3	00 NOP
+
+fb4	00 NOP
+
+fb5	00 NOP
+
+fb6	00 NOP
+
+fb7	00 NOP
+
+fb8	00 NOP
+
+fb9	00 NOP
+
+fba	00 NOP
+
+fbb	00 NOP
+
+fbc	00 NOP
+
+fbd	00 NOP
+
+fbe	00 NOP
+
+fbf	00 NOP
+
+fc0	00 NOP
+
+fc1	00 NOP
+
+fc2	00 NOP
+
+fc3	00 NOP
+
+fc4	00 NOP
+
+fc5	00 NOP
+
+fc6	00 NOP
+
+fc7	00 NOP
+
+fc8	00 NOP
+
+fc9	00 NOP
+
+fca	00 NOP
+
+fcb	00 NOP
+
+fcc	00 NOP
+
+fcd	00 NOP
+
+fce	00 NOP
+
+fcf	00 NOP
+
+fd0	00 NOP
+
+fd1	00 NOP
+
+fd2	00 NOP
+
+fd3	00 NOP
+
+fd4	00 NOP
+
+fd5	00 NOP
+
+fd6	00 NOP
+
+fd7	00 NOP
+
+fd8	00 NOP
+
+fd9	00 NOP
+
+fda	00 NOP
+
+fdb	00 NOP
+
+fdc	00 NOP
+
+fdd	00 NOP
+
+fde	00 NOP
+
+fdf	00 NOP
+
+fe0	00 NOP
+
+fe1	00 NOP
+
+fe2	00 NOP
+
+fe3	00 NOP
+
+fe4	00 NOP
+
+fe5	00 NOP
+
+fe6	00 NOP
+
+fe7	00 NOP
+
+fe8	00 NOP
+
+fe9	00 NOP
+
+fea	00 NOP
+
+feb	00 NOP
+
+fec	00 NOP
+
+fed	00 NOP
+
+fee	00 NOP
+
+fef	00 NOP
+
+ff0	00 NOP
+
+ff1	00 NOP
+
+ff2	00 NOP
+
+ff3	00 NOP
+
+ff4	00 NOP
+
+ff5	00 NOP
+
+ff6	00 NOP
+
+ff7	00 NOP
+
+ff8	00 NOP
+
+ff9	00 NOP
+
+ffa	00 NOP
+
+ffb	00 NOP
+
+ffc	00 NOP
+
+ffd	00 NOP
+
+ffe	00 NOP
+
+fff	00 NOP
+
+1000	00 NOP
+
+1001	00 NOP
+
+1002	00 NOP
+
+1003	00 NOP
+
+1004	00 NOP
+
+1005	00 NOP
+
+1006	00 NOP
+
+1007	00 NOP
+
+1008	00 NOP
+
+1009	00 NOP
+
+100a	00 NOP
+
+100b	00 NOP
+
+100c	00 NOP
+
+100d	00 NOP
+
+100e	00 NOP
+
+100f	00 NOP
+
+1010	00 NOP
+
+1011	00 NOP
+
+1012	00 NOP
+
+1013	00 NOP
+
+1014	00 NOP
+
+1015	00 NOP
+
+1016	00 NOP
+
+1017	00 NOP
+
+1018	00 NOP
+
+1019	00 NOP
+
+101a	00 NOP
+
+101b	00 NOP
+
+101c	00 NOP
+
+101d	00 NOP
+
+101e	00 NOP
+
+101f	00 NOP
+
+1020	00 NOP
+
+1021	00 NOP
+
+1022	00 NOP
+
+1023	00 NOP
+
+1024	00 NOP
+
+1025	00 NOP
+
+1026	00 NOP
+
+1027	00 NOP
+
+1028	00 NOP
+
+1029	00 NOP
+
+102a	00 NOP
+
+102b	00 NOP
+
+102c	00 NOP
+
+102d	00 NOP
+
+102e	00 NOP
+
+102f	00 NOP
+
+1030	00 NOP
+
+1031	00 NOP
+
+1032	00 NOP
+
+1033	00 NOP
+
+1034	00 NOP
+
+1035	00 NOP
+
+1036	00 NOP
+
+1037	00 NOP
+
+1038	00 NOP
+
+1039	00 NOP
+
+103a	00 NOP
+
+103b	00 NOP
+
+103c	00 NOP
+
+103d	00 NOP
+
+103e	00 NOP
+
+103f	00 NOP
+
+1040	00 NOP
+
+1041	00 NOP
+
+1042	00 NOP
+
+1043	00 NOP
+
+1044	00 NOP
+
+1045	00 NOP
+
+1046	00 NOP
+
+1047	00 NOP
+
+1048	00 NOP
+
+1049	00 NOP
+
+104a	00 NOP
+
+104b	00 NOP
+
+104c	00 NOP
+
+104d	00 NOP
+
+104e	00 NOP
+
+104f	00 NOP
+
+1050	00 NOP
+
+1051	00 NOP
+
+1052	00 NOP
+
+1053	00 NOP
+
+1054	00 NOP
+
+1055	00 NOP
+
+1056	00 NOP
+
+1057	00 NOP
+
+1058	00 NOP
+
+1059	00 NOP
+
+105a	00 NOP
+
+105b	00 NOP
+
+105c	00 NOP
+
+105d	00 NOP
+
+105e	00 NOP
+
+105f	00 NOP
+
+1060	00 NOP
+
+1061	00 NOP
+
+1062	00 NOP
+
+1063	00 NOP
+
+1064	00 NOP
+
+1065	00 NOP
+
+1066	00 NOP
+
+1067	00 NOP
+
+1068	00 NOP
+
+1069	00 NOP
+
+106a	00 NOP
+
+106b	00 NOP
+
+106c	00 NOP
+
+106d	00 NOP
+
+106e	00 NOP
+
+106f	00 NOP
+
+1070	00 NOP
+
+1071	00 NOP
+
+1072	00 NOP
+
+1073	00 NOP
+
+1074	00 NOP
+
+1075	00 NOP
+
+1076	00 NOP
+
+1077	00 NOP
+
+1078	00 NOP
+
+1079	00 NOP
+
+107a	00 NOP
+
+107b	00 NOP
+
+107c	00 NOP
+
+107d	00 NOP
+
+107e	00 NOP
+
+107f	00 NOP
+
+1080	00 NOP
+
+1081	00 NOP
+
+1082	00 NOP
+
+1083	00 NOP
+
+1084	00 NOP
+
+1085	00 NOP
+
+1086	00 NOP
+
+1087	00 NOP
+
+1088	00 NOP
+
+1089	00 NOP
+
+108a	00 NOP
+
+108b	00 NOP
+
+108c	00 NOP
+
+108d	00 NOP
+
+108e	00 NOP
+
+108f	00 NOP
+
+1090	00 NOP
+
+1091	00 NOP
+
+1092	00 NOP
+
+1093	00 NOP
+
+1094	00 NOP
+
+1095	00 NOP
+
+1096	00 NOP
+
+1097	00 NOP
+
+1098	00 NOP
+
+1099	00 NOP
+
+109a	00 NOP
+
+109b	00 NOP
+
+109c	00 NOP
+
+109d	00 NOP
+
+109e	00 NOP
+
+109f	00 NOP
+
+10a0	00 NOP
+
+10a1	00 NOP
+
+10a2	00 NOP
+
+10a3	00 NOP
+
+10a4	00 NOP
+
+10a5	00 NOP
+
+10a6	00 NOP
+
+10a7	00 NOP
+
+10a8	00 NOP
+
+10a9	00 NOP
+
+10aa	00 NOP
+
+10ab	00 NOP
+
+10ac	00 NOP
+
+10ad	00 NOP
+
+10ae	00 NOP
+
+10af	00 NOP
+
+10b0	00 NOP
+
+10b1	00 NOP
+
+10b2	00 NOP
+
+10b3	00 NOP
+
+10b4	00 NOP
+
+10b5	00 NOP
+
+10b6	00 NOP
+
+10b7	00 NOP
+
+10b8	00 NOP
+
+10b9	00 NOP
+
+10ba	00 NOP
+
+10bb	00 NOP
+
+10bc	00 NOP
+
+10bd	00 NOP
+
+10be	00 NOP
+
+10bf	00 NOP
+
+10c0	00 NOP
+
+10c1	00 NOP
+
+10c2	00 NOP
+
+10c3	00 NOP
+
+10c4	00 NOP
+
+10c5	00 NOP
+
+10c6	00 NOP
+
+10c7	00 NOP
+
+10c8	00 NOP
+
+10c9	00 NOP
+
+10ca	00 NOP
+
+10cb	00 NOP
+
+10cc	00 NOP
+
+10cd	00 NOP
+
+10ce	00 NOP
+
+10cf	00 NOP
+
+10d0	00 NOP
+
+10d1	00 NOP
+
+10d2	00 NOP
+
+10d3	00 NOP
+
+10d4	00 NOP
+
+10d5	00 NOP
+
+10d6	00 NOP
+
+10d7	00 NOP
+
+10d8	00 NOP
+
+10d9	00 NOP
+
+10da	00 NOP
+
+10db	00 NOP
+
+10dc	00 NOP
+
+10dd	00 NOP
+
+10de	00 NOP
+
+10df	00 NOP
+
+10e0	00 NOP
+
+10e1	00 NOP
+
+10e2	00 NOP
+
+10e3	00 NOP
+
+10e4	00 NOP
+
+10e5	00 NOP
+
+10e6	00 NOP
+
+10e7	00 NOP
+
+10e8	00 NOP
+
+10e9	00 NOP
+
+10ea	00 NOP
+
+10eb	00 NOP
+
+10ec	00 NOP
+
+10ed	00 NOP
+
+10ee	00 NOP
+
+10ef	00 NOP
+
+10f0	00 NOP
+
+10f1	00 NOP
+
+10f2	00 NOP
+
+10f3	00 NOP
+
+10f4	00 NOP
+
+10f5	00 NOP
+
+10f6	00 NOP
+
+10f7	00 NOP
+
+10f8	00 NOP
+
+10f9	00 NOP
+
+10fa	00 NOP
+
+10fb	00 NOP
+
+10fc	00 NOP
+
+10fd	00 NOP
+
+10fe	00 NOP
+
+10ff	00 NOP
+
+1100	00 NOP
+
+1101	00 NOP
+
+1102	00 NOP
+
+1103	00 NOP
+
+1104	00 NOP
+
+1105	00 NOP
+
+1106	00 NOP
+
+1107	00 NOP
+
+1108	00 NOP
+
+1109	00 NOP
+
+110a	00 NOP
+
+110b	00 NOP
+
+110c	00 NOP
+
+110d	00 NOP
+
+110e	00 NOP
+
+110f	00 NOP
+
+1110	00 NOP
+
+1111	00 NOP
+
+1112	00 NOP
+
+1113	00 NOP
+
+1114	00 NOP
+
+1115	00 NOP
+
+1116	00 NOP
+
+1117	00 NOP
+
+1118	00 NOP
+
+1119	00 NOP
+
+111a	00 NOP
+
+111b	00 NOP
+
+111c	00 NOP
+
+111d	00 NOP
+
+111e	00 NOP
+
+111f	00 NOP
+
+1120	00 NOP
+
+1121	00 NOP
+
+1122	00 NOP
+
+1123	00 NOP
+
+1124	00 NOP
+
+1125	00 NOP
+
+1126	00 NOP
+
+1127	00 NOP
+
+1128	00 NOP
+
+1129	00 NOP
+
+112a	00 NOP
+
+112b	00 NOP
+
+112c	00 NOP
+
+112d	00 NOP
+
+112e	00 NOP
+
+112f	00 NOP
+
+1130	00 NOP
+
+1131	00 NOP
+
+1132	00 NOP
+
+1133	00 NOP
+
+1134	00 NOP
+
+1135	00 NOP
+
+1136	00 NOP
+
+1137	00 NOP
+
+1138	00 NOP
+
+1139	00 NOP
+
+113a	00 NOP
+
+113b	00 NOP
+
+113c	00 NOP
+
+113d	00 NOP
+
+113e	00 NOP
+
+113f	00 NOP
+
+1140	00 NOP
+
+1141	00 NOP
+
+1142	00 NOP
+
+1143	00 NOP
+
+1144	00 NOP
+
+1145	00 NOP
+
+1146	00 NOP
+
+1147	00 NOP
+
+1148	00 NOP
+
+1149	00 NOP
+
+114a	00 NOP
+
+114b	00 NOP
+
+114c	00 NOP
+
+114d	00 NOP
+
+114e	00 NOP
+
+114f	00 NOP
+
+1150	00 NOP
+
+1151	00 NOP
+
+1152	00 NOP
+
+1153	00 NOP
+
+1154	00 NOP
+
+1155	00 NOP
+
+1156	00 NOP
+
+1157	00 NOP
+
+1158	00 NOP
+
+1159	00 NOP
+
+115a	00 NOP
+
+115b	00 NOP
+
+115c	00 NOP
+
+115d	00 NOP
+
+115e	00 NOP
+
+115f	00 NOP
+
+1160	00 NOP
+
+1161	00 NOP
+
+1162	00 NOP
+
+1163	00 NOP
+
+1164	00 NOP
+
+1165	00 NOP
+
+1166	00 NOP
+
+1167	00 NOP
+
+1168	00 NOP
+
+1169	00 NOP
+
+116a	00 NOP
+
+116b	00 NOP
+
+116c	00 NOP
+
+116d	00 NOP
+
+116e	00 NOP
+
+116f	00 NOP
+
+1170	00 NOP
+
+1171	00 NOP
+
+1172	00 NOP
+
+1173	00 NOP
+
+1174	00 NOP
+
+1175	00 NOP
+
+1176	00 NOP
+
+1177	00 NOP
+
+1178	00 NOP
+
+1179	00 NOP
+
+117a	00 NOP
+
+117b	00 NOP
+
+117c	00 NOP
+
+117d	00 NOP
+
+117e	00 NOP
+
+117f	00 NOP
+
+1180	00 NOP
+
+1181	00 NOP
+
+1182	00 NOP
+
+1183	00 NOP
+
+1184	00 NOP
+
+1185	00 NOP
+
+1186	00 NOP
+
+1187	00 NOP
+
+1188	00 NOP
+
+1189	00 NOP
+
+118a	00 NOP
+
+118b	00 NOP
+
+118c	00 NOP
+
+118d	00 NOP
+
+118e	00 NOP
+
+118f	00 NOP
+
+1190	00 NOP
+
+1191	00 NOP
+
+1192	00 NOP
+
+1193	00 NOP
+
+1194	00 NOP
+
+1195	00 NOP
+
+1196	00 NOP
+
+1197	00 NOP
+
+1198	00 NOP
+
+1199	00 NOP
+
+119a	00 NOP
+
+119b	00 NOP
+
+119c	00 NOP
+
+119d	00 NOP
+
+119e	00 NOP
+
+119f	00 NOP
+
+11a0	00 NOP
+
+11a1	00 NOP
+
+11a2	00 NOP
+
+11a3	00 NOP
+
+11a4	00 NOP
+
+11a5	00 NOP
+
+11a6	00 NOP
+
+11a7	00 NOP
+
+11a8	00 NOP
+
+11a9	00 NOP
+
+11aa	00 NOP
+
+11ab	00 NOP
+
+11ac	00 NOP
+
+11ad	00 NOP
+
+11ae	00 NOP
+
+11af	00 NOP
+
+11b0	00 NOP
+
+11b1	00 NOP
+
+11b2	00 NOP
+
+11b3	00 NOP
+
+11b4	00 NOP
+
+11b5	00 NOP
+
+11b6	00 NOP
+
+11b7	00 NOP
+
+11b8	00 NOP
+
+11b9	00 NOP
+
+11ba	00 NOP
+
+11bb	00 NOP
+
+11bc	00 NOP
+
+11bd	00 NOP
+
+11be	00 NOP
+
+11bf	00 NOP
+
+11c0	00 NOP
+
+11c1	00 NOP
+
+11c2	00 NOP
+
+11c3	00 NOP
+
+11c4	00 NOP
+
+11c5	00 NOP
+
+11c6	00 NOP
+
+11c7	00 NOP
+
+11c8	00 NOP
+
+11c9	00 NOP
+
+11ca	00 NOP
+
+11cb	00 NOP
+
+11cc	00 NOP
+
+11cd	00 NOP
+
+11ce	00 NOP
+
+11cf	00 NOP
+
+11d0	00 NOP
+
+11d1	00 NOP
+
+11d2	00 NOP
+
+11d3	00 NOP
+
+11d4	00 NOP
+
+11d5	00 NOP
+
+11d6	00 NOP
+
+11d7	00 NOP
+
+11d8	00 NOP
+
+11d9	00 NOP
+
+11da	00 NOP
+
+11db	00 NOP
+
+11dc	00 NOP
+
+11dd	00 NOP
+
+11de	00 NOP
+
+11df	00 NOP
+
+11e0	00 NOP
+
+11e1	00 NOP
+
+11e2	00 NOP
+
+11e3	00 NOP
+
+11e4	00 NOP
+
+11e5	00 NOP
+
+11e6	00 NOP
+
+11e7	00 NOP
+
+11e8	00 NOP
+
+11e9	00 NOP
+
+11ea	00 NOP
+
+11eb	00 NOP
+
+11ec	00 NOP
+
+11ed	00 NOP
+
+11ee	00 NOP
+
+11ef	00 NOP
+
+11f0	00 NOP
+
+11f1	00 NOP
+
+11f2	00 NOP
+
+11f3	00 NOP
+
+11f4	00 NOP
+
+11f5	00 NOP
+
+11f6	00 NOP
+
+11f7	00 NOP
+
+11f8	00 NOP
+
+11f9	00 NOP
+
+11fa	00 NOP
+
+11fb	00 NOP
+
+11fc	00 NOP
+
+11fd	00 NOP
+
+11fe	00 NOP
+
+11ff	00 NOP
+
+1200	00 NOP
+
+1201	00 NOP
+
+1202	00 NOP
+
+1203	00 NOP
+
+1204	00 NOP
+
+1205	00 NOP
+
+1206	00 NOP
+
+1207	00 NOP
+
+1208	00 NOP
+
+1209	00 NOP
+
+120a	00 NOP
+
+120b	00 NOP
+
+120c	00 NOP
+
+120d	00 NOP
+
+120e	00 NOP
+
+120f	00 NOP
+
+1210	00 NOP
+
+1211	00 NOP
+
+1212	00 NOP
+
+1213	00 NOP
+
+1214	00 NOP
+
+1215	00 NOP
+
+1216	00 NOP
+
+1217	00 NOP
+
+1218	00 NOP
+
+1219	00 NOP
+
+121a	00 NOP
+
+121b	00 NOP
+
+121c	00 NOP
+
+121d	00 NOP
+
+121e	00 NOP
+
+121f	00 NOP
+
+1220	00 NOP
+
+1221	00 NOP
+
+1222	00 NOP
+
+1223	00 NOP
+
+1224	00 NOP
+
+1225	00 NOP
+
+1226	00 NOP
+
+1227	00 NOP
+
+1228	00 NOP
+
+1229	00 NOP
+
+122a	00 NOP
+
+122b	00 NOP
+
+122c	00 NOP
+
+122d	00 NOP
+
+122e	00 NOP
+
+122f	00 NOP
+
+1230	00 NOP
+
+1231	00 NOP
+
+1232	00 NOP
+
+1233	00 NOP
+
+1234	00 NOP
+
+1235	00 NOP
+
+1236	00 NOP
+
+1237	00 NOP
+
+1238	00 NOP
+
+1239	00 NOP
+
+123a	00 NOP
+
+123b	00 NOP
+
+123c	00 NOP
+
+123d	00 NOP
+
+123e	00 NOP
+
+123f	00 NOP
+
+1240	00 NOP
+
+1241	00 NOP
+
+1242	00 NOP
+
+1243	00 NOP
+
+1244	00 NOP
+
+1245	00 NOP
+
+1246	00 NOP
+
+1247	00 NOP
+
+1248	00 NOP
+
+1249	00 NOP
+
+124a	00 NOP
+
+124b	00 NOP
+
+124c	00 NOP
+
+124d	00 NOP
+
+124e	00 NOP
+
+124f	00 NOP
+
+1250	00 NOP
+
+1251	00 NOP
+
+1252	00 NOP
+
+1253	00 NOP
+
+1254	00 NOP
+
+1255	00 NOP
+
+1256	00 NOP
+
+1257	00 NOP
+
+1258	00 NOP
+
+1259	00 NOP
+
+125a	00 NOP
+
+125b	00 NOP
+
+125c	00 NOP
+
+125d	00 NOP
+
+125e	00 NOP
+
+125f	00 NOP
+
+1260	00 NOP
+
+1261	00 NOP
+
+1262	00 NOP
+
+1263	00 NOP
+
+1264	00 NOP
+
+1265	00 NOP
+
+1266	00 NOP
+
+1267	00 NOP
+
+1268	00 NOP
+
+1269	00 NOP
+
+126a	00 NOP
+
+126b	00 NOP
+
+126c	00 NOP
+
+126d	00 NOP
+
+126e	00 NOP
+
+126f	00 NOP
+
+1270	00 NOP
+
+1271	00 NOP
+
+1272	00 NOP
+
+1273	00 NOP
+
+1274	00 NOP
+
+1275	00 NOP
+
+1276	00 NOP
+
+1277	00 NOP
+
+1278	00 NOP
+
+1279	00 NOP
+
+127a	00 NOP
+
+127b	00 NOP
+
+127c	00 NOP
+
+127d	00 NOP
+
+127e	00 NOP
+
+127f	00 NOP
+
+1280	00 NOP
+
+1281	00 NOP
+
+1282	00 NOP
+
+1283	00 NOP
+
+1284	00 NOP
+
+1285	00 NOP
+
+1286	00 NOP
+
+1287	00 NOP
+
+1288	00 NOP
+
+1289	00 NOP
+
+128a	00 NOP
+
+128b	00 NOP
+
+128c	00 NOP
+
+128d	00 NOP
+
+128e	00 NOP
+
+128f	00 NOP
+
+1290	00 NOP
+
+1291	00 NOP
+
+1292	00 NOP
+
+1293	00 NOP
+
+1294	00 NOP
+
+1295	00 NOP
+
+1296	00 NOP
+
+1297	00 NOP
+
+1298	00 NOP
+
+1299	00 NOP
+
+129a	00 NOP
+
+129b	00 NOP
+
+129c	00 NOP
+
+129d	00 NOP
+
+129e	00 NOP
+
+129f	00 NOP
+
+12a0	00 NOP
+
+12a1	00 NOP
+
+12a2	00 NOP
+
+12a3	00 NOP
+
+12a4	00 NOP
+
+12a5	00 NOP
+
+12a6	00 NOP
+
+12a7	00 NOP
+
+12a8	00 NOP
+
+12a9	00 NOP
+
+12aa	00 NOP
+
+12ab	00 NOP
+
+12ac	00 NOP
+
+12ad	00 NOP
+
+12ae	00 NOP
+
+12af	00 NOP
+
+12b0	00 NOP
+
+12b1	00 NOP
+
+12b2	00 NOP
+
+12b3	00 NOP
+
+12b4	00 NOP
+
+12b5	00 NOP
+
+12b6	00 NOP
+
+12b7	00 NOP
+
+12b8	00 NOP
+
+12b9	00 NOP
+
+12ba	00 NOP
+
+12bb	00 NOP
+
+12bc	00 NOP
+
+12bd	00 NOP
+
+12be	00 NOP
+
+12bf	00 NOP
+
+12c0	00 NOP
+
+12c1	00 NOP
+
+12c2	00 NOP
+
+12c3	00 NOP
+
+12c4	00 NOP
+
+12c5	00 NOP
+
+12c6	00 NOP
+
+12c7	00 NOP
+
+12c8	00 NOP
+
+12c9	00 NOP
+
+12ca	00 NOP
+
+12cb	00 NOP
+
+12cc	00 NOP
+
+12cd	00 NOP
+
+12ce	00 NOP
+
+12cf	00 NOP
+
+12d0	00 NOP
+
+12d1	00 NOP
+
+12d2	00 NOP
+
+12d3	00 NOP
+
+12d4	00 NOP
+
+12d5	00 NOP
+
+12d6	00 NOP
+
+12d7	00 NOP
+
+12d8	00 NOP
+
+12d9	00 NOP
+
+12da	00 NOP
+
+12db	00 NOP
+
+12dc	00 NOP
+
+12dd	00 NOP
+
+12de	00 NOP
+
+12df	00 NOP
+
+12e0	00 NOP
+
+12e1	00 NOP
+
+12e2	00 NOP
+
+12e3	00 NOP
+
+12e4	00 NOP
+
+12e5	00 NOP
+
+12e6	00 NOP
+
+12e7	00 NOP
+
+12e8	00 NOP
+
+12e9	00 NOP
+
+12ea	00 NOP
+
+12eb	00 NOP
+
+12ec	00 NOP
+
+12ed	00 NOP
+
+12ee	00 NOP
+
+12ef	00 NOP
+
+12f0	00 NOP
+
+12f1	00 NOP
+
+12f2	00 NOP
+
+12f3	00 NOP
+
+12f4	00 NOP
+
+12f5	00 NOP
+
+12f6	00 NOP
+
+12f7	00 NOP
+
+12f8	00 NOP
+
+12f9	00 NOP
+
+12fa	00 NOP
+
+12fb	00 NOP
+
+12fc	00 NOP
+
+12fd	00 NOP
+
+12fe	00 NOP
+
+12ff	00 NOP
+
+1300	00 NOP
+
+1301	00 NOP
+
+1302	00 NOP
+
+1303	00 NOP
+
+1304	00 NOP
+
+1305	00 NOP
+
+1306	00 NOP
+
+1307	00 NOP
+
+1308	00 NOP
+
+1309	00 NOP
+
+130a	00 NOP
+
+130b	00 NOP
+
+130c	00 NOP
+
+130d	00 NOP
+
+130e	00 NOP
+
+130f	00 NOP
+
+1310	00 NOP
+
+1311	00 NOP
+
+1312	00 NOP
+
+1313	00 NOP
+
+1314	00 NOP
+
+1315	00 NOP
+
+1316	00 NOP
+
+1317	00 NOP
+
+1318	00 NOP
+
+1319	00 NOP
+
+131a	00 NOP
+
+131b	00 NOP
+
+131c	00 NOP
+
+131d	00 NOP
+
+131e	00 NOP
+
+131f	00 NOP
+
+1320	00 NOP
+
+1321	00 NOP
+
+1322	00 NOP
+
+1323	00 NOP
+
+1324	00 NOP
+
+1325	00 NOP
+
+1326	00 NOP
+
+1327	00 NOP
+
+1328	00 NOP
+
+1329	00 NOP
+
+132a	00 NOP
+
+132b	00 NOP
+
+132c	00 NOP
+
+132d	00 NOP
+
+132e	00 NOP
+
+132f	00 NOP
+
+1330	00 NOP
+
+1331	00 NOP
+
+1332	00 NOP
+
+1333	00 NOP
+
+1334	00 NOP
+
+1335	00 NOP
+
+1336	00 NOP
+
+1337	00 NOP
+
+1338	00 NOP
+
+1339	00 NOP
+
+133a	00 NOP
+
+133b	00 NOP
+
+133c	00 NOP
+
+133d	00 NOP
+
+133e	00 NOP
+
+133f	00 NOP
+
+1340	00 NOP
+
+1341	00 NOP
+
+1342	00 NOP
+
+1343	00 NOP
+
+1344	00 NOP
+
+1345	00 NOP
+
+1346	00 NOP
+
+1347	00 NOP
+
+1348	00 NOP
+
+1349	00 NOP
+
+134a	00 NOP
+
+134b	00 NOP
+
+134c	00 NOP
+
+134d	00 NOP
+
+134e	00 NOP
+
+134f	00 NOP
+
+1350	00 NOP
+
+1351	00 NOP
+
+1352	00 NOP
+
+1353	00 NOP
+
+1354	00 NOP
+
+1355	00 NOP
+
+1356	00 NOP
+
+1357	00 NOP
+
+1358	00 NOP
+
+1359	00 NOP
+
+135a	00 NOP
+
+135b	00 NOP
+
+135c	00 NOP
+
+135d	00 NOP
+
+135e	00 NOP
+
+135f	00 NOP
+
+1360	00 NOP
+
+1361	00 NOP
+
+1362	00 NOP
+
+1363	00 NOP
+
+1364	00 NOP
+
+1365	00 NOP
+
+1366	00 NOP
+
+1367	00 NOP
+
+1368	00 NOP
+
+1369	00 NOP
+
+136a	00 NOP
+
+136b	00 NOP
+
+136c	00 NOP
+
+136d	00 NOP
+
+136e	00 NOP
+
+136f	00 NOP
+
+1370	00 NOP
+
+1371	00 NOP
+
+1372	00 NOP
+
+1373	00 NOP
+
+1374	00 NOP
+
+1375	00 NOP
+
+1376	00 NOP
+
+1377	00 NOP
+
+1378	00 NOP
+
+1379	00 NOP
+
+137a	00 NOP
+
+137b	00 NOP
+
+137c	00 NOP
+
+137d	00 NOP
+
+137e	00 NOP
+
+137f	00 NOP
+
+1380	00 NOP
+
+1381	00 NOP
+
+1382	00 NOP
+
+1383	00 NOP
+
+1384	00 NOP
+
+1385	00 NOP
+
+1386	00 NOP
+
+1387	00 NOP
+
+1388	00 NOP
+
+1389	00 NOP
+
+138a	00 NOP
+
+138b	00 NOP
+
+138c	00 NOP
+
+138d	00 NOP
+
+138e	00 NOP
+
+138f	00 NOP
+
+1390	00 NOP
+
+1391	00 NOP
+
+1392	00 NOP
+
+1393	00 NOP
+
+1394	00 NOP
+
+1395	00 NOP
+
+1396	00 NOP
+
+1397	00 NOP
+
+1398	00 NOP
+
+1399	00 NOP
+
+139a	00 NOP
+
+139b	00 NOP
+
+139c	00 NOP
+
+139d	00 NOP
+
+139e	00 NOP
+
+139f	00 NOP
+
+13a0	00 NOP
+
+13a1	00 NOP
+
+13a2	00 NOP
+
+13a3	00 NOP
+
+13a4	00 NOP
+
+13a5	00 NOP
+
+13a6	00 NOP
+
+13a7	00 NOP
+
+13a8	00 NOP
+
+13a9	00 NOP
+
+13aa	00 NOP
+
+13ab	00 NOP
+
+13ac	00 NOP
+
+13ad	00 NOP
+
+13ae	00 NOP
+
+13af	00 NOP
+
+13b0	00 NOP
+
+13b1	00 NOP
+
+13b2	00 NOP
+
+13b3	00 NOP
+
+13b4	00 NOP
+
+13b5	00 NOP
+
+13b6	00 NOP
+
+13b7	00 NOP
+
+13b8	00 NOP
+
+13b9	00 NOP
+
+13ba	00 NOP
+
+13bb	00 NOP
+
+13bc	00 NOP
+
+13bd	00 NOP
+
+13be	00 NOP
+
+13bf	00 NOP
+
+13c0	00 NOP
+
+13c1	00 NOP
+
+13c2	00 NOP
+
+13c3	00 NOP
+
+13c4	00 NOP
+
+13c5	00 NOP
+
+13c6	00 NOP
+
+13c7	00 NOP
+
+13c8	00 NOP
+
+13c9	00 NOP
+
+13ca	00 NOP
+
+13cb	00 NOP
+
+13cc	00 NOP
+
+13cd	00 NOP
+
+13ce	00 NOP
+
+13cf	00 NOP
+
+13d0	00 NOP
+
+13d1	00 NOP
+
+13d2	00 NOP
+
+13d3	00 NOP
+
+13d4	00 NOP
+
+13d5	00 NOP
+
+13d6	00 NOP
+
+13d7	00 NOP
+
+13d8	00 NOP
+
+13d9	00 NOP
+
+13da	00 NOP
+
+13db	00 NOP
+
+13dc	00 NOP
+
+13dd	00 NOP
+
+13de	00 NOP
+
+13df	00 NOP
+
+13e0	00 NOP
+
+13e1	00 NOP
+
+13e2	00 NOP
+
+13e3	00 NOP
+
+13e4	00 NOP
+
+13e5	00 NOP
+
+13e6	00 NOP
+
+13e7	00 NOP
+
+13e8	00 NOP
+
+13e9	00 NOP
+
+13ea	00 NOP
+
+13eb	00 NOP
+
+13ec	00 NOP
+
+13ed	00 NOP
+
+13ee	00 NOP
+
+13ef	00 NOP
+
+13f0	00 NOP
+
+13f1	00 NOP
+
+13f2	00 NOP
+
+13f3	00 NOP
+
+13f4	00 NOP
+
+13f5	00 NOP
+
+13f6	00 NOP
+
+13f7	00 NOP
+
+13f8	00 NOP
+
+13f9	00 NOP
+
+13fa	00 NOP
+
+13fb	00 NOP
+
+13fc	00 NOP
+
+13fd	00 NOP
+
+13fe	00 NOP
+
+13ff	00 NOP
+
+1400	00 NOP
+
+1401	cd 74 14	CALL adr 1474
+
+1404	00 NOP
+
+1405	c5 PUSH B
+
+1406	e5 PUSH H
+
+1407	1a LDAX D
+
+1408	d3 04	OUT D8 04
+
+140a	db 03	IN D8 03
+
+140c	b6 ORA M
+
+140d	77 MOV M,A
+
+140e	23 INX H
+
+140f	13 INX D
+
+1410	af XRA A
+
+1411	d3 04	OUT D8 04
+
+1413	db 03	IN D8 03
+
+1415	b6 ORA M
+
+1416	77 MOV M,A
+
+1417	e1 POP H
+
+1418	01 20 00	LXI B,D16 0020
+
+141b	09 DAD B
+
+141c	c1 POP B
+
+141d	05 DCR B
+
+141e	c2 05 14	JNZ adr 1405
+
+1421	c9 RET
+
+1422	00 NOP
+
+1423	00 NOP
+
+1424	cd 74 14	CALL adr 1474
+
+1427	c5 PUSH B
+
+1428	e5 PUSH H
+
+1429	af XRA A
+
+142a	77 MOV M,A
+
+142b	23 INX H
+
+142c	77 MOV M,A
+
+142d	23 INX H
+
+142e	e1 POP H
+
+142f	01 20 00	LXI B,D16 0020
+
+1432	09 DAD B
+
+1433	c1 POP B
+
+1434	05 DCR B
+
+1435	c2 27 14	JNZ adr 1427
+
+1438	c9 RET
+
+1439	c5 PUSH B
+
+143a	1a LDAX D
+
+143b	77 MOV M,A
+
+143c	13 INX D
+
+143d	01 20 00	LXI B,D16 0020
+
+1440	09 DAD B
+
+1441	c1 POP B
+
+1442	05 DCR B
+
+1443	c2 39 14	JNZ adr 1439
+
+1446	c9 RET
+
+1447	00 NOP
+
+1448	00 NOP
+
+1449	00 NOP
+
+144a	00 NOP
+
+144b	00 NOP
+
+144c	00 NOP
+
+144d	00 NOP
+
+144e	00 NOP
+
+144f	00 NOP
+
+1450	00 NOP
+
+1451	00 NOP
+
+1452	cd 74 14	CALL adr 1474
+
+1455	c5 PUSH B
+
+1456	e5 PUSH H
+
+1457	1a LDAX D
+
+1458	d3 04	OUT D8 04
+
+145a	db 03	IN D8 03
+
+145c	2f CMA
+
+145d	a6 ANA M
+
+145e	77 MOV M,A
+
+145f	23 INX H
+
+1460	13 INX D
+
+1461	af XRA A
+
+1462	d3 04	OUT D8 04
+
+1464	db 03	IN D8 03
+
+1466	2f CMA
+
+1467	a6 ANA M
+
+1468	77 MOV M,A
+
+1469	e1 POP H
+
+146a	01 20 00	LXI B,D16 0020
+
+146d	09 DAD B
+
+146e	c1 POP B
+
+146f	05 DCR B
+
+1470	c2 55 14	JNZ adr 1455
+
+1473	c9 RET
+
+1474	7d MOV A,L
+
+1475	e6 07	ANI D8 07
+
+1477	d3 02	OUT D8 02
+
+1479	c3 47 1a	JMP adr 1a47
+
+147c	c5 PUSH B
+
+147d	e5 PUSH H
+
+147e	7e MOV A,M
+
+147f	12 STAX D
+
+1480	13 INX D
+
+1481	23 INX H
+
+1482	0d DCR C
+
+1483	c2 7e 14	JNZ adr 147e
+
+1486	e1 POP H
+
+1487	01 20 00	LXI B,D16 0020
+
+148a	09 DAD B
+
+148b	c1 POP B
+
+148c	05 DCR B
+
+148d	c2 7c 14	JNZ adr 147c
+
+1490	c9 RET
+
+1491	cd 74 14	CALL adr 1474
+
+1494	af XRA A
+
+1495	32 61 20	STA adr 2061
+
+1498	c5 PUSH B
+
+1499	e5 PUSH H
+
+149a	1a LDAX D
+
+149b	d3 04	OUT D8 04
+
+149d	db 03	IN D8 03
+
+149f	f5 PUSH PSW
+
+14a0	a6 ANA M
+
+14a1	ca a9 14	JZ adr 14a9
+
+14a4	3e 01	MVI A,D8 01
+
+14a6	32 61 20	STA adr 2061
+
+14a9	f1 POP PSW
+
+14aa	b6 ORA M
+
+14ab	77 MOV M,A
+
+14ac	23 INX H
+
+14ad	13 INX D
+
+14ae	af XRA A
+
+14af	d3 04	OUT D8 04
+
+14b1	db 03	IN D8 03
+
+14b3	f5 PUSH PSW
+
+14b4	a6 ANA M
+
+14b5	ca bd 14	JZ adr 14bd
+
+14b8	3e 01	MVI A,D8 01
+
+14ba	32 61 20	STA adr 2061
+
+14bd	f1 POP PSW
+
+14be	b6 ORA M
+
+14bf	77 MOV M,A
+
+14c0	e1 POP H
+
+14c1	01 20 00	LXI B,D16 0020
+
+14c4	09 DAD B
+
+14c5	c1 POP B
+
+14c6	05 DCR B
+
+14c7	c2 98 14	JNZ adr 1498
+
+14ca	c9 RET
+
+14cb	af XRA A
+
+14cc	c5 PUSH B
+
+14cd	77 MOV M,A
+
+14ce	01 20 00	LXI B,D16 0020
+
+14d1	09 DAD B
+
+14d2	c1 POP B
+
+14d3	05 DCR B
+
+14d4	c2 cc 14	JNZ adr 14cc
+
+14d7	c9 RET
+
+14d8	3a 25 20	LDA adr 2025
+
+14db	fe 05	CPI D8 05
+
+14dd	c8 RZ
+
+14de	fe 02	CPI D8 02
+
+14e0	c0 RNZ
+
+14e1	3a 29 20	LDA adr 2029
+
+14e4	fe d8	CPI D8 d8
+
+14e6	47 MOV B,A
+
+14e7	d2 30 15	JNC adr 1530
+
+14ea	3a 02 20	LDA adr 2002
+
+14ed	a7 ANA A
+
+14ee	c8 RZ
+
+14ef	78 MOV A,B
+
+14f0	fe ce	CPI D8 ce
+
+14f2	d2 79 15	JNC adr 1579
+
+14f5	c6 06	ADI D8 06
+
+14f7	47 MOV B,A
+
+14f8	3a 09 20	LDA adr 2009
+
+14fb	fe 90	CPI D8 90
+
+14fd	d2 04 15	JNC adr 1504
+
+1500	b8 CMP B
+
+1501	d2 30 15	JNC adr 1530
+
+1504	68 MOV L,B
+
+1505	cd 62 15	CALL adr 1562
+
+1508	3a 2a 20	LDA adr 202a
+
+150b	67 MOV H,A
+
+150c	cd 6f 15	CALL adr 156f
+
+150f	22 64 20	SHLD adr 2064
+
+1512	3e 05	MVI A,D8 05
+
+1514	32 25 20	STA adr 2025
+
+1517	cd 81 15	CALL adr 1581
+
+151a	7e MOV A,M
+
+151b	a7 ANA A
+
+151c	ca 30 15	JZ adr 1530
+
+151f	36 00	MVI M,D8 00
+
+1521	cd 5f 0a	CALL adr 0a5f
+
+1524	cd 3b 1a	CALL adr 1a3b
+
+1527	cd d3 15	CALL adr 15d3
+
+152a	3e 10	MVI A,D8 10
+
+152c	32 03 20	STA adr 2003
+
+152f	c9 RET
+
+1530	3e 03	MVI A,D8 03
+
+1532	32 25 20	STA adr 2025
+
+1535	c3 4a 15	JMP adr 154a
+
+1538	21 03 20	LXI H,D16 2003
+
+153b	35 DCR M
+
+153c	c0 RNZ
+
+153d	2a 64 20	LHLD adr 2064
+
+1540	06 10	MVI B, D8 10
+
+1542	cd 24 14	CALL adr 1424
+
+1545	3e 04	MVI A,D8 04
+
+1547	32 25 20	STA adr 2025
+
+154a	af XRA A
+
+154b	32 02 20	STA adr 2002
+
+154e	06 f7	MVI B, D8 f7
+
+1550	c3 dc 19	JMP adr 19dc
+
+1553	00 NOP
+
+1554	0e 00	MVI C,D8 00
+
+1556	bc CMP H
+
+1557	d4 90 15	CNC adr 1590
+
+155a	bc CMP H
+
+155b	d0 RNC
+
+155c	c6 10	ADI D8 10
+
+155e	0c INR C
+
+155f	c3 5a 15	JMP adr 155a
+
+1562	3a 09 20	LDA adr 2009
+
+1565	65 MOV H,L
+
+1566	cd 54 15	CALL adr 1554
+
+1569	41 MOV B,C
+
+156a	05 DCR B
+
+156b	de 10	SBI D8 10
+
+156d	6f MOV L,A
+
+156e	c9 RET
+
+156f	3a 0a 20	LDA adr 200a
+
+1572	cd 54 15	CALL adr 1554
+
+1575	de 10	SBI D8 10
+
+1577	67 MOV H,A
+
+1578	c9 RET
+
+1579	3e 01	MVI A,D8 01
+
+157b	32 85 20	STA adr 2085
+
+157e	c3 45 15	JMP adr 1545
+
+1581	78 MOV A,B
+
+1582	07 RLC
+
+1583	07 RLC
+
+1584	07 RLC
+
+1585	80 ADD B
+
+1586	80 ADD B
+
+1587	80 ADD B
+
+1588	81 ADD C
+
+1589	3d DCR A
+
+158a	6f MOV L,A
+
+158b	3a 67 20	LDA adr 2067
+
+158e	67 MOV H,A
+
+158f	c9 RET
+
+1590	0c INR C
+
+1591	c6 10	ADI D8 10
+
+1593	fa 90 15	JM adr 1590
+
+1596	c9 RET
+
+1597	3a 0d 20	LDA adr 200d
+
+159a	a7 ANA A
+
+159b	c2 b7 15	JNZ adr 15b7
+
+159e	21 a4 3e	LXI H,D16 3ea4
+
+15a1	cd c5 15	CALL adr 15c5
+
+15a4	d0 RNC
+
+15a5	06 fe	MVI B, D8 fe
+
+15a7	3e 01	MVI A,D8 01
+
+15a9	32 0d 20	STA adr 200d
+
+15ac	78 MOV A,B
+
+15ad	32 08 20	STA adr 2008
+
+15b0	3a 0e 20	LDA adr 200e
+
+15b3	32 07 20	STA adr 2007
+
+15b6	c9 RET
+
+15b7	21 24 25	LXI H,D16 2524
+
+15ba	cd c5 15	CALL adr 15c5
+
+15bd	d0 RNC
+
+15be	cd f1 18	CALL adr 18f1
+
+15c1	af XRA A
+
+15c2	c3 a9 15	JMP adr 15a9
+
+15c5	06 17	MVI B, D8 17
+
+15c7	7e MOV A,M
+
+15c8	a7 ANA A
+
+15c9	c2 6b 16	JNZ adr 166b
+
+15cc	23 INX H
+
+15cd	05 DCR B
+
+15ce	c2 c7 15	JNZ adr 15c7
+
+15d1	c9 RET
+
+15d2	00 NOP
+
+15d3	cd 74 14	CALL adr 1474
+
+15d6	e5 PUSH H
+
+15d7	c5 PUSH B
+
+15d8	e5 PUSH H
+
+15d9	1a LDAX D
+
+15da	d3 04	OUT D8 04
+
+15dc	db 03	IN D8 03
+
+15de	77 MOV M,A
+
+15df	23 INX H
+
+15e0	13 INX D
+
+15e1	af XRA A
+
+15e2	d3 04	OUT D8 04
+
+15e4	db 03	IN D8 03
+
+15e6	77 MOV M,A
+
+15e7	e1 POP H
+
+15e8	01 20 00	LXI B,D16 0020
+
+15eb	09 DAD B
+
+15ec	c1 POP B
+
+15ed	05 DCR B
+
+15ee	c2 d7 15	JNZ adr 15d7
+
+15f1	e1 POP H
+
+15f2	c9 RET
+
+15f3	cd 11 16	CALL adr 1611
+
+15f6	01 00 37	LXI B,D16 3700
+
+15f9	7e MOV A,M
+
+15fa	a7 ANA A
+
+15fb	ca ff 15	JZ adr 15ff
+
+15fe	0c INR C
+
+15ff	23 INX H
+
+1600	05 DCR B
+
+1601	c2 f9 15	JNZ adr 15f9
+
+1604	79 MOV A,C
+
+1605	32 82 20	STA adr 2082
+
+1608	fe 01	CPI D8 01
+
+160a	c0 RNZ
+
+160b	21 6b 20	LXI H,D16 206b
+
+160e	36 01	MVI M,D8 01
+
+1610	c9 RET
+
+1611	2e 00	MVI L, D8 00
+
+1613	3a 67 20	LDA adr 2067
+
+1616	67 MOV H,A
+
+1617	c9 RET
+
+1618	3a 15 20	LDA adr 2015
+
+161b	fe ff	CPI D8 ff
+
+161d	c0 RNZ
+
+161e	21 10 20	LXI H,D16 2010
+
+1621	7e MOV A,M
+
+1622	23 INX H
+
+1623	46 MOV B,M
+
+1624	b0 ORA B
+
+1625	c0 RNZ
+
+1626	3a 25 20	LDA adr 2025
+
+1629	a7 ANA A
+
+162a	c0 RNZ
+
+162b	3a ef 20	LDA adr 20ef
+
+162e	a7 ANA A
+
+162f	ca 52 16	JZ adr 1652
+
+1632	3a 2d 20	LDA adr 202d
+
+1635	a7 ANA A
+
+1636	c2 48 16	JNZ adr 1648
+
+1639	cd c0 17	CALL adr 17c0
+
+163c	e6 10	ANI D8 10
+
+163e	c8 RZ
+
+163f	3e 01	MVI A,D8 01
+
+1641	32 25 20	STA adr 2025
+
+1644	32 2d 20	STA adr 202d
+
+1647	c9 RET
+
+1648	cd c0 17	CALL adr 17c0
+
+164b	e6 10	ANI D8 10
+
+164d	c0 RNZ
+
+164e	32 2d 20	STA adr 202d
+
+1651	c9 RET
+
+1652	21 25 20	LXI H,D16 2025
+
+1655	36 01	MVI M,D8 01
+
+1657	2a ed 20	LHLD adr 20ed
+
+165a	23 INX H
+
+165b	7d MOV A,L
+
+165c	fe 7e	CPI D8 7e
+
+165e	da 63 16	JC adr 1663
+
+1661	2e 74	MVI L, D8 74
+
+1663	22 ed 20	SHLD adr 20ed
+
+1666	7e MOV A,M
+
+1667	32 1d 20	STA adr 201d
+
+166a	c9 RET
+
+166b	37 STC
+
+166c	c9 RET
+
+166d	af XRA A
+
+166e	cd 8b 1a	CALL adr 1a8b
+
+1671	cd 10 19	CALL adr 1910
+
+1674	36 00	MVI M,D8 00
+
+1676	cd ca 09	CALL adr 09ca
+
+1679	23 INX H
+
+167a	11 f5 20	LXI D,D16 20f5
+
+167d	1a LDAX D
+
+167e	be CMP M
+
+167f	1b DCX D
+
+1680	2b DCX H
+
+1681	1a LDAX D
+
+1682	ca 8b 16	JZ adr 168b
+
+1685	d2 98 16	JNC adr 1698
+
+1688	c3 8f 16	JMP adr 168f
+
+168b	be CMP M
+
+168c	d2 98 16	JNC adr 1698
+
+168f	7e MOV A,M
+
+1690	12 STAX D
+
+1691	13 INX D
+
+1692	23 INX H
+
+1693	7e MOV A,M
+
+1694	12 STAX D
+
+1695	cd 50 19	CALL adr 1950
+
+1698	3a ce 20	LDA adr 20ce
+
+169b	a7 ANA A
+
+169c	ca c9 16	JZ adr 16c9
+
+169f	21 03 28	LXI H,D16 2803
+
+16a2	11 a6 1a	LXI D,D16 1aa6
+
+16a5	0e 14	MVI C,D8 14
+
+16a7	cd 93 0a	CALL adr 0a93
+
+16aa	25 DCR H
+
+16ab	25 DCR H
+
+16ac	06 1b	MVI B, D8 1b
+
+16ae	3a 67 20	LDA adr 2067
+
+16b1	0f RRC
+
+16b2	da b7 16	JC adr 16b7
+
+16b5	06 1c	MVI B, D8 1c
+
+16b7	78 MOV A,B
+
+16b8	cd ff 08	CALL adr 08ff
+
+16bb	cd b1 0a	CALL adr 0ab1
+
+16be	cd e7 18	CALL adr 18e7
+
+16c1	7e MOV A,M
+
+16c2	a7 ANA A
+
+16c3	ca c9 16	JZ adr 16c9
+
+16c6	c3 ed 02	JMP adr 02ed
+
+16c9	21 18 2d	LXI H,D16 2d18
+
+16cc	11 a6 1a	LXI D,D16 1aa6
+
+16cf	0e 0a	MVI C,D8 0a
+
+16d1	cd 93 0a	CALL adr 0a93
+
+16d4	cd b6 0a	CALL adr 0ab6
+
+16d7	cd d6 09	CALL adr 09d6
+
+16da	af XRA A
+
+16db	32 ef 20	STA adr 20ef
+
+16de	d3 05	OUT D8 05
+
+16e0	cd d1 19	CALL adr 19d1
+
+16e3	c3 89 0b	JMP adr 0b89
+
+16e6	31 00 24	LXI SP, D16 2400
+
+16e9	fb EI
+
+16ea	af XRA A
+
+16eb	32 15 20	STA adr 2015
+
+16ee	cd d8 14	CALL adr 14d8
+
+16f1	06 04	MVI B, D8 04
+
+16f3	cd fa 18	CALL adr 18fa
+
+16f6	cd 59 0a	CALL adr 0a59
+
+16f9	c2 ee 16	JNZ adr 16ee
+
+16fc	cd d7 19	CALL adr 19d7
+
+16ff	21 01 27	LXI H,D16 2701
+
+1702	cd fa 19	CALL adr 19fa
+
+1705	af XRA A
+
+1706	cd 8b 1a	CALL adr 1a8b
+
+1709	06 fb	MVI B, D8 fb
+
+170b	c3 6b 19	JMP adr 196b
+
+170e	cd ca 09	CALL adr 09ca
+
+1711	23 INX H
+
+1712	7e MOV A,M
+
+1713	11 b8 1c	LXI D,D16 1cb8
+
+1716	21 a1 1a	LXI H,D16 1aa1
+
+1719	0e 04	MVI C,D8 04
+
+171b	47 MOV B,A
+
+171c	1a LDAX D
+
+171d	b8 CMP B
+
+171e	d2 27 17	JNC adr 1727
+
+1721	23 INX H
+
+1722	13 INX D
+
+1723	0d DCR C
+
+1724	c2 1c 17	JNZ adr 171c
+
+1727	7e MOV A,M
+
+1728	32 cf 20	STA adr 20cf
+
+172b	c9 RET
+
+172c	3a 25 20	LDA adr 2025
+
+172f	fe 00	CPI D8 00
+
+1731	c2 39 17	JNZ adr 1739
+
+1734	06 fd	MVI B, D8 fd
+
+1736	c3 dc 19	JMP adr 19dc
+
+1739	06 02	MVI B, D8 02
+
+173b	c3 fa 18	JMP adr 18fa
+
+173e	00 NOP
+
+173f	00 NOP
+
+1740	21 9b 20	LXI H,D16 209b
+
+1743	35 DCR M
+
+1744	cc 6d 17	CZ adr 176d
+
+1747	3a 68 20	LDA adr 2068
+
+174a	a7 ANA A
+
+174b	ca 6d 17	JZ adr 176d
+
+174e	21 96 20	LXI H,D16 2096
+
+1751	35 DCR M
+
+1752	c0 RNZ
+
+1753	21 98 20	LXI H,D16 2098
+
+1756	7e MOV A,M
+
+1757	d3 05	OUT D8 05
+
+1759	3a 82 20	LDA adr 2082
+
+175c	a7 ANA A
+
+175d	ca 6d 17	JZ adr 176d
+
+1760	2b DCX H
+
+1761	7e MOV A,M
+
+1762	2b DCX H
+
+1763	77 MOV M,A
+
+1764	2b DCX H
+
+1765	36 01	MVI M,D8 01
+
+1767	3e 04	MVI A,D8 04
+
+1769	32 9b 20	STA adr 209b
+
+176c	c9 RET
+
+176d	3a 98 20	LDA adr 2098
+
+1770	e6 30	ANI D8 30
+
+1772	d3 05	OUT D8 05
+
+1774	c9 RET
+
+1775	3a 95 20	LDA adr 2095
+
+1778	a7 ANA A
+
+1779	ca aa 17	JZ adr 17aa
+
+177c	21 11 1a	LXI H,D16 1a11
+
+177f	11 21 1a	LXI D,D16 1a21
+
+1782	3a 82 20	LDA adr 2082
+
+1785	be CMP M
+
+1786	d2 8e 17	JNC adr 178e
+
+1789	23 INX H
+
+178a	13 INX D
+
+178b	c3 85 17	JMP adr 1785
+
+178e	1a LDAX D
+
+178f	32 97 20	STA adr 2097
+
+1792	21 98 20	LXI H,D16 2098
+
+1795	7e MOV A,M
+
+1796	e6 30	ANI D8 30
+
+1798	47 MOV B,A
+
+1799	7e MOV A,M
+
+179a	e6 0f	ANI D8 0f
+
+179c	07 RLC
+
+179d	fe 10	CPI D8 10
+
+179f	c2 a4 17	JNZ adr 17a4
+
+17a2	3e 01	MVI A,D8 01
+
+17a4	b0 ORA B
+
+17a5	77 MOV M,A
+
+17a6	af XRA A
+
+17a7	32 95 20	STA adr 2095
+
+17aa	21 99 20	LXI H,D16 2099
+
+17ad	35 DCR M
+
+17ae	c0 RNZ
+
+17af	06 ef	MVI B, D8 ef
+
+17b1	c3 dc 19	JMP adr 19dc
+
+17b4	06 ef	MVI B, D8 ef
+
+17b6	21 98 20	LXI H,D16 2098
+
+17b9	7e MOV A,M
+
+17ba	a0 ANA B
+
+17bb	77 MOV M,A
+
+17bc	d3 05	OUT D8 05
+
+17be	c9 RET
+
+17bf	00 NOP
+
+17c0	3a 67 20	LDA adr 2067
+
+17c3	0f RRC
+
+17c4	d2 ca 17	JNC adr 17ca
+
+17c7	db 01	IN D8 01
+
+17c9	c9 RET
+
+17ca	db 02	IN D8 02
+
+17cc	c9 RET
+
+17cd	db 02	IN D8 02
+
+17cf	e6 04	ANI D8 04
+
+17d1	c8 RZ
+
+17d2	3a 9a 20	LDA adr 209a
+
+17d5	a7 ANA A
+
+17d6	c0 RNZ
+
+17d7	31 00 24	LXI SP, D16 2400
+
+17da	06 04	MVI B, D8 04
+
+17dc	cd d6 09	CALL adr 09d6
+
+17df	05 DCR B
+
+17e0	c2 dc 17	JNZ adr 17dc
+
+17e3	3e 01	MVI A,D8 01
+
+17e5	32 9a 20	STA adr 209a
+
+17e8	cd d7 19	CALL adr 19d7
+
+17eb	fb EI
+
+17ec	11 bc 1c	LXI D,D16 1cbc
+
+17ef	21 16 30	LXI H,D16 3016
+
+17f2	0e 04	MVI C,D8 04
+
+17f4	cd 93 0a	CALL adr 0a93
+
+17f7	cd b1 0a	CALL adr 0ab1
+
+17fa	af XRA A
+
+17fb	32 9a 20	STA adr 209a
+
+17fe	32 93 20	STA adr 2093
+
+1801	c3 c9 16	JMP adr 16c9
+
+1804	21 84 20	LXI H,D16 2084
+
+1807	7e MOV A,M
+
+1808	a7 ANA A
+
+1809	ca 07 07	JZ adr 0707
+
+180c	23 INX H
+
+180d	7e MOV A,M
+
+180e	a7 ANA A
+
+180f	c0 RNZ
+
+1810	06 01	MVI B, D8 01
+
+1812	c3 fa 18	JMP adr 18fa
+
+1815	21 10 28	LXI H,D16 2810
+
+1818	11 a3 1c	LXI D,D16 1ca3
+
+181b	0e 15	MVI C,D8 15
+
+181d	cd f3 08	CALL adr 08f3
+
+1820	3e 0a	MVI A,D8 0a
+
+1822	32 6c 20	STA adr 206c
+
+1825	01 be 1d	LXI B,D16 1dbe
+
+1828	cd 56 18	CALL adr 1856
+
+182b	da 37 18	JC adr 1837
+
+182e	cd 44 18	CALL adr 1844
+
+1831	c3 28 18	JMP adr 1828
+
+1834	cd b1 0a	CALL adr 0ab1
+
+1837	01 cf 1d	LXI B,D16 1dcf
+
+183a	cd 56 18	CALL adr 1856
+
+183d	d8 RC
+
+183e	cd 4c 18	CALL adr 184c
+
+1841	c3 3a 18	JMP adr 183a
+
+1844	c5 PUSH B
+
+1845	06 10	MVI B, D8 10
+
+1847	cd 39 14	CALL adr 1439
+
+184a	c1 POP B
+
+184b	c9 RET
+
+184c	c5 PUSH B
+
+184d	3a 6c 20	LDA adr 206c
+
+1850	4f MOV C,A
+
+1851	cd 93 0a	CALL adr 0a93
+
+1854	c1 POP B
+
+1855	c9 RET
+
+1856	0a LDAX B
+
+1857	fe ff	CPI D8 ff
+
+1859	37 STC
+
+185a	c8 RZ
+
+185b	6f MOV L,A
+
+185c	03 INX B
+
+185d	0a LDAX B
+
+185e	67 MOV H,A
+
+185f	03 INX B
+
+1860	0a LDAX B
+
+1861	5f MOV E,A
+
+1862	03 INX B
+
+1863	0a LDAX B
+
+1864	57 MOV D,A
+
+1865	03 INX B
+
+1866	a7 ANA A
+
+1867	c9 RET
+
+1868	21 c2 20	LXI H,D16 20c2
+
+186b	34 INR M
+
+186c	23 INX H
+
+186d	4e MOV C,M
+
+186e	cd d9 01	CALL adr 01d9
+
+1871	47 MOV B,A
+
+1872	3a ca 20	LDA adr 20ca
+
+1875	b8 CMP B
+
+1876	ca 98 18	JZ adr 1898
+
+1879	3a c2 20	LDA adr 20c2
+
+187c	e6 04	ANI D8 04
+
+187e	2a cc 20	LHLD adr 20cc
+
+1881	c2 88 18	JNZ adr 1888
+
+1884	11 30 00	LXI D,D16 0030
+
+1887	19 DAD D
+
+1888	22 c7 20	SHLD adr 20c7
+
+188b	21 c5 20	LXI H,D16 20c5
+
+188e	cd 3b 1a	CALL adr 1a3b
+
+1891	eb XCHG
+
+1892	c3 d3 15	JMP adr 15d3
+
+1895	00 NOP
+
+1896	00 NOP
+
+1897	00 NOP
+
+1898	3e 01	MVI A,D8 01
+
+189a	32 cb 20	STA adr 20cb
+
+189d	c9 RET
+
+189e	21 50 20	LXI H,D16 2050
+
+18a1	11 c0 1b	LXI D,D16 1bc0
+
+18a4	06 10	MVI B, D8 10
+
+18a6	cd 32 1a	CALL adr 1a32
+
+18a9	3e 02	MVI A,D8 02
+
+18ab	32 80 20	STA adr 2080
+
+18ae	3e ff	MVI A,D8 ff
+
+18b0	32 7e 20	STA adr 207e
+
+18b3	3e 04	MVI A,D8 04
+
+18b5	32 c1 20	STA adr 20c1
+
+18b8	3a 55 20	LDA adr 2055
+
+18bb	e6 01	ANI D8 01
+
+18bd	ca b8 18	JZ adr 18b8
+
+18c0	3a 55 20	LDA adr 2055
+
+18c3	e6 01	ANI D8 01
+
+18c5	c2 c0 18	JNZ adr 18c0
+
+18c8	21 11 33	LXI H,D16 3311
+
+18cb	3e 26	MVI A,D8 26
+
+18cd	00 NOP
+
+18ce	cd ff 08	CALL adr 08ff
+
+18d1	c3 b6 0a	JMP adr 0ab6
+
+18d4	31 00 24	LXI SP, D16 2400
+
+18d7	06 00	MVI B, D8 00
+
+18d9	cd e6 01	CALL adr 01e6
+
+18dc	cd 56 19	CALL adr 1956
+
+18df	3e 08	MVI A,D8 08
+
+18e1	32 cf 20	STA adr 20cf
+
+18e4	c3 ea 0a	JMP adr 0aea
+
+18e7	3a 67 20	LDA adr 2067
+
+18ea	21 e7 20	LXI H,D16 20e7
+
+18ed	0f RRC
+
+18ee	d0 RNC
+
+18ef	23 INX H
+
+18f0	c9 RET
+
+18f1	06 02	MVI B, D8 02
+
+18f3	3a 82 20	LDA adr 2082
+
+18f6	3d DCR A
+
+18f7	c0 RNZ
+
+18f8	04 INR B
+
+18f9	c9 RET
+
+18fa	3a 94 20	LDA adr 2094
+
+18fd	b0 ORA B
+
+18fe	32 94 20	STA adr 2094
+
+1901	d3 03	OUT D8 03
+
+1903	c9 RET
+
+1904	21 00 22	LXI H,D16 2200
+
+1907	c3 c3 01	JMP adr 01c3
+
+190a	cd d8 14	CALL adr 14d8
+
+190d	c3 97 15	JMP adr 1597
+
+1910	21 e7 20	LXI H,D16 20e7
+
+1913	3a 67 20	LDA adr 2067
+
+1916	0f RRC
+
+1917	d8 RC
+
+1918	23 INX H
+
+1919	c9 RET
+
+191a	0e 1c	MVI C,D8 1c
+
+191c	21 1e 24	LXI H,D16 241e
+
+191f	11 e4 1a	LXI D,D16 1ae4
+
+1922	c3 f3 08	JMP adr 08f3
+
+1925	21 f8 20	LXI H,D16 20f8
+
+1928	c3 31 19	JMP adr 1931
+
+192b	21 fc 20	LXI H,D16 20fc
+
+192e	c3 31 19	JMP adr 1931
+
+1931	5e MOV E,M
+
+1932	23 INX H
+
+1933	56 MOV D,M
+
+1934	23 INX H
+
+1935	7e MOV A,M
+
+1936	23 INX H
+
+1937	66 MOV H,M
+
+1938	6f MOV L,A
+
+1939	c3 ad 09	JMP adr 09ad
+
+193c	0e 07	MVI C,D8 07
+
+193e	21 01 35	LXI H,D16 3501
+
+1941	11 a9 1f	LXI D,D16 1fa9
+
+1944	c3 f3 08	JMP adr 08f3
+
+1947	3a eb 20	LDA adr 20eb
+
+194a	21 01 3c	LXI H,D16 3c01
+
+194d	c3 b2 09	JMP adr 09b2
+
+1950	21 f4 20	LXI H,D16 20f4
+
+1953	c3 31 19	JMP adr 1931
+
+1956	cd 5c 1a	CALL adr 1a5c
+
+1959	cd 1a 19	CALL adr 191a
+
+195c	cd 25 19	CALL adr 1925
+
+195f	cd 2b 19	CALL adr 192b
+
+1962	cd 50 19	CALL adr 1950
+
+1965	cd 3c 19	CALL adr 193c
+
+1968	c3 47 19	JMP adr 1947
+
+196b	cd dc 19	CALL adr 19dc
+
+196e	c3 71 16	JMP adr 1671
+
+1971	3e 01	MVI A,D8 01
+
+1973	32 6d 20	STA adr 206d
+
+1976	c3 e6 16	JMP adr 16e6
+
+1979	cd d7 19	CALL adr 19d7
+
+197c	cd 47 19	CALL adr 1947
+
+197f	c3 3c 19	JMP adr 193c
+
+1982	32 c1 20	STA adr 20c1
+
+1985	c9 RET
+
+1986	8b ADC E
+
+1987	19 DAD D
+
+1988	c3 d6 09	JMP adr 09d6
+
+198b	21 03 28	LXI H,D16 2803
+
+198e	11 be 19	LXI D,D16 19be
+
+1991	0e 13	MVI C,D8 13
+
+1993	c3 f3 08	JMP adr 08f3
+
+1996	00 NOP
+
+1997	00 NOP
+
+1998	00 NOP
+
+1999	00 NOP
+
+199a	3a 1e 20	LDA adr 201e
+
+199d	a7 ANA A
+
+199e	c2 ac 19	JNZ adr 19ac
+
+19a1	db 01	IN D8 01
+
+19a3	e6 76	ANI D8 76
+
+19a5	d6 72	SUI D8 72
+
+19a7	c0 RNZ
+
+19a8	3c INR A
+
+19a9	32 1e 20	STA adr 201e
+
+19ac	db 01	IN D8 01
+
+19ae	e6 76	ANI D8 76
+
+19b0	fe 34	CPI D8 34
+
+19b2	c0 RNZ
+
+19b3	21 1b 2e	LXI H,D16 2e1b
+
+19b6	11 f7 0b	LXI D,D16 0bf7
+
+19b9	0e 09	MVI C,D8 09
+
+19bb	c3 f3 08	JMP adr 08f3
+
+19be	28 
+19bf	13 INX D
+
+19c0	00 NOP
+
+19c1	08 
+19c2	13 INX D
+
+19c3	0e 26	MVI C,D8 26
+
+19c5	02 STAX B
+
+19c6	0e 11	MVI C,D8 11
+
+19c8	0f RRC
+
+19c9	0e 11	MVI C,D8 11
+
+19cb	00 NOP
+
+19cc	13 INX D
+
+19cd	08 
+19ce	0e 0d	MVI C,D8 0d
+
+19d0	28 
+19d1	3e 01	MVI A,D8 01
+
+19d3	32 e9 20	STA adr 20e9
+
+19d6	c9 RET
+
+19d7	af XRA A
+
+19d8	c3 d3 19	JMP adr 19d3
+
+19db	00 NOP
+
+19dc	3a 94 20	LDA adr 2094
+
+19df	a0 ANA B
+
+19e0	32 94 20	STA adr 2094
+
+19e3	d3 03	OUT D8 03
+
+19e5	c9 RET
+
+19e6	21 01 27	LXI H,D16 2701
+
+19e9	ca fa 19	JZ adr 19fa
+
+19ec	11 60 1c	LXI D,D16 1c60
+
+19ef	06 10	MVI B, D8 10
+
+19f1	4f MOV C,A
+
+19f2	cd 39 14	CALL adr 1439
+
+19f5	79 MOV A,C
+
+19f6	3d DCR A
+
+19f7	c2 ec 19	JNZ adr 19ec
+
+19fa	06 10	MVI B, D8 10
+
+19fc	cd cb 14	CALL adr 14cb
+
+19ff	7c MOV A,H
+
+1a00	fe 35	CPI D8 35
+
+1a02	c2 fa 19	JNZ adr 19fa
+
+1a05	c9 RET
+
+1a06	21 72 20	LXI H,D16 2072
+
+1a09	46 MOV B,M
+
+1a0a	1a LDAX D
+
+1a0b	e6 80	ANI D8 80
+
+1a0d	a8 XRA B
+
+1a0e	c0 RNZ
+
+1a0f	37 STC
+
+1a10	c9 RET
+
+1a11	32 2b 24	STA adr 242b
+
+1a14	1c INR E
+
+1a15	16 11	MVI D, D8 11
+
+1a17	0d DCR C
+
+1a18	0a LDAX B
+
+1a19	08 
+1a1a	07 RLC
+
+1a1b	06 05	MVI B, D8 05
+
+1a1d	04 INR B
+
+1a1e	03 INX B
+
+1a1f	02 STAX B
+
+1a20	01 34 2e	LXI B,D16 2e34
+
+1a23	27 DAA
+
+1a24	22 1c 18	SHLD adr 181c
+
+1a27	15 DCR D
+
+1a28	13 INX D
+
+1a29	10 
+1a2a	0e 0d	MVI C,D8 0d
+
+1a2c	0c INR C
+
+1a2d	0b DCX B
+
+1a2e	09 DAD B
+
+1a2f	07 RLC
+
+1a30	05 DCR B
+
+1a31	ff RST 7
+
+1a32	1a LDAX D
+
+1a33	77 MOV M,A
+
+1a34	23 INX H
+
+1a35	13 INX D
+
+1a36	05 DCR B
+
+1a37	c2 32 1a	JNZ adr 1a32
+
+1a3a	c9 RET
+
+1a3b	5e MOV E,M
+
+1a3c	23 INX H
+
+1a3d	56 MOV D,M
+
+1a3e	23 INX H
+
+1a3f	7e MOV A,M
+
+1a40	23 INX H
+
+1a41	4e MOV C,M
+
+1a42	23 INX H
+
+1a43	46 MOV B,M
+
+1a44	61 MOV H,C
+
+1a45	6f MOV L,A
+
+1a46	c9 RET
+
+1a47	c5 PUSH B
+
+1a48	06 03	MVI B, D8 03
+
+1a4a	7c MOV A,H
+
+1a4b	1f RAR
+
+1a4c	67 MOV H,A
+
+1a4d	7d MOV A,L
+
+1a4e	1f RAR
+
+1a4f	6f MOV L,A
+
+1a50	05 DCR B
+
+1a51	c2 4a 1a	JNZ adr 1a4a
+
+1a54	7c MOV A,H
+
+1a55	e6 3f	ANI D8 3f
+
+1a57	f6 20	ORI D8 20
+
+1a59	67 MOV H,A
+
+1a5a	c1 POP B
+
+1a5b	c9 RET
+
+1a5c	21 00 24	LXI H,D16 2400
+
+1a5f	36 00	MVI M,D8 00
+
+1a61	23 INX H
+
+1a62	7c MOV A,H
+
+1a63	fe 40	CPI D8 40
+
+1a65	c2 5f 1a	JNZ adr 1a5f
+
+1a68	c9 RET
+
+1a69	c5 PUSH B
+
+1a6a	e5 PUSH H
+
+1a6b	1a LDAX D
+
+1a6c	b6 ORA M
+
+1a6d	77 MOV M,A
+
+1a6e	13 INX D
+
+1a6f	23 INX H
+
+1a70	0d DCR C
+
+1a71	c2 6b 1a	JNZ adr 1a6b
+
+1a74	e1 POP H
+
+1a75	01 20 00	LXI B,D16 0020
+
+1a78	09 DAD B
+
+1a79	c1 POP B
+
+1a7a	05 DCR B
+
+1a7b	c2 69 1a	JNZ adr 1a69
+
+1a7e	c9 RET
+
+1a7f	cd 2e 09	CALL adr 092e
+
+1a82	a7 ANA A
+
+1a83	c8 RZ
+
+1a84	f5 PUSH PSW
+
+1a85	3d DCR A
+
+1a86	77 MOV M,A
+
+1a87	cd e6 19	CALL adr 19e6
+
+1a8a	f1 POP PSW
+
+1a8b	21 01 25	LXI H,D16 2501
+
+1a8e	e6 0f	ANI D8 0f
+
+1a90	c3 c5 09	JMP adr 09c5
+
+1a93	00 NOP
+
+1a94	00 NOP
+
+1a95	00 NOP
+
+1a96	00 NOP
+
+1a97	ff RST 7
+
+1a98	b8 CMP B
+
+1a99	fe 20	CPI D8 20
+
+1a9b	1c INR E
+
+1a9c	10 
+1a9d	9e SBB M
+
+1a9e	00 NOP
+
+1a9f	20 RIM
+
+1aa0	1c INR E
+
+1aa1	30 SIM
+
+1aa2	10 
+1aa3	0b DCX B
+
+1aa4	08 
+1aa5	07 RLC
+
+1aa6	06 00	MVI B, D8 00
+
+1aa8	0c INR C
+
+1aa9	04 INR B
+
+1aaa	26 0e	MVI H,D8 0e
+
+1aac	15 DCR D
+
+1aad	04 INR B
+
+1aae	11 26 26	LXI D,D16 2626
+
+1ab1	0f RRC
+
+1ab2	0b DCX B
+
+1ab3	00 NOP
+
+1ab4	18 
+1ab5	04 INR B
+
+1ab6	11 24 26	LXI D,D16 2624
+
+1ab9	25 DCR H
+
+1aba	1b DCX D
+
+1abb	26 0e	MVI H,D8 0e
+
+1abd	11 26 1c	LXI D,D16 1c26
+
+1ac0	0f RRC
+
+1ac1	0b DCX B
+
+1ac2	00 NOP
+
+1ac3	18 
+1ac4	04 INR B
+
+1ac5	11 12 26	LXI D,D16 2612
+
+1ac8	01 14 13	LXI B,D16 1314
+
+1acb	13 INX D
+
+1acc	0e 0d	MVI C,D8 0d
+
+1ace	26 0e	MVI H,D8 0e
+
+1ad0	0d DCR C
+
+1ad1	0b DCX B
+
+1ad2	18 
+1ad3	26 1b	MVI H,D8 1b
+
+1ad5	0f RRC
+
+1ad6	0b DCX B
+
+1ad7	00 NOP
+
+1ad8	18 
+1ad9	04 INR B
+
+1ada	11 26 26	LXI D,D16 2626
+
+1add	01 14 13	LXI B,D16 1314
+
+1ae0	13 INX D
+
+1ae1	0e 0d	MVI C,D8 0d
+
+1ae3	26 26	MVI H,D8 26
+
+1ae5	12 STAX D
+
+1ae6	02 STAX B
+
+1ae7	0e 11	MVI C,D8 11
+
+1ae9	04 INR B
+
+1aea	24 INR H
+
+1aeb	1b DCX D
+
+1aec	25 DCR H
+
+1aed	26 07	MVI H,D8 07
+
+1aef	08 
+1af0	3f CMC
+
+1af1	12 STAX D
+
+1af2	02 STAX B
+
+1af3	0e 11	MVI C,D8 11
+
+1af5	04 INR B
+
+1af6	26 12	MVI H,D8 12
+
+1af8	02 STAX B
+
+1af9	0e 11	MVI C,D8 11
+
+1afb	04 INR B
+
+1afc	24 INR H
+
+1afd	1c INR E
+
+1afe	25 DCR H
+
+1aff	26 01	MVI H,D8 01
+
+1b01	00 NOP
+
+1b02	00 NOP
+
+1b03	10 
+1b04	00 NOP
+
+1b05	00 NOP
+
+1b06	00 NOP
+
+1b07	00 NOP
+
+1b08	02 STAX B
+
+1b09	78 MOV A,B
+
+1b0a	38 
+1b0b	78 MOV A,B
+
+1b0c	38 
+1b0d	00 NOP
+
+1b0e	f8 RM
+
+1b0f	00 NOP
+
+1b10	00 NOP
+
+1b11	80 ADD B
+
+1b12	00 NOP
+
+1b13	8e ADC M
+
+1b14	02 STAX B
+
+1b15	ff RST 7
+
+1b16	05 DCR B
+
+1b17	0c INR C
+
+1b18	60 MOV H,B
+
+1b19	1c INR E
+
+1b1a	20 RIM
+
+1b1b	30 SIM
+
+1b1c	10 
+1b1d	01 00 00	LXI B,D16 0000
+
+1b20	00 NOP
+
+1b21	00 NOP
+
+1b22	00 NOP
+
+1b23	bb CMP E
+
+1b24	03 INX B
+
+1b25	00 NOP
+
+1b26	10 
+1b27	90 SUB B
+
+1b28	1c INR E
+
+1b29	28 
+1b2a	30 SIM
+
+1b2b	01 04 00	LXI B,D16 0004
+
+1b2e	ff RST 7
+
+1b2f	ff RST 7
+
+1b30	00 NOP
+
+1b31	00 NOP
+
+1b32	02 STAX B
+
+1b33	76 HLT
+
+1b34	04 INR B
+
+1b35	00 NOP
+
+1b36	00 NOP
+
+1b37	00 NOP
+
+1b38	00 NOP
+
+1b39	00 NOP
+
+1b3a	04 INR B
+
+1b3b	ee 1c	XRI D8 1c
+
+1b3d	00 NOP
+
+1b3e	00 NOP
+
+1b3f	03 INX B
+
+1b40	00 NOP
+
+1b41	00 NOP
+
+1b42	00 NOP
+
+1b43	b6 ORA M
+
+1b44	04 INR B
+
+1b45	00 NOP
+
+1b46	00 NOP
+
+1b47	01 00 1d	LXI B,D16 1d00
+
+1b4a	04 INR B
+
+1b4b	e2 1c 00	JPO adr 001c
+
+1b4e	00 NOP
+
+1b4f	03 INX B
+
+1b50	00 NOP
+
+1b51	00 NOP
+
+1b52	00 NOP
+
+1b53	82 ADD D
+
+1b54	06 00	MVI B, D8 00
+
+1b56	00 NOP
+
+1b57	01 06 1d	LXI B,D16 1d06
+
+1b5a	04 INR B
+
+1b5b	d0 RNC
+
+1b5c	1c INR E
+
+1b5d	00 NOP
+
+1b5e	00 NOP
+
+1b5f	03 INX B
+
+1b60	ff RST 7
+
+1b61	00 NOP
+
+1b62	c0 RNZ
+
+1b63	1c INR E
+
+1b64	00 NOP
+
+1b65	00 NOP
+
+1b66	10 
+1b67	21 01 00	LXI H,D16 0001
+
+1b6a	30 SIM
+
+1b6b	00 NOP
+
+1b6c	12 STAX D
+
+1b6d	00 NOP
+
+1b6e	00 NOP
+
+1b6f	00 NOP
+
+1b70	0f RRC
+
+1b71	0b DCX B
+
+1b72	00 NOP
+
+1b73	18 
+1b74	26 0f	MVI H,D8 0f
+
+1b76	0b DCX B
+
+1b77	00 NOP
+
+1b78	18 
+1b79	04 INR B
+
+1b7a	11 24 1b	LXI D,D16 1b24
+
+1b7d	25 DCR H
+
+1b7e	fc 00 01	CM adr 0100
+
+1b81	ff RST 7
+
+1b82	ff RST 7
+
+1b83	00 NOP
+
+1b84	00 NOP
+
+1b85	00 NOP
+
+1b86	20 RIM
+
+1b87	64 MOV H,H
+
+1b88	1d DCR E
+
+1b89	d0 RNC
+
+1b8a	29 DAD H
+
+1b8b	18 
+1b8c	02 STAX B
+
+1b8d	54 MOV D,H
+
+1b8e	1d DCR E
+
+1b8f	00 NOP
+
+1b90	08 
+1b91	00 NOP
+
+1b92	06 00	MVI B, D8 00
+
+1b94	00 NOP
+
+1b95	01 40 00	LXI B,D16 0040
+
+1b98	01 00 00	LXI B,D16 0000
+
+1b9b	10 
+1b9c	9e SBB M
+
+1b9d	00 NOP
+
+1b9e	20 RIM
+
+1b9f	1c INR E
+
+1ba0	00 NOP
+
+1ba1	03 INX B
+
+1ba2	04 INR B
+
+1ba3	78 MOV A,B
+
+1ba4	14 INR D
+
+1ba5	13 INX D
+
+1ba6	08 
+1ba7	1a LDAX D
+
+1ba8	3d DCR A
+
+1ba9	68 MOV L,B
+
+1baa	fc fc 68	CM adr 68fc
+
+1bad	3d DCR A
+
+1bae	1a LDAX D
+
+1baf	00 NOP
+
+1bb0	00 NOP
+
+1bb1	00 NOP
+
+1bb2	01 b8 98	LXI B,D16 98b8
+
+1bb5	a0 ANA B
+
+1bb6	1b DCX D
+
+1bb7	10 
+1bb8	ff RST 7
+
+1bb9	00 NOP
+
+1bba	a0 ANA B
+
+1bbb	1b DCX D
+
+1bbc	00 NOP
+
+1bbd	00 NOP
+
+1bbe	00 NOP
+
+1bbf	00 NOP
+
+1bc0	00 NOP
+
+1bc1	10 
+1bc2	00 NOP
+
+1bc3	0e 05	MVI C,D8 05
+
+1bc5	00 NOP
+
+1bc6	00 NOP
+
+1bc7	00 NOP
+
+1bc8	00 NOP
+
+1bc9	00 NOP
+
+1bca	07 RLC
+
+1bcb	d0 RNC
+
+1bcc	1c INR E
+
+1bcd	c8 RZ
+
+1bce	9b SBB E
+
+1bcf	03 INX B
+
+1bd0	00 NOP
+
+1bd1	00 NOP
+
+1bd2	03 INX B
+
+1bd3	04 INR B
+
+1bd4	78 MOV A,B
+
+1bd5	14 INR D
+
+1bd6	0b DCX B
+
+1bd7	19 DAD D
+
+1bd8	3a 6d fa	LDA adr fa6d
+
+1bdb	fa 6d 3a	JM adr 3a6d
+
+1bde	19 DAD D
+
+1bdf	00 NOP
+
+1be0	00 NOP
+
+1be1	00 NOP
+
+1be2	00 NOP
+
+1be3	00 NOP
+
+1be4	00 NOP
+
+1be5	00 NOP
+
+1be6	00 NOP
+
+1be7	00 NOP
+
+1be8	00 NOP
+
+1be9	01 00 00	LXI B,D16 0000
+
+1bec	01 74 1f	LXI B,D16 1f74
+
+1bef	00 NOP
+
+1bf0	80 ADD B
+
+1bf1	00 NOP
+
+1bf2	00 NOP
+
+1bf3	00 NOP
+
+1bf4	00 NOP
+
+1bf5	00 NOP
+
+1bf6	1c INR E
+
+1bf7	2f CMA
+
+1bf8	00 NOP
+
+1bf9	00 NOP
+
+1bfa	1c INR E
+
+1bfb	27 DAA
+
+1bfc	00 NOP
+
+1bfd	00 NOP
+
+1bfe	1c INR E
+
+1bff	39 DAD SP
+
+1c00	00 NOP
+
+1c01	00 NOP
+
+1c02	39 DAD SP
+
+1c03	79 MOV A,C
+
+1c04	7a MOV A,D
+
+1c05	6e MOV L,M
+
+1c06	ec fa fa	CPE adr fafa
+
+1c09	ec 6e 7a	CPE adr 7a6e
+
+1c0c	79 MOV A,C
+
+1c0d	39 DAD SP
+
+1c0e	00 NOP
+
+1c0f	00 NOP
+
+1c10	00 NOP
+
+1c11	00 NOP
+
+1c12	00 NOP
+
+1c13	78 MOV A,B
+
+1c14	1d DCR E
+
+1c15	be CMP M
+
+1c16	6c MOV L,H
+
+1c17	3c INR A
+
+1c18	3c INR A
+
+1c19	3c INR A
+
+1c1a	6c MOV L,H
+
+1c1b	be CMP M
+
+1c1c	1d DCR E
+
+1c1d	78 MOV A,B
+
+1c1e	00 NOP
+
+1c1f	00 NOP
+
+1c20	00 NOP
+
+1c21	00 NOP
+
+1c22	00 NOP
+
+1c23	00 NOP
+
+1c24	19 DAD D
+
+1c25	3a 6d fa	LDA adr fa6d
+
+1c28	fa 6d 3a	JM adr 3a6d
+
+1c2b	19 DAD D
+
+1c2c	00 NOP
+
+1c2d	00 NOP
+
+1c2e	00 NOP
+
+1c2f	00 NOP
+
+1c30	00 NOP
+
+1c31	00 NOP
+
+1c32	38 
+1c33	7a MOV A,D
+
+1c34	7f MOV A,A
+
+1c35	6d MOV L,L
+
+1c36	ec fa fa	CPE adr fafa
+
+1c39	ec 6d 7f	CPE adr 7f6d
+
+1c3c	7a MOV A,D
+
+1c3d	38 
+1c3e	00 NOP
+
+1c3f	00 NOP
+
+1c40	00 NOP
+
+1c41	00 NOP
+
+1c42	00 NOP
+
+1c43	0e 18	MVI C,D8 18
+
+1c45	be CMP M
+
+1c46	6d MOV L,L
+
+1c47	3d DCR A
+
+1c48	3c INR A
+
+1c49	3d DCR A
+
+1c4a	6d MOV L,L
+
+1c4b	be CMP M
+
+1c4c	18 
+1c4d	0e 00	MVI C,D8 00
+
+1c4f	00 NOP
+
+1c50	00 NOP
+
+1c51	00 NOP
+
+1c52	00 NOP
+
+1c53	00 NOP
+
+1c54	1a LDAX D
+
+1c55	3d DCR A
+
+1c56	68 MOV L,B
+
+1c57	fc fc 68	CM adr 68fc
+
+1c5a	3d DCR A
+
+1c5b	1a LDAX D
+
+1c5c	00 NOP
+
+1c5d	00 NOP
+
+1c5e	00 NOP
+
+1c5f	00 NOP
+
+1c60	00 NOP
+
+1c61	00 NOP
+
+1c62	0f RRC
+
+1c63	1f RAR
+
+1c64	1f RAR
+
+1c65	1f RAR
+
+1c66	1f RAR
+
+1c67	7f MOV A,A
+
+1c68	ff RST 7
+
+1c69	7f MOV A,A
+
+1c6a	1f RAR
+
+1c6b	1f RAR
+
+1c6c	1f RAR
+
+1c6d	1f RAR
+
+1c6e	0f RRC
+
+1c6f	00 NOP
+
+1c70	00 NOP
+
+1c71	04 INR B
+
+1c72	01 13 03	LXI B,D16 0313
+
+1c75	07 RLC
+
+1c76	b3 ORA E
+
+1c77	0f RRC
+
+1c78	2f CMA
+
+1c79	03 INX B
+
+1c7a	2f CMA
+
+1c7b	49 MOV C,C
+
+1c7c	04 INR B
+
+1c7d	03 INX B
+
+1c7e	00 NOP
+
+1c7f	01 40 08	LXI B,D16 0840
+
+1c82	05 DCR B
+
+1c83	a3 ANA E
+
+1c84	0a LDAX B
+
+1c85	03 INX B
+
+1c86	5b MOV E,E
+
+1c87	0f RRC
+
+1c88	27 DAA
+
+1c89	27 DAA
+
+1c8a	0b DCX B
+
+1c8b	4b MOV C,E
+
+1c8c	40 MOV B,B
+
+1c8d	84 ADD H
+
+1c8e	11 48 0f	LXI D,D16 0f48
+
+1c91	99 SBB C
+
+1c92	3c INR A
+
+1c93	7e MOV A,M
+
+1c94	3d DCR A
+
+1c95	bc CMP H
+
+1c96	3e 7c	MVI A,D8 7c
+
+1c98	99 SBB C
+
+1c99	27 DAA
+
+1c9a	1b DCX D
+
+1c9b	1a LDAX D
+
+1c9c	26 0f	MVI H,D8 0f
+
+1c9e	0e 08	MVI C,D8 08
+
+1ca0	0d DCR C
+
+1ca1	13 INX D
+
+1ca2	12 STAX D
+
+1ca3	28 
+1ca4	12 STAX D
+
+1ca5	02 STAX B
+
+1ca6	0e 11	MVI C,D8 11
+
+1ca8	04 INR B
+
+1ca9	26 00	MVI H,D8 00
+
+1cab	03 INX B
+
+1cac	15 DCR D
+
+1cad	00 NOP
+
+1cae	0d DCR C
+
+1caf	02 STAX B
+
+1cb0	04 INR B
+
+1cb1	26 13	MVI H,D8 13
+
+1cb3	00 NOP
+
+1cb4	01 0b 04	LXI B,D16 040b
+
+1cb7	28 
+1cb8	02 STAX B
+
+1cb9	10 
+1cba	20 RIM
+
+1cbb	30 SIM
+
+1cbc	13 INX D
+
+1cbd	08 
+1cbe	0b DCX B
+
+1cbf	13 INX D
+
+1cc0	00 NOP
+
+1cc1	08 
+1cc2	49 MOV C,C
+
+1cc3	22 14 81	SHLD adr 8114
+
+1cc6	42 MOV B,D
+
+1cc7	00 NOP
+
+1cc8	42 MOV B,D
+
+1cc9	81 ADD C
+
+1cca	14 INR D
+
+1ccb	22 49 08	SHLD adr 0849
+
+1cce	00 NOP
+
+1ccf	00 NOP
+
+1cd0	44 MOV B,H
+
+1cd1	aa XRA D
+
+1cd2	10 
+1cd3	88 ADC B
+
+1cd4	54 MOV D,H
+
+1cd5	22 10 aa	SHLD adr aa10
+
+1cd8	44 MOV B,H
+
+1cd9	22 54 88	SHLD adr 8854
+
+1cdc	4a MOV C,D
+
+1cdd	15 DCR D
+
+1cde	be CMP M
+
+1cdf	3f CMC
+
+1ce0	5e MOV E,M
+
+1ce1	25 DCR H
+
+1ce2	04 INR B
+
+1ce3	fc 04 10	CM adr 1004
+
+1ce6	fc 10 20	CM adr 2010
+
+1ce9	fc 20 80	CM adr 8020
+
+1cec	fc 80 00	CM adr 0080
+
+1cef	fe 00	CPI D8 00
+
+1cf1	24 INR H
+
+1cf2	fe 12	CPI D8 12
+
+1cf4	00 NOP
+
+1cf5	fe 00	CPI D8 00
+
+1cf7	48 MOV C,B
+
+1cf8	fe 90	CPI D8 90
+
+1cfa	0f RRC
+
+1cfb	0b DCX B
+
+1cfc	00 NOP
+
+1cfd	29 DAD H
+
+1cfe	00 NOP
+
+1cff	00 NOP
+
+1d00	01 07 01	LXI B,D16 0107
+
+1d03	01 01 04	LXI B,D16 0401
+
+1d06	0b DCX B
+
+1d07	01 06 03	LXI B,D16 0306
+
+1d0a	01 01 0b	LXI B,D16 0b01
+
+1d0d	09 DAD B
+
+1d0e	02 STAX B
+
+1d0f	08 
+1d10	02 STAX B
+
+1d11	0b DCX B
+
+1d12	04 INR B
+
+1d13	07 RLC
+
+1d14	0a LDAX B
+
+1d15	05 DCR B
+
+1d16	02 STAX B
+
+1d17	05 DCR B
+
+1d18	04 INR B
+
+1d19	06 07	MVI B, D8 07
+
+1d1b	08 
+1d1c	0a LDAX B
+
+1d1d	06 0a	MVI B, D8 0a
+
+1d1f	03 INX B
+
+1d20	ff RST 7
+
+1d21	0f RRC
+
+1d22	ff RST 7
+
+1d23	1f RAR
+
+1d24	ff RST 7
+
+1d25	3f CMC
+
+1d26	ff RST 7
+
+1d27	7f MOV A,A
+
+1d28	ff RST 7
+
+1d29	ff RST 7
+
+1d2a	fc ff f8	CM adr f8ff
+
+1d2d	ff RST 7
+
+1d2e	f0 RP
+
+1d2f	ff RST 7
+
+1d30	f0 RP
+
+1d31	ff RST 7
+
+1d32	f0 RP
+
+1d33	ff RST 7
+
+1d34	f0 RP
+
+1d35	ff RST 7
+
+1d36	f0 RP
+
+1d37	ff RST 7
+
+1d38	f0 RP
+
+1d39	ff RST 7
+
+1d3a	f0 RP
+
+1d3b	ff RST 7
+
+1d3c	f8 RM
+
+1d3d	ff RST 7
+
+1d3e	fc ff ff	CM adr ffff
+
+1d41	ff RST 7
+
+1d42	ff RST 7
+
+1d43	ff RST 7
+
+1d44	ff RST 7
+
+1d45	7f MOV A,A
+
+1d46	ff RST 7
+
+1d47	3f CMC
+
+1d48	ff RST 7
+
+1d49	1f RAR
+
+1d4a	ff RST 7
+
+1d4b	0f RRC
+
+1d4c	05 DCR B
+
+1d4d	10 
+1d4e	15 DCR D
+
+1d4f	30 SIM
+
+1d50	94 SUB H
+
+1d51	97 SUB A
+
+1d52	9a SBB D
+
+1d53	9d SBB L
+
+1d54	10 
+1d55	05 DCR B
+
+1d56	05 DCR B
+
+1d57	10 
+1d58	15 DCR D
+
+1d59	10 
+1d5a	10 
+1d5b	05 DCR B
+
+1d5c	30 SIM
+
+1d5d	10 
+1d5e	10 
+1d5f	10 
+1d60	05 DCR B
+
+1d61	15 DCR D
+
+1d62	10 
+1d63	05 DCR B
+
+1d64	00 NOP
+
+1d65	00 NOP
+
+1d66	00 NOP
+
+1d67	00 NOP
+
+1d68	04 INR B
+
+1d69	0c INR C
+
+1d6a	1e 37	MVI E,D8 37
+
+1d6c	3e 7c	MVI A,D8 7c
+
+1d6e	74 MOV M,H
+
+1d6f	7e MOV A,M
+
+1d70	7e MOV A,M
+
+1d71	74 MOV M,H
+
+1d72	7c MOV A,H
+
+1d73	3e 37	MVI A,D8 37
+
+1d75	1e 0c	MVI E,D8 0c
+
+1d77	04 INR B
+
+1d78	00 NOP
+
+1d79	00 NOP
+
+1d7a	00 NOP
+
+1d7b	00 NOP
+
+1d7c	00 NOP
+
+1d7d	22 00 a5	SHLD adr a500
+
+1d80	40 MOV B,B
+
+1d81	08 
+1d82	98 SBB B
+
+1d83	3d DCR A
+
+1d84	b6 ORA M
+
+1d85	3c INR A
+
+1d86	36 1d	MVI M,D8 1d
+
+1d88	10 
+1d89	48 MOV C,B
+
+1d8a	62 MOV H,D
+
+1d8b	b6 ORA M
+
+1d8c	1d DCR E
+
+1d8d	98 SBB B
+
+1d8e	08 
+1d8f	42 MOV B,D
+
+1d90	90 SUB B
+
+1d91	08 
+1d92	00 NOP
+
+1d93	00 NOP
+
+1d94	26 1f	MVI H,D8 1f
+
+1d96	1a LDAX D
+
+1d97	1b DCX D
+
+1d98	1a LDAX D
+
+1d99	1a LDAX D
+
+1d9a	1b DCX D
+
+1d9b	1f RAR
+
+1d9c	1a LDAX D
+
+1d9d	1d DCR E
+
+1d9e	1a LDAX D
+
+1d9f	1a LDAX D
+
+1da0	10 
+1da1	20 RIM
+
+1da2	30 SIM
+
+1da3	60 MOV H,B
+
+1da4	50 MOV D,B
+
+1da5	48 MOV C,B
+
+1da6	48 MOV C,B
+
+1da7	48 MOV C,B
+
+1da8	40 MOV B,B
+
+1da9	40 MOV B,B
+
+1daa	40 MOV B,B
+
+1dab	0f RRC
+
+1dac	0b DCX B
+
+1dad	00 NOP
+
+1dae	18 
+1daf	12 STAX D
+
+1db0	0f RRC
+
+1db1	00 NOP
+
+1db2	02 STAX B
+
+1db3	04 INR B
+
+1db4	26 26	MVI H,D8 26
+
+1db6	08 
+1db7	0d DCR C
+
+1db8	15 DCR D
+
+1db9	00 NOP
+
+1dba	03 INX B
+
+1dbb	04 INR B
+
+1dbc	11 12 0e	LXI D,D16 0e12
+
+1dbf	2c INR L
+
+1dc0	68 MOV L,B
+
+1dc1	1d DCR E
+
+1dc2	0c INR C
+
+1dc3	2c INR L
+
+1dc4	20 RIM
+
+1dc5	1c INR E
+
+1dc6	0a LDAX B
+
+1dc7	2c INR L
+
+1dc8	40 MOV B,B
+
+1dc9	1c INR E
+
+1dca	08 
+1dcb	2c INR L
+
+1dcc	00 NOP
+
+1dcd	1c INR E
+
+1dce	ff RST 7
+
+1dcf	0e 2e	MVI C,D8 2e
+
+1dd1	e0 RPO
+
+1dd2	1d DCR E
+
+1dd3	0c INR C
+
+1dd4	2e ea	MVI L, D8 ea
+
+1dd6	1d DCR E
+
+1dd7	0a LDAX B
+
+1dd8	2e f4	MVI L, D8 f4
+
+1dda	1d DCR E
+
+1ddb	08 
+1ddc	2e 99	MVI L, D8 99
+
+1dde	1c INR E
+
+1ddf	ff RST 7
+
+1de0	27 DAA
+
+1de1	38 
+1de2	26 0c	MVI H,D8 0c
+
+1de4	18 
+1de5	12 STAX D
+
+1de6	13 INX D
+
+1de7	04 INR B
+
+1de8	11 18 27	LXI D,D16 2718
+
+1deb	1d DCR E
+
+1dec	1a LDAX D
+
+1ded	26 0f	MVI H,D8 0f
+
+1def	0e 08	MVI C,D8 08
+
+1df1	0d DCR C
+
+1df2	13 INX D
+
+1df3	12 STAX D
+
+1df4	27 DAA
+
+1df5	1c INR E
+
+1df6	1a LDAX D
+
+1df7	26 0f	MVI H,D8 0f
+
+1df9	0e 08	MVI C,D8 08
+
+1dfb	0d DCR C
+
+1dfc	13 INX D
+
+1dfd	12 STAX D
+
+1dfe	00 NOP
+
+1dff	00 NOP
+
+1e00	00 NOP
+
+1e01	1f RAR
+
+1e02	24 INR H
+
+1e03	44 MOV B,H
+
+1e04	24 INR H
+
+1e05	1f RAR
+
+1e06	00 NOP
+
+1e07	00 NOP
+
+1e08	00 NOP
+
+1e09	7f MOV A,A
+
+1e0a	49 MOV C,C
+
+1e0b	49 MOV C,C
+
+1e0c	49 MOV C,C
+
+1e0d	36 00	MVI M,D8 00
+
+1e0f	00 NOP
+
+1e10	00 NOP
+
+1e11	3e 41	MVI A,D8 41
+
+1e13	41 MOV B,C
+
+1e14	41 MOV B,C
+
+1e15	22 00 00	SHLD adr 0000
+
+1e18	00 NOP
+
+1e19	7f MOV A,A
+
+1e1a	41 MOV B,C
+
+1e1b	41 MOV B,C
+
+1e1c	41 MOV B,C
+
+1e1d	3e 00	MVI A,D8 00
+
+1e1f	00 NOP
+
+1e20	00 NOP
+
+1e21	7f MOV A,A
+
+1e22	49 MOV C,C
+
+1e23	49 MOV C,C
+
+1e24	49 MOV C,C
+
+1e25	41 MOV B,C
+
+1e26	00 NOP
+
+1e27	00 NOP
+
+1e28	00 NOP
+
+1e29	7f MOV A,A
+
+1e2a	48 MOV C,B
+
+1e2b	48 MOV C,B
+
+1e2c	48 MOV C,B
+
+1e2d	40 MOV B,B
+
+1e2e	00 NOP
+
+1e2f	00 NOP
+
+1e30	00 NOP
+
+1e31	3e 41	MVI A,D8 41
+
+1e33	41 MOV B,C
+
+1e34	45 MOV B,L
+
+1e35	47 MOV B,A
+
+1e36	00 NOP
+
+1e37	00 NOP
+
+1e38	00 NOP
+
+1e39	7f MOV A,A
+
+1e3a	08 
+1e3b	08 
+1e3c	08 
+1e3d	7f MOV A,A
+
+1e3e	00 NOP
+
+1e3f	00 NOP
+
+1e40	00 NOP
+
+1e41	00 NOP
+
+1e42	41 MOV B,C
+
+1e43	7f MOV A,A
+
+1e44	41 MOV B,C
+
+1e45	00 NOP
+
+1e46	00 NOP
+
+1e47	00 NOP
+
+1e48	00 NOP
+
+1e49	02 STAX B
+
+1e4a	01 01 01	LXI B,D16 0101
+
+1e4d	7e MOV A,M
+
+1e4e	00 NOP
+
+1e4f	00 NOP
+
+1e50	00 NOP
+
+1e51	7f MOV A,A
+
+1e52	08 
+1e53	14 INR D
+
+1e54	22 41 00	SHLD adr 0041
+
+1e57	00 NOP
+
+1e58	00 NOP
+
+1e59	7f MOV A,A
+
+1e5a	01 01 01	LXI B,D16 0101
+
+1e5d	01 00 00	LXI B,D16 0000
+
+1e60	00 NOP
+
+1e61	7f MOV A,A
+
+1e62	20 RIM
+
+1e63	18 
+1e64	20 RIM
+
+1e65	7f MOV A,A
+
+1e66	00 NOP
+
+1e67	00 NOP
+
+1e68	00 NOP
+
+1e69	7f MOV A,A
+
+1e6a	10 
+1e6b	08 
+1e6c	04 INR B
+
+1e6d	7f MOV A,A
+
+1e6e	00 NOP
+
+1e6f	00 NOP
+
+1e70	00 NOP
+
+1e71	3e 41	MVI A,D8 41
+
+1e73	41 MOV B,C
+
+1e74	41 MOV B,C
+
+1e75	3e 00	MVI A,D8 00
+
+1e77	00 NOP
+
+1e78	00 NOP
+
+1e79	7f MOV A,A
+
+1e7a	48 MOV C,B
+
+1e7b	48 MOV C,B
+
+1e7c	48 MOV C,B
+
+1e7d	30 SIM
+
+1e7e	00 NOP
+
+1e7f	00 NOP
+
+1e80	00 NOP
+
+1e81	3e 41	MVI A,D8 41
+
+1e83	45 MOV B,L
+
+1e84	42 MOV B,D
+
+1e85	3d DCR A
+
+1e86	00 NOP
+
+1e87	00 NOP
+
+1e88	00 NOP
+
+1e89	7f MOV A,A
+
+1e8a	48 MOV C,B
+
+1e8b	4c MOV C,H
+
+1e8c	4a MOV C,D
+
+1e8d	31 00 00	LXI SP, D16 0000
+
+1e90	00 NOP
+
+1e91	32 49 49	STA adr 4949
+
+1e94	49 MOV C,C
+
+1e95	26 00	MVI H,D8 00
+
+1e97	00 NOP
+
+1e98	00 NOP
+
+1e99	40 MOV B,B
+
+1e9a	40 MOV B,B
+
+1e9b	7f MOV A,A
+
+1e9c	40 MOV B,B
+
+1e9d	40 MOV B,B
+
+1e9e	00 NOP
+
+1e9f	00 NOP
+
+1ea0	00 NOP
+
+1ea1	7e MOV A,M
+
+1ea2	01 01 01	LXI B,D16 0101
+
+1ea5	7e MOV A,M
+
+1ea6	00 NOP
+
+1ea7	00 NOP
+
+1ea8	00 NOP
+
+1ea9	7c MOV A,H
+
+1eaa	02 STAX B
+
+1eab	01 02 7c	LXI B,D16 7c02
+
+1eae	00 NOP
+
+1eaf	00 NOP
+
+1eb0	00 NOP
+
+1eb1	7f MOV A,A
+
+1eb2	02 STAX B
+
+1eb3	0c INR C
+
+1eb4	02 STAX B
+
+1eb5	7f MOV A,A
+
+1eb6	00 NOP
+
+1eb7	00 NOP
+
+1eb8	00 NOP
+
+1eb9	63 MOV H,E
+
+1eba	14 INR D
+
+1ebb	08 
+1ebc	14 INR D
+
+1ebd	63 MOV H,E
+
+1ebe	00 NOP
+
+1ebf	00 NOP
+
+1ec0	00 NOP
+
+1ec1	60 MOV H,B
+
+1ec2	10 
+1ec3	0f RRC
+
+1ec4	10 
+1ec5	60 MOV H,B
+
+1ec6	00 NOP
+
+1ec7	00 NOP
+
+1ec8	00 NOP
+
+1ec9	43 MOV B,E
+
+1eca	45 MOV B,L
+
+1ecb	49 MOV C,C
+
+1ecc	51 MOV D,C
+
+1ecd	61 MOV H,C
+
+1ece	00 NOP
+
+1ecf	00 NOP
+
+1ed0	00 NOP
+
+1ed1	3e 45	MVI A,D8 45
+
+1ed3	49 MOV C,C
+
+1ed4	51 MOV D,C
+
+1ed5	3e 00	MVI A,D8 00
+
+1ed7	00 NOP
+
+1ed8	00 NOP
+
+1ed9	00 NOP
+
+1eda	21 7f 01	LXI H,D16 017f
+
+1edd	00 NOP
+
+1ede	00 NOP
+
+1edf	00 NOP
+
+1ee0	00 NOP
+
+1ee1	23 INX H
+
+1ee2	45 MOV B,L
+
+1ee3	49 MOV C,C
+
+1ee4	49 MOV C,C
+
+1ee5	31 00 00	LXI SP, D16 0000
+
+1ee8	00 NOP
+
+1ee9	42 MOV B,D
+
+1eea	41 MOV B,C
+
+1eeb	49 MOV C,C
+
+1eec	59 MOV E,C
+
+1eed	66 MOV H,M
+
+1eee	00 NOP
+
+1eef	00 NOP
+
+1ef0	00 NOP
+
+1ef1	0c INR C
+
+1ef2	14 INR D
+
+1ef3	24 INR H
+
+1ef4	7f MOV A,A
+
+1ef5	04 INR B
+
+1ef6	00 NOP
+
+1ef7	00 NOP
+
+1ef8	00 NOP
+
+1ef9	72 MOV M,D
+
+1efa	51 MOV D,C
+
+1efb	51 MOV D,C
+
+1efc	51 MOV D,C
+
+1efd	4e MOV C,M
+
+1efe	00 NOP
+
+1eff	00 NOP
+
+1f00	00 NOP
+
+1f01	1e 29	MVI E,D8 29
+
+1f03	49 MOV C,C
+
+1f04	49 MOV C,C
+
+1f05	46 MOV B,M
+
+1f06	00 NOP
+
+1f07	00 NOP
+
+1f08	00 NOP
+
+1f09	40 MOV B,B
+
+1f0a	47 MOV B,A
+
+1f0b	48 MOV C,B
+
+1f0c	50 MOV D,B
+
+1f0d	60 MOV H,B
+
+1f0e	00 NOP
+
+1f0f	00 NOP
+
+1f10	00 NOP
+
+1f11	36 49	MVI M,D8 49
+
+1f13	49 MOV C,C
+
+1f14	49 MOV C,C
+
+1f15	36 00	MVI M,D8 00
+
+1f17	00 NOP
+
+1f18	00 NOP
+
+1f19	31 49 49	LXI SP, D16 4949
+
+1f1c	4a MOV C,D
+
+1f1d	3c INR A
+
+1f1e	00 NOP
+
+1f1f	00 NOP
+
+1f20	00 NOP
+
+1f21	08 
+1f22	14 INR D
+
+1f23	22 41 00	SHLD adr 0041
+
+1f26	00 NOP
+
+1f27	00 NOP
+
+1f28	00 NOP
+
+1f29	00 NOP
+
+1f2a	41 MOV B,C
+
+1f2b	22 14 08	SHLD adr 0814
+
+1f2e	00 NOP
+
+1f2f	00 NOP
+
+1f30	00 NOP
+
+1f31	00 NOP
+
+1f32	00 NOP
+
+1f33	00 NOP
+
+1f34	00 NOP
+
+1f35	00 NOP
+
+1f36	00 NOP
+
+1f37	00 NOP
+
+1f38	00 NOP
+
+1f39	14 INR D
+
+1f3a	14 INR D
+
+1f3b	14 INR D
+
+1f3c	14 INR D
+
+1f3d	14 INR D
+
+1f3e	00 NOP
+
+1f3f	00 NOP
+
+1f40	00 NOP
+
+1f41	22 14 7f	SHLD adr 7f14
+
+1f44	14 INR D
+
+1f45	22 00 00	SHLD adr 0000
+
+1f48	00 NOP
+
+1f49	03 INX B
+
+1f4a	04 INR B
+
+1f4b	78 MOV A,B
+
+1f4c	04 INR B
+
+1f4d	03 INX B
+
+1f4e	00 NOP
+
+1f4f	00 NOP
+
+1f50	24 INR H
+
+1f51	1b DCX D
+
+1f52	26 0e	MVI H,D8 0e
+
+1f54	11 26 1c	LXI D,D16 1c26
+
+1f57	26 0f	MVI H,D8 0f
+
+1f59	0b DCX B
+
+1f5a	00 NOP
+
+1f5b	18 
+1f5c	04 INR B
+
+1f5d	11 12 25	LXI D,D16 2512
+
+1f60	26 26	MVI H,D8 26
+
+1f62	28 
+1f63	1b DCX D
+
+1f64	26 0f	MVI H,D8 0f
+
+1f66	0b DCX B
+
+1f67	00 NOP
+
+1f68	18 
+1f69	04 INR B
+
+1f6a	11 26 26	LXI D,D16 2626
+
+1f6d	1b DCX D
+
+1f6e	26 02	MVI H,D8 02
+
+1f70	0e 08	MVI C,D8 08
+
+1f72	0d DCR C
+
+1f73	26 01	MVI H,D8 01
+
+1f75	01 00 00	LXI B,D16 0000
+
+1f78	01 00 02	LXI B,D16 0200
+
+1f7b	01 00 02	LXI B,D16 0200
+
+1f7e	01 00 60	LXI B,D16 6000
+
+1f81	10 
+1f82	0f RRC
+
+1f83	10 
+1f84	60 MOV H,B
+
+1f85	30 SIM
+
+1f86	18 
+1f87	1a LDAX D
+
+1f88	3d DCR A
+
+1f89	68 MOV L,B
+
+1f8a	fc fc 68	CM adr 68fc
+
+1f8d	3d DCR A
+
+1f8e	1a LDAX D
+
+1f8f	00 NOP
+
+1f90	08 
+1f91	0d DCR C
+
+1f92	12 STAX D
+
+1f93	04 INR B
+
+1f94	11 13 26	LXI D,D16 2613
+
+1f97	26 02	MVI H,D8 02
+
+1f99	0e 08	MVI C,D8 08
+
+1f9b	0d DCR C
+
+1f9c	0d DCR C
+
+1f9d	2a 50 1f	LHLD adr 1f50
+
+1fa0	0a LDAX B
+
+1fa1	2a 62 1f	LHLD adr 1f62
+
+1fa4	07 RLC
+
+1fa5	2a e1 1f	LHLD adr 1fe1
+
+1fa8	ff RST 7
+
+1fa9	02 STAX B
+
+1faa	11 04 03	LXI D,D16 0304
+
+1fad	08 
+1fae	13 INX D
+
+1faf	26 00	MVI H,D8 00
+
+1fb1	60 MOV H,B
+
+1fb2	10 
+1fb3	0f RRC
+
+1fb4	10 
+1fb5	60 MOV H,B
+
+1fb6	38 
+1fb7	19 DAD D
+
+1fb8	3a 6d fa	LDA adr fa6d
+
+1fbb	fa 6d 3a	JM adr 3a6d
+
+1fbe	19 DAD D
+
+1fbf	00 NOP
+
+1fc0	00 NOP
+
+1fc1	20 RIM
+
+1fc2	40 MOV B,B
+
+1fc3	4d MOV C,L
+
+1fc4	50 MOV D,B
+
+1fc5	20 RIM
+
+1fc6	00 NOP
+
+1fc7	00 NOP
+
+1fc8	00 NOP
+
+1fc9	00 NOP
+
+1fca	00 NOP
+
+1fcb	ff RST 7
+
+1fcc	b8 CMP B
+
+1fcd	ff RST 7
+
+1fce	80 ADD B
+
+1fcf	1f RAR
+
+1fd0	10 
+1fd1	97 SUB A
+
+1fd2	00 NOP
+
+1fd3	80 ADD B
+
+1fd4	1f RAR
+
+1fd5	00 NOP
+
+1fd6	00 NOP
+
+1fd7	01 d0 22	LXI B,D16 22d0
+
+1fda	20 RIM
+
+1fdb	1c INR E
+
+1fdc	10 
+1fdd	94 SUB H
+
+1fde	00 NOP
+
+1fdf	20 RIM
+
+1fe0	1c INR E
+
+1fe1	28 
+1fe2	1c INR E
+
+1fe3	26 0f	MVI H,D8 0f
+
+1fe5	0b DCX B
+
+1fe6	00 NOP
+
+1fe7	18 
+1fe8	04 INR B
+
+1fe9	11 12 26	LXI D,D16 2612
+
+1fec	1c INR E
+
+1fed	26 02	MVI H,D8 02
+
+1fef	0e 08	MVI C,D8 08
+
+1ff1	0d DCR C
+
+1ff2	12 STAX D
+
+1ff3	0f RRC
+
+1ff4	14 INR D
+
+1ff5	12 STAX D
+
+1ff6	07 RLC
+
+1ff7	26 00	MVI H,D8 00
+
+1ff9	08 
+1ffa	08 
+1ffb	08 
+1ffc	08 
+1ffd	08 
+1ffe	00 NOP
+
+1fff	00 NOP
+
