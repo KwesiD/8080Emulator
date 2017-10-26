@@ -1,0 +1,19 @@
+{
+  "name": "8080emulator",
+  "version": "1.0.0",
+  "description": "Learning to build an Space Invaders emulator",
+  "main": "disassembler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KwesiD/8080Emulator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KwesiD/8080Emulator/issues"
+  },
+  "homepage": "https://github.com/KwesiD/8080Emulator#readme"
+}
