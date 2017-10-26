@@ -15,21 +15,26 @@ const data = fs.readFileSync(__dirname + "/" + process.argv[2]);
 let hex = (new Buffer(data,'utf8')).toString('hex');
 hex = helpers.splitBytes(hex); //parse data to array of bytes
 //const dump = disassemble(hex);  //disassemble file
+let pc = 0; //program counter
+const romSize = hex.length;
+while(pc < romSize){
+	pc += disassemble(hex,pc);
+}
 
 function disassemble(hexdump,pc){
 	//console.log('Disassembling file');
 	let ele = hexdump[pc]; //current element
-	let line = pc + "\t" + ele + "\t";
+	let line = pc.toString(16) + "\t" + ele + " ";
 	let opbytes = parseInt(opcodeTable[ele].size);
 	switch(parseInt(opcodeTable[ele].size)){
 		case 1:
 			line += opcodeTable[ele].name + "\n";
 			break;
 		case 2:
-			line += hexdump[pc+1] + "\t" +  opcodeTable[ele].name + " " + hexdump[pc+1] + '\n';
+			line +=  hexdump[pc+1] + "\t" +  opcodeTable[ele].name + " " + hexdump[pc+1] + '\n';
 			break;
 		case 3:
-			line += hexdump[pc+1] + " " + hexdump[pc+2] + "\t" + opcodeTable[ele].name + " " + hexdump[pc+2] + "" + hexdump[pc+1] + '\n';
+			line +=  hexdump[pc+1] + " " + hexdump[pc+2] + "\t" + opcodeTable[ele].name + " " + hexdump[pc+2] + "" + hexdump[pc+1] + '\n';
 			break;
 	}
 	console.log(line);
