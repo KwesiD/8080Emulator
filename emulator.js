@@ -36,14 +36,14 @@ function EmulatorState(){
 
 	//Updates register pairs or stack pointer/program counter
 	//pair is a single string that is mapped in the registerPairTable.
-	//Bytes is an array of 0,1,or 2 bytes.
+	//Bytes is an array of 0,1,or 2 bytes as strings
 	this.updatePair = (pair,bytes) => {
 		pair = registerPairTable[pair].split(' ');
 		if(pair.length === 1){ //stack pointer or program counter
 			if(pair[0] === 'SP'){
 				this.SP = bytes[1] + bytes[0];
 			}
-			else{
+			else{ //pair equal to PC
 				this.PC = bytes[1] + bytes[0];
 			}
 		}
@@ -164,3 +164,48 @@ function getOpcodeType(opcode){
 	return [type,params];
 }
 
+
+/**
+Adds to hex values,looping back to 0 if it exceeds
+the max value. 
+Ie:  0xFFFF + 1 = 0x0000
+Returns the value as a string
+**/
+function addToHex(hex,increment){
+	let temp = hex;
+	increment = Number(increment);
+	hex = Number(hex);
+
+	hex += increment; //increment hex
+	if(hex.toString('16').length > temp.length){
+			
+	}
+	else{
+		return hex.toString('16');
+	}
+
+
+}
+
+
+/**
+Adds to register pairs
+**/
+function addToRP(){
+	let pair = registerPairTable[registerpair].split(' ');
+	if(pair.length === 1){
+		addToPCSP(pair,increment,state);
+	}
+	else{
+		
+	}
+}
+
+
+/**
+Adds values to the stackpointer or 
+program counter.
+**/
+function addToPCSP(){
+
+}
