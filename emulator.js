@@ -172,18 +172,17 @@ Ie:  0xFFFF + 1 = 0x0000
 Returns the value as a string
 **/
 function addToHex(hex,increment){
-	let temp = hex;
+	let temp = Number(hex).toString('16'); //truncate the 0x prefix
 	increment = Number(increment);
 	hex = Number(hex);
 
 	hex += increment; //increment hex
+	console.log(hex.toString('16').length);
+	console.log(temp.length);
 	if(hex.toString('16').length > temp.length){
-			
+		hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around
 	}
-	else{
-		return hex.toString('16');
-	}
-
+	return hex.toString('16');
 
 }
 
@@ -191,13 +190,17 @@ function addToHex(hex,increment){
 /**
 Adds to register pairs
 **/
-function addToRP(){
+function addToRP(registerpair,increment,state){
 	let pair = registerPairTable[registerpair].split(' ');
 	if(pair.length === 1){
-		addToPCSP(pair,increment,state);
+		addToPCSP(pair,increment,state); //register is PC or SP
 	}
 	else{
-		
+		let reg1 = pair[0];
+		let reg2 = pair[1];
+		state[reg1] = addToHex(state[reg1],increment);
+		state[reg2] = addToHex(state[reg2],increment);
+
 	}
 }
 
@@ -206,6 +209,7 @@ function addToRP(){
 Adds values to the stackpointer or 
 program counter.
 **/
-function addToPCSP(){
+function addToPCSP(register,increment,state){
+	state[register] ///adjust for padding of int.   ////TODO: NOTE since the SP and PC registers are 16 bit (0b1111 = 0xf = 15), everything for these should be padded above for 16 bits
 
 }
