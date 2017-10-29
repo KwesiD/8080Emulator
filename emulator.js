@@ -86,11 +86,14 @@ function executeOpcode(opcode,bytes,state){
 		case 'INR':
 			let result = addToReg(params[0],1,state,true);
 			setFlags(code,result,state);
-			//need to set flags
-
-
-
-		case 
+			break;
+		case 'DCR':
+			let result = addToReg(params[0],-1,state,true); //will adding negative numbers work? need to test if number falls below 0
+			setFlags(code,result,state);
+			break;
+		case 'MVI':
+			state[params[0]] = bytes[0];
+			break;
 	}
 
 
