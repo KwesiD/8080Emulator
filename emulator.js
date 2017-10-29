@@ -84,7 +84,8 @@ function executeOpcode(opcode,bytes,state){
 			addToRP(params[0],1,state);
 			break;
 		case 'INR':
-			addToReg(params[0],1,state);
+			let result = addToReg(params[0],1,state,true);
+			setFlags(code,result,state);
 			//need to set flags
 
 
@@ -219,7 +220,7 @@ the max value.
 Ie:  0xFFFF + 1 = 0x0000
 Returns the value as a string
 **/
-function addToHex(hex,increment,state){
+function addToHex(hex,increment,state=null,flagged=false){
 	//let temp = Number(hex).toString('16'); //truncate the 0x prefix   //TODO: May not be necessary
 	let size =  hex.length;
 	let temp = hex;
@@ -230,11 +231,16 @@ function addToHex(hex,increment,state){
 	//console.log(temp.length);
 	if(hex.toString('16').length > temp.length){
 		hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around //0x denotes hex during conversion
-		state.C = true; //sets carry to true
+		if(flagged){
+			state.C = true; //sets carry
+		}
 	}
 	else{
-		state.C = false; //sets carry to false
+		if(flagged){
+			state.C = false; //resets carry
+		}
 	}
+	
 	return padBytes(hex.toString('16'),size);
 
 }
@@ -242,22 +248,23 @@ function addToHex(hex,increment,state){
 /**
 Add to single register
 **/
-function addToReg(register,increment,state){
-	state[register] = addToHex(state[register],increment,state);
+function addToReg(register,increment,state,flagged=false){
+	state[register] = addToHex(state[register],increment,state,flagged);
+	return state[register];
 }
 /**
 Adds to register pairs
 **/
-function addToRP(registerpair,increment,state){
+function addToRP(registerpair,increment,state,flagged=false){
 	let pair = registerPairTable[registerpair].split(' ');
 	if(pair.length === 1){
-		addToPCSP(pair,increment,state); //register is PC or SP
+		addToPCSP(pair,increment,state,flagged); //register is PC or SP
 	}
 	else{
 		let reg1 = pair[0];
 		let reg2 = pair[1];
-		state[reg1] = addToHex(state[reg1],increment,state);
-		state[reg2] = addToHex(state[reg2],increment,state);
+		state[reg1] = addToHex(state[reg1],increment,flagged); //only work on higher order register
+		state[reg2] = addToHex(state[reg2],increment);
 	}
 }
 
@@ -266,10 +273,10 @@ function addToRP(registerpair,increment,state){
 Adds values to the stackpointer or 
 program counter.
 **/
-function addToPCSP(register,increment,state){
+function addToPCSP(register,increment,state,flagged=false){
 	let bytes = state[register];
-	let byte1 = addToHex(bytes.substring(0,2),increment,state);
-	let byte2 = addToHex(bytes.substring(2,4),increment,state);
+	let byte1 = addToHex(bytes.substring(0,2),increment,state,flagged);//only work on higher order register
+	let byte2 = addToHex(bytes.substring(2,4),increment);
 	state[register] = byte1 + byte2;
 
 }
