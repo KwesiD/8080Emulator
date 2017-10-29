@@ -3,7 +3,7 @@
 const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 
 //a table containing conversions from single letter register names to registerpairs
-const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC'};
+const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'memLoc'};
 
 //State object constructor
 function EmulatorState(){
@@ -23,7 +23,7 @@ function EmulatorState(){
 	//stack pointer
 	this.SP = '0000';
 	//memory location
-	this.memLoc = '0000';
+	this.memLoc = '0000'; //need to modify functions to resolve memory locations first
 	//flags
 	this.Z = false;
 	this.S = false;
