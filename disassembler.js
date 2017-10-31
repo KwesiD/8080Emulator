@@ -4,22 +4,26 @@ const buffer = require('buffer');
 const helpers = require('./parseHelpers'); //loads helper methods
 const fs = require('fs');
 
-console.log("Loading OpCodes");
-const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 
-console.log("Loading game rom");
-if(process.argv.length < 3){
-	throw "No file found!";
+function startDisassembly(){
+	console.log("Loading OpCodes");
+	const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
+
+	console.log("Loading game rom");
+	if(process.argv.length < 3){
+		throw "No file found!";
+	}
+	const data = fs.readFileSync(__dirname + "/" + process.argv[2]);
+	let hex = (new Buffer(data,'utf8')).toString('hex');
+	hex = helpers.splitBytes(hex); //parse data to array of bytes
+	//const dump = disassemble(hex);  //disassemble file
+	let pc = 0; //program counter
+	const romSize = hex.length;
+	while(pc < romSize){
+		pc += disassemble(hex,pc);
+	}
 }
-const data = fs.readFileSync(__dirname + "/" + process.argv[2]);
-let hex = (new Buffer(data,'utf8')).toString('hex');
-hex = helpers.splitBytes(hex); //parse data to array of bytes
-//const dump = disassemble(hex);  //disassemble file
-let pc = 0; //program counter
-const romSize = hex.length;
-while(pc < romSize){
-	pc += disassemble(hex,pc);
-}
+
 
 function disassemble(hexdump,pc){
 	//console.log('Disassembling file');
@@ -54,3 +58,7 @@ function disassemble(hexdump,pc){
 	
 }
 
+
+module.export = {
+	startDisassembly:startDisassembly
+};
