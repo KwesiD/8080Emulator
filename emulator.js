@@ -3,7 +3,7 @@
 const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 
 //a table containing conversions from single letter register names to registerpairs
-const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'memLoc'};
+const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'H L'};
 
 //State object constructor
 function EmulatorState(){
@@ -23,7 +23,7 @@ function EmulatorState(){
 	//stack pointer
 	this.SP = '0000';
 	//memory location
-	this.memLoc = '0000'; //need to modify functions to resolve memory locations first
+	this.memory = new Array(0xFFFF).fill('0000');//need to modify functions to resolve memory locations first
 	//flags
 	this.Z = false;
 	this.S = false;
@@ -43,8 +43,11 @@ function EmulatorState(){
 			if(pair[0] === 'SP'){
 				this.SP = bytes[1] + bytes[0];
 			}
-			else{ //pair equal to PC
+			else if (pair[0] === 'PC'){ //pair equal to PC
 				this.PC = bytes[1] + bytes[0];
+			}
+			else{//memory Location
+				//this.memLoc = bytes[1] + bytes[0];
 			}
 		}
 		else{ //if register pair
@@ -54,8 +57,37 @@ function EmulatorState(){
 
 	};
 
-}
+	/**
+	Loads game data into memory
+	**/
+	this.loadGame = (gameData) => {
+		for(let i = 0;i < gameData.length;i++){
+			this.memory[i] = gameData[i];
+		}
+	};
 
+	/**
+	Gets the data from the memory pair
+	**/
+	this.getPair = (pair) => {
+		pair = registerPairTable[pair].split(' ');
+		if(pair.length === 1){ //stack pointer or program counter
+			return this[pair[0]];
+		}
+		else{ //if register pair
+			return this[pair[0]] + this[pair[1]];
+		}
+	};
+
+	this.getMemory = (memLoc) => {
+		return this.memory[Number(memLoc)];
+	};
+
+	this.setMemory = (memLoc,data) => {
+		this.memory[Number(memLoc)] = data;
+	};
+
+}
 
 /**
 Executes the opcode passed into this function to update the current state
@@ -75,27 +107,91 @@ function executeOpcode(opcode,bytes,state){
 			state.updatePair(params[0],bytes);
 			break;
 
-
 		case 'STAX':
-			state.updatePair(params[0],bytes);
+			let memloc = state.getPair(params[0]);
+			state.setMemory(memLoc,state.A);
 			break;
 
 		case 'INX':
 			addToRP(params[0],1,state);
 			break;
+
 		case 'INR':
 			let result = addToReg(params[0],1,state,true);
 			setFlags(code,result,state);
 			break;
+
 		case 'DCR':
-			let result = addToReg(params[0],-1,state,true); //will adding negative numbers work? need to test if number falls below 0
+			let result = addToReg(params[0],-1,state,true); //TODO: will adding negative numbers work? need to test if number falls below 0
 			setFlags(code,result,state);
 			break;
-		case 'MVI':
-			state[params[0]] = bytes[0];
-			break;
-	}
 
+		case 'MVI':
+			state.updatePair(params[0],bytes);
+			//state[params[0]] = bytes[0];
+			break;
+
+		case 'RLC':
+			state.A = rotateLeft(state.A,state); //carries
+			break;
+
+		case 'DAD': //always adds to HL pair //carries
+			let result = swap(splitBytes(addRegisterPairs('H',params[0],state)));
+			state.updatePair('H',result);
+			break;
+		
+		case 'LDAX':
+			let data = state.getMemory(state.getPair(params[0]));
+			state.A = data;
+			break;
+		
+		case 'DCX':
+			addToRP(params[0],-1,state,false);
+			break;
+
+		case 'RRC':
+			state.A = rotateRight(state.A,state); //carries
+			break;
+
+		case 'STA':
+			let adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			state.setMemory(adr,state.A);
+			break;
+
+		case 'LDA':
+			let adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			state.A = state.getMemory(adr);
+			break;
+
+		case 'MOV':
+			move(params[0],params[1]);
+			break;
+
+		case 'ANA':
+			bitwiseOp(param[0],state,'and');
+			setFlags(code,result,state);
+			break;
+
+		case 'XRA':
+			bitwiseOp(param[0],state,'xor');
+			setFlags(code,result,state);
+			break;
+
+		case 'ORA':
+			bitwiseOp(param[0],state,'or');
+			setFlags(code,result,state);
+			break;
+
+		case 'DAA':
+			DAA(state);
+			break;
+
+		case 'POP':
+		
+			break;
+		
+		default:
+			unimplemented(opcode,bytes,state);
 
 	/*switch(code.name){
 		case '00': //NOP. Does nothing
@@ -137,6 +233,28 @@ function executeOpcode(opcode,bytes,state){
 	}
 }
 
+/**
+Takes a pair of bytes in an array
+and swaps them
+**/
+function swap(bytes){
+	let temp = bytes[0];
+	bytes[0] = bytes[1];
+	bytes[1] = temp;
+	return bytes;
+}
+
+/**
+Takes 2 bytes in a string and splits them evenly.
+Pads the original string first.
+**/
+function splitBytes(bytes){
+	bytes = padBytes(bytes,2);
+	let byte1 = bytes.substring(0,2);
+	let byte2 = bytes.substring(2,4);
+	return [byte1,byte2];
+
+}
 
 /**
 Sets the flags for the current state.
@@ -170,6 +288,7 @@ function setFlags(opcode,result,state){
 
 			//TODO: How to handle carry and a-carry. How to handle when 2 parts of the number are carried (high and low order)
 			//When do we not touch the carry? do we set/reset always?
+
 
 		}
 	}
@@ -235,12 +354,12 @@ function addToHex(hex,increment,state=null,flagged=false){
 	if(hex.toString('16').length > temp.length){
 		hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around //0x denotes hex during conversion
 		if(flagged){
-			state.C = true; //sets carry
+			state.CY = true; //sets carry
 		}
 	}
 	else{
 		if(flagged){
-			state.C = false; //resets carry
+			state.CY = false; //resets carry
 		}
 	}
 	
@@ -271,6 +390,17 @@ function addToRP(registerpair,increment,state,flagged=false){
 	}
 }
 
+/**
+Adds Register pairs together. ie: HL + BC
+Sets carry.
+**/
+function addRegisterPairs(pair1,pair2,state){
+	pair1 = registerPairTable[pair1]; //gets the register pairs
+	pair2 = registerPairTable[pair2];
+	let reg1 = pair1[0] + pair1[1];
+	let reg2 = pair2[0] + pair2[1];
+	return addToHex(reg1,Number('0x' + reg2),state,true); //flagged for carry
+}
 
 /**
 Adds values to the stackpointer or 
@@ -298,4 +428,91 @@ function padBytes(bytes,mul=1){
 	return bytes;
 }
 
+/**
+Rotates bits to the left.
+Sets carry
+**/
+function rotateLeft(hex,state){
+	let bits = (Number('0x' + hex)).toString('2');
+	let lead = bits[0];
+	bits = bits.substring(1,bits.length) + lead;
+	state.CY = lead; //sets carry
+	let num = Number('0b' + bits);
+	return ""+num; //to string
+}
 
+/**
+Rotates bits to the right.
+Sets carry
+**/
+function rotateRight(hex,state){
+	let bits = (Number('0x' + hex)).toString('2');
+	let end = bits[bits.length-1];
+	bits = end + bits.substring(0,bits.length-1);
+	state.CY = end; //sets carry
+	let num = Number('0b' + bits);
+	return ""+num; //to string
+}
+
+
+/**
+Special function for DAA
+**/
+function DAA(state){
+	if(((state.A & 15) > 9) || state.AC === true){ //accumulator & 00001111
+		addToReg('A',6,state);
+		////TODO: If carry, then set aux, else reset
+	}
+	if(((state.A & 240) > 9) || state.CY === true){ //acc & 240
+		addToReg('A',96,state); //?? most significant 4 bits incremented by 6. 01100000 (96) increments first 4  by 6? (6 = 0110)
+		////TODO: If carry, then set regular carry, else do nothing
+	}
+}
+
+
+/**
+Returns an error when an unimplemented opcode is run.
+**/
+function unimplemented(opcode,bytes,state){
+	console.log(opcode,bytes,state);
+	throw "Error, unimplemented!!";
+}
+
+function move(loc1,loc2,state){
+	if(loc1 === 'M'){
+		state.setMemory(state.getPair('H'),state[loc2]);
+	}
+	else if(loc2 === 'M'){
+		state[loc1] = state.getMemory(state.getPair('H'));
+	}
+	else{
+		state[loc1] = state[loc2];
+	}
+}
+
+
+/**
+performs bitwise operations based on operator variable
+**/
+function bitwiseOp(reg,state,operator){
+	let val;
+	let prev = state.A;
+	if(reg === 'M'){
+		val = state.getMemory(state.getPair('H'));
+	}
+	else{
+		val = state[reg];
+	}
+	switch(operator){
+		case 'and':
+			state.A &= val; break;
+		case 'or':
+			state.A |= val; break;
+		case 'xor':
+			state.A ^= val; break;
+	}
+	state.CY = false; //resets carry
+}
+
+
+//TODO: Implement POP, JNZ, JMP, PUSH, ADI, RET, CALL, OUT, ANI, XCHG, EI, CPI
