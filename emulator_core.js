@@ -24,6 +24,7 @@ function EmulatorState(){
 	this.SP = '0000';
 	//memory location
 	this.memory = new Array(0xFFFF).fill('00');//need to modify functions to resolve memory locations first
+	this.gameFile = []; //file ocntaining the disassembled game data
 	//flags
 	this.Z = false;
 	this.S = false;
@@ -65,13 +66,17 @@ function EmulatorState(){
 	this.loadGame = (gameData) => {
 		gameData.forEach((element) => {
 			let index = Number('0x' + element.split('\t')[0]); //sets the instruction at the memory location (may need to change this, but the program (hopefully) shouldnt try to reference the opcode)
-			this.memory[index] = element;
-			let bytes = helpers.parseInstructions(element)[1]; //returns opcode and bytes. gets only bytes
+			let opcode,bytes;
+			this.gameFile[index] = element;
+			[opcode,bytes] = helpers.parseInstructions(element); //returns opcode and bytes. gets only bytes
+			this.memory[index] = opcode; //only store the bytes of the game
 			bytes.forEach((element) => { //sets the bytes into the subsequent memory locations
 				this.memory[++index] = element; //increment index before assignment
 			});
-
 		});
+		//this.gameFile = this.memory.slice(0,gameData.length); //store the disassembled game data
+		//console.log(this.gameFile);
+
 /*
 		for(let i = 0;i < gameData.length;i++){
 			this.memory[i] = gameData[i];
@@ -120,7 +125,7 @@ function EmulatorState(){
 		let props = Object.getOwnPropertyNames(this);
 		let string = "";
 		props.forEach((prop) =>{
-			if((prop === 'memory') || (typeof(this[prop]) === 'function')){
+			if((prop === 'memory') || (prop === 'gameFile') || (typeof(this[prop]) === 'function')){
 				return;
 			}
 			if(string !== ""){
@@ -263,7 +268,7 @@ function executeOpcode(opcode,bytes,state){
 			if(!state.Z){
 				state.PC = bytes[1] + bytes[0];
 			}
-			process.exit();
+			//process.exit();
 			break;
 
 		case 'JMP':
@@ -344,14 +349,14 @@ function setFlags(opcode,result,state){
 					state.Z = false;
 				}
 				break;
-			case 'S':
+			/*case 'S':
 				if((Number("0x"+result) & 128) === 128){ //result & 10000000. the zeroes mask everything but the MSB
 					state.S = true;
 				} 
 				else{
 					state.S = false;
 				}
-				break;
+				break;*/
 			case 'P':
 				state.P = checkParity(result);	
 				break;
@@ -420,26 +425,41 @@ Returns the value as a string
 **/
 function addToHex(hex,increment,state=null,flagged=false){
 	//let temp = Number(hex).toString('16'); //truncate the 0x prefix   //TODO: May not be necessary
+
 	let size =  hex.length;
 	let temp = hex;
 	increment = Number(increment);
-	hex = Number(hex);
+	hex = Number('0x'+hex);
 	hex += increment; //increment hex
-	//console.log(hex.toString('16').length);
-	//console.log(temp.length);
-	if(hex.toString('16').length > temp.length){
-		hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around //0x denotes hex during conversion
-		if(flagged){
-			state.CY = true; //sets carry
+
+	if(hex < 0){//if neg
+		let max =  Math.pow(16,size); //hex system
+		hex = max+increment;
+		//console.log(hex);
+		/*hex += increment;
+		if(hex < 0){
+			let max =  Math.pow(2,size-1);
+		}*/
+		/*let mask = Math.pow(2,size-1); //creates the mask fo 2's compliment	
+		hex = (-(hex&mask) + (hex&(~mask)));
+		console.log(hex);*/
+	}
+	else{//if not negative 
+		//console.log(hex.toString('16').length);
+		//console.log(temp.length);
+		if(hex.toString('16').length > temp.length){
+			hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around //0x denotes hex during conversion
+			if(flagged){
+				state.CY = true; //sets carry
+			}
+		}
+		else{
+			if(flagged){
+				state.CY = false; //resets carry
+			}
 		}
 	}
-	else{
-		if(flagged){
-			state.CY = false; //resets carry
-		}
-	}
-	
-	return padBytes(hex.toString('16'),size);
+	return hex.toString('16');//padBytes(hex.toString('16'),size);
 
 }
 
@@ -461,8 +481,13 @@ function addToRP(registerpair,increment,state,flagged=false){
 	else{
 		let reg1 = pair[0];
 		let reg2 = pair[1];
-		state[reg1] = addToHex(state[reg1],increment,flagged); //only work on higher order register
-		state[reg2] = addToHex(state[reg2],increment);
+		let result = addToHex(state[reg1]+state[reg2],increment,flagged);
+		result = splitBytes(result);
+		state[reg1] = result[0];
+		state[reg2] = result[1];
+
+		/*state[reg1] = addToHex(state[reg1],increment,flagged); //only work on higher order register
+		state[reg2] = addToHex(state[reg2],increment);*/
 	}
 }
 
@@ -484,9 +509,10 @@ program counter.
 **/
 function addToPCSP(register,increment,state,flagged=false){
 	let bytes = state[register];
-	let byte1 = addToHex(bytes.substring(0,2),increment,state,flagged);//only work on higher order register
+	state[register] = addToHex(bytes,increment,state,flagged);
+	/*let byte1 = addToHex(bytes.substring(0,2),increment,state,flagged);//only work on higher order register
 	let byte2 = addToHex(bytes.substring(2,4),increment);
-	state[register] = byte1 + byte2;
+	state[register] = byte1 + byte2;*/
 
 }
 
@@ -650,7 +676,7 @@ function stackCall(state,adr){
 	[hi,lo] = splitBytes(state.PC);
 	state.setMemory(state.SP-1,hi);
 	state.setMemory(state.SP-2,lo);
-	state.SP = (Number('0x' + state.SP) + 2).toString('16');
+	state.SP = (Number('0x' + state.SP) - 2).toString('16');
 	state.PC = adr;
 }
 
