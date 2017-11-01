@@ -1,5 +1,6 @@
 const fs = require('fs');
 const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
+const helpers = require('./parseHelpers');
 
 //a table containing conversions from single letter register names to registerpairs
 const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'H L'};
@@ -8,13 +9,13 @@ const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M
 function EmulatorState(){
 	//registers
 	//let a,b,c,d,e,h,l;
-	this.A = '0000';
-	this.B = '0000';
-	this.C = '0000';
-	this.D = '0000';
-	this.E = '0000';
-	this.H = '0000';
-	this.L = '0000';
+	this.A = '00';
+	this.B = '00';
+	this.C = '00';
+	this.D = '00';
+	this.E = '00';
+	this.H = '00';
+	this.L = '00';
 
 
 	//program counter
@@ -22,7 +23,7 @@ function EmulatorState(){
 	//stack pointer
 	this.SP = '0000';
 	//memory location
-	this.memory = new Array(0xFFFF).fill('0000');//need to modify functions to resolve memory locations first
+	this.memory = new Array(0xFFFF).fill('00');//need to modify functions to resolve memory locations first
 	//flags
 	this.Z = false;
 	this.S = false;
@@ -63,8 +64,13 @@ function EmulatorState(){
 	**/
 	this.loadGame = (gameData) => {
 		gameData.forEach((element) => {
-			let index = element.split('\t')[0];
-			this.memory[Number("0x" + index)] = element;
+			let index = Number('0x' + element.split('\t')[0]); //sets the instruction at the memory location (may need to change this, but the program (hopefully) shouldnt try to reference the opcode)
+			this.memory[index] = element;
+			let bytes = helpers.parseInstructions(element)[1]; //returns opcode and bytes. gets only bytes
+			bytes.forEach((element) => { //sets the bytes into the subsequent memory locations
+				this.memory[++index] = element; //increment index before assignment
+			});
+
 		});
 /*
 		for(let i = 0;i < gameData.length;i++){
@@ -86,11 +92,11 @@ function EmulatorState(){
 	};
 
 	this.getMemory = (memLoc) => {
-		return this.memory[Number(memLoc)];
+		return this.memory[Number('0x' + memLoc)];
 	};
 
 	this.setMemory = (memLoc,data) => {
-		this.memory[Number(memLoc)] = data;
+		this.memory[Number('0x' + memLoc)] = data;
 	};
 
 	this.getPSW = () => {
@@ -193,6 +199,7 @@ function executeOpcode(opcode,bytes,state){
 		
 		case 'LDAX':
 			let data = state.getMemory(state.getPair(params[0]));
+			//console.log(state.memory[0x1b00]);
 			state.A = data;
 			state.incrementPC(Number(code.size));
 			break;
@@ -256,6 +263,7 @@ function executeOpcode(opcode,bytes,state){
 			if(!state.Z){
 				state.PC = bytes[1] + bytes[0];
 			}
+			process.exit();
 			break;
 
 		case 'JMP':
@@ -642,7 +650,7 @@ function stackCall(state,adr){
 	[hi,lo] = splitBytes(state.PC);
 	state.setMemory(state.SP-1,hi);
 	state.setMemory(state.SP-2,lo);
-	state.SP += 2;
+	state.SP = (Number('0x' + state.SP) + 2).toString('16');
 	state.PC = adr;
 }
 

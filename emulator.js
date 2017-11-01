@@ -12,6 +12,7 @@ while(Number("0x" + state.PC) < state.memory.length){
 /*	console.log(Number("0x" + state.PC));
 	console.log(gameData.length);
 	console.log(state.memory[Number("0x" + state.PC)]);*/
+	let temppc = Number('0x' + state.PC);
 	[opcode,bytes] = helpers.parseInstructions(state.memory[Number("0x" + state.PC)]);
 	try{
 		core.executeOpcode(opcode,bytes,state);
@@ -21,7 +22,7 @@ while(Number("0x" + state.PC) < state.memory.length){
 		console.log('\n\nERROR: ' + opcode,bytes,'\t',state.memory[Number("0x" + state.PC)]);
 		process.exit();
 	}
-	console.log(opcode,bytes,'\t',state.memory[Number("0x" + state.PC)]);//,state.toString());
+	console.log(opcode,bytes,'\t',state.memory[temppc],state.toString(),'\n');
 
 
 
