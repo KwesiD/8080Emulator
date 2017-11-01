@@ -1,5 +1,4 @@
-
-
+const fs = require('fs');
 const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 
 //a table containing conversions from single letter register names to registerpairs
@@ -38,6 +37,8 @@ function EmulatorState(){
 	//pair is a single string that is mapped in the registerPairTable.
 	//Bytes is an array of 0,1,or 2 bytes as strings
 	this.updatePair = (pair,bytes) => {
+		//console.log(pair);
+		console.log(bytes);
 		pair = registerPairTable[pair].split(' ');
 		if(pair.length === 1){ //stack pointer or program counter
 			if(pair[0] === 'SP'){
@@ -61,9 +62,14 @@ function EmulatorState(){
 	Loads game data into memory
 	**/
 	this.loadGame = (gameData) => {
+		gameData.forEach((element) => {
+			let index = element.split('\t')[0];
+			this.memory[Number("0x" + index)] = element;
+		});
+/*
 		for(let i = 0;i < gameData.length;i++){
 			this.memory[i] = gameData[i];
-		}
+		}*/
 	};
 
 	/**
@@ -99,6 +105,26 @@ function EmulatorState(){
 		this.C = !!psw[7];
 	};
 
+	this.incrementPC = (increment) => {
+		this.PC = (Number('0x' + this.PC) + increment).toString('16');
+		//console.log("incremented by " + increment + " :" + this.PC)
+	};
+
+	this.toString = () => {
+		let props = Object.getOwnPropertyNames(this);
+		let string = "";
+		props.forEach((prop) =>{
+			if((prop === 'memory') || (typeof(this[prop]) === 'function')){
+				return;
+			}
+			if(string !== ""){
+				string += ",";
+			}
+			string += prop + ": " + this[prop];
+		});
+		string = "{" + string + "}";
+		return string;
+	};
 }
 
 /**
@@ -108,98 +134,122 @@ Bytes is an array of 0,1, or 2  bytes.
 State is an object with the current emulator state
 **/
 function executeOpcode(opcode,bytes,state){
+	//console.log(opcode,bytes);
 	let code = opcodeTable[opcode];
 	let type,params;
+	let result,adr;
 	[type,params] = getOpcodeType(code.name);
+
 	switch(type){
 		case 'NOP': //do nothing
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'LXI':
 			state.updatePair(params[0],bytes);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'STAX':
 			let memloc = state.getPair(params[0]);
 			state.setMemory(memLoc,state.A);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'INX':
 			addToRP(params[0],1,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'INR':
-			let result = addToReg(params[0],1,state,true);
+			result = addToReg(params[0],1,state,true);
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'DCR':
-			let result = addToReg(params[0],-1,state,true); //TODO: will adding negative numbers work? need to test if number falls below 0
+			result = addToReg(params[0],-1,state,true); //TODO: will adding negative numbers work? need to test if number falls below 0
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'MVI':
-			state.updatePair(params[0],bytes);
+			//state.updatePair(params[0],bytes);
+			state[params[0]] = bytes[0];
+			state.incrementPC(Number(code.size));
 			//state[params[0]] = bytes[0];
 			break;
 
 		case 'RLC':
 			state.A = rotateLeft(state.A,state); //carries
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'DAD': //always adds to HL pair //carries
-			let result = swap(splitBytes(addRegisterPairs('H',params[0],state)));
+			result = swap(splitBytes(addRegisterPairs('H',params[0],state)));
 			state.updatePair('H',result);
+			state.incrementPC(Number(code.size));
 			break;
 		
 		case 'LDAX':
 			let data = state.getMemory(state.getPair(params[0]));
 			state.A = data;
+			state.incrementPC(Number(code.size));
 			break;
 		
 		case 'DCX':
 			addToRP(params[0],-1,state,false);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'RRC':
 			state.A = rotateRight(state.A,state); //carries
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'STA':
-			let adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
 			state.setMemory(adr,state.A);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'LDA':
-			let adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
 			state.A = state.getMemory(adr);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'MOV':
-			move(params[0],params[1]);
+			move(params[0],params[1],state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'ANA':
-			let result = bitwiseReg('A',params[0],state,'and');
+			result = bitwiseReg('A',params[0],state,'and');
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'XRA':
-			let result = bitwiseReg('A',params[0],state,'xor');
+			result = bitwiseReg('A',params[0],state,'xor');
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'ORA':
-			let result = bitwiseReg('A',params[0],state,'or');
+			result = bitwiseReg('A',params[0],state,'or');
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'DAA':
 			DAA(state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case'POP':
 			stackPop(params[0],state);
+			state.incrementPC(Number(code.size));
 			break;
 		
 		case 'JNZ':
@@ -213,30 +263,37 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ADI':
-			let result = addToReg('A',bytes[0],state,true);
+			result = addToReg('A',bytes[0],state,true);
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'RET':
 			ret(state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'CALL':
-			stackCall(state,bytes[0]);
+			stackCall(state,bytes[1] + bytes[0]);
+			//state.incrementPC(Number(code.size));
 			break;
 
 		case 'ANI':
-			let result = bitwiseReg('A',bytes[0],state,'and');
+			result = bitwiseReg('A',bytes[0],state,'and');
 			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'XCHG':
 			exchange(state);
+			state.incrementPC(Number(code.size));
+			break;
 
 		default:
 			unimplemented(opcode,bytes,state);
 
 	}
+	
 }
 
 /**
@@ -332,12 +389,17 @@ and the params (B, D, SP, etc)
 op code is the name of the opcode as a string ("LXI B,D16")
 **/
 function getOpcodeType(opcode){
+	//console.log(opcode);
 	let codeInfo = opcode.split(" ");
 	let type = codeInfo[0];
-	let params = codeInfo[1].split(" ");
-	params = params.map((element){
-		return element.trim();
-	});
+	let params;
+	if(codeInfo[1] !== undefined){
+		params = codeInfo[1].split(",");
+
+		params = params.map((element) => {
+			return element.trim();//.replace(' ','');
+		});
+	}
 	return [type,params];
 }
 
@@ -602,7 +664,7 @@ function exchange(state){
 
 //TODO: Implement OUT, EI, CPI
 
-module.export = {
+module.exports = {
 	EmulatorState:EmulatorState,
 	executeOpcode:executeOpcode
 };

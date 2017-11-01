@@ -3,36 +3,40 @@
 const buffer = require('buffer');
 const helpers = require('./parseHelpers'); //loads helper methods
 const fs = require('fs');
-
+const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 
 function startDisassembly(){
 	console.log("Loading OpCodes");
-	const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
+	
 
 	console.log("Loading game rom");
 	if(process.argv.length < 3){
 		throw "No file found!";
 	}
+	
 	const data = fs.readFileSync(__dirname + "/" + process.argv[2]);
 	let hex = (new Buffer(data,'utf8')).toString('hex');
 	hex = helpers.splitBytes(hex); //parse data to array of bytes
 	//const dump = disassemble(hex);  //disassemble file
 	let pc = 0; //program counter
 	const romSize = hex.length;
+	const gameData = [];
 	while(pc < romSize){
-		pc += disassemble(hex,pc);
+		pc += disassemble(hex,pc,gameData);
 	}
+
+	return gameData;
 }
 
 
-function disassemble(hexdump,pc){
+function disassemble(hexdump,pc,gameData){
 	//console.log('Disassembling file');
 	let ele = hexdump[pc]; //current element
 	let line = pc.toString(16) + "\t" + ele + " ";
 	let opbytes = parseInt(opcodeTable[ele].size);
 	switch(parseInt(opcodeTable[ele].size)){
 		case 1:
-			line += opcodeTable[ele].name + "\n";
+			line +=  "\t" + opcodeTable[ele].name + "\n";
 			break;
 		case 2:
 			line +=  hexdump[pc+1] + "\t" +  opcodeTable[ele].name + " " + hexdump[pc+1] + '\n';
@@ -43,7 +47,11 @@ function disassemble(hexdump,pc){
 		default:
 			opbytes = 1;
 	}
-	console.log(line);
+	
+
+	//console.log(line);
+	gameData.push(line); //push the line into the game data
+	//console.log(line);
 
 	
 	/*console.log("Saving disassembly....");
@@ -59,6 +67,6 @@ function disassemble(hexdump,pc){
 }
 
 
-module.export = {
+module.exports = {
 	startDisassembly:startDisassembly
 };

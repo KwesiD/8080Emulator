@@ -17,7 +17,17 @@ function splitBytes(hex){
 
 }
 
+function parseInstructions(instruction){
+	//console.log(instruction + "<parsing>");
+	//console.log(instruction);
+	let tokens = instruction.split('\t');
+	let input = tokens[1].split(' ');
+	let op = input[0];
+	let bytes = input.slice(1,input.length);//tokens[1].slice(1,tokens[1].length);
+	return [op,bytes];
+}
 
 module.exports = {
-	splitBytes:splitBytes
+	splitBytes:splitBytes,
+	parseInstructions:parseInstructions
 };
