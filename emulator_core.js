@@ -40,7 +40,7 @@ function EmulatorState(){
 	//Bytes is an array of 0,1,or 2 bytes as strings
 	this.updatePair = (pair,bytes) => {
 		//console.log(pair);
-		console.log(bytes);
+		//console.log(bytes);
 		pair = registerPairTable[pair].split(' ');
 		if(pair.length === 1){ //stack pointer or program counter
 			if(pair[0] === 'SP'){
@@ -186,7 +186,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'MVI':
 			//state.updatePair(params[0],bytes);
-			state[params[0]] = bytes[0];
+			state[params[0]] = bytes[0]; //TODO: Adjust so that it can move something to memory (H register)
 			state.incrementPC(Number(code.size));
 			//state[params[0]] = bytes[0];
 			break;
@@ -268,6 +268,9 @@ function executeOpcode(opcode,bytes,state){
 			if(!state.Z){
 				state.PC = bytes[1] + bytes[0];
 			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
 			//process.exit();
 			break;
 
@@ -283,7 +286,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'RET':
 			ret(state);
-			state.incrementPC(Number(code.size));
+			//state.incrementPC(Number(code.size));
 			break;
 
 		case 'CALL':
@@ -339,10 +342,11 @@ flag list, and size.
 Result is the result of the operation that called this functon.
 **/
 function setFlags(opcode,result,state){
-	for(flag in opcode.flags){
+	//console.log(opcode.flags);
+	opcode.flags.forEach((flag) => {
 		switch(flag){
 			case 'Z':
-				if(Number(result) === 0){
+				if(Number('0x' + result) === 0){
 					state.Z = true;
 				}
 				else{
@@ -367,7 +371,7 @@ function setFlags(opcode,result,state){
 
 
 		}
-	}
+	});
 }
 
 /**
@@ -674,15 +678,23 @@ function stackCall(state,adr){
 	let lo; //high and low order bits of PC
 	let hi;
 	[hi,lo] = splitBytes(state.PC);
-	state.setMemory(state.SP-1,hi);
-	state.setMemory(state.SP-2,lo);
+	state.setMemory(addToHex(state.SP,-1),hi);
+	state.setMemory(addToHex(state.SP,-2),lo);
 	state.SP = (Number('0x' + state.SP) - 2).toString('16');
 	state.PC = adr;
 }
 
 function ret(state){
-	state.PC = state.getMemory(state.SP+1) + state.getMemory(state.SP);
-	state.SP += 2;
+	let loc1 = state.getMemory(addToHex(state.SP,1)) ;
+	let loc2 = state.getMemory(state.SP);
+	
+	//RET goes back to the instruction after the last 'call'
+	// instruction. Since call has a size of 3, we increment by 3 after
+	//returning to the previous call instruction (to skip it).
+	state.PC = addToHex(loc1 + loc2,3);
+
+	state.SP = addToHex(state.SP,2);
+	//process.exit();
 }
 
 

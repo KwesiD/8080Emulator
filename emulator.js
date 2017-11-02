@@ -14,7 +14,16 @@ while(Number("0x" + state.PC) < state.memory.length){
 	console.log(gameData.length);
 	console.log(state.memory[Number("0x" + state.PC)]);*/
 	let temppc = Number('0x' + state.PC);
-	[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
+	let opcode;
+	let bytes;
+	try{
+		[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
+	}
+	catch(e){
+		console.log(e);
+		console.log('\n\nERROR: ' + state.gameFile[Number("0x" + state.PC)],state.PC);
+		process.exit();
+	}
 	try{
 		core.executeOpcode(opcode,bytes,state);
 	}
@@ -24,13 +33,17 @@ while(Number("0x" + state.PC) < state.memory.length){
 		process.exit();
 	}
 	console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
-	if(count >= 22){
+	if(opcode === 'c9'){
+		//process.exit();
+	}
+		/*if(count >= 22){
 		process.exit();
 	}
-	count++;
+	count++;*/
 	//console.log(state.memory[0x1b01] + ">>");
-
-
+	/*count++;
+	console.log(count);
+*/
 
 }
 
