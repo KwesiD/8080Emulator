@@ -21,7 +21,7 @@ function EmulatorState(){
 	//program counter
 	this.PC = '0000';
 	//stack pointer
-	this.SP = '0000';
+	this.SP = 'f000';
 	//memory location
 	this.memory = new Array(0xFFFF).fill('00');//need to modify functions to resolve memory locations first
 	this.gameFile = []; //file ocntaining the disassembled game data
@@ -82,6 +82,7 @@ function EmulatorState(){
 			this.memory[i] = gameData[i];
 		}*/
 	};
+
 
 	/**
 	Gets the data from the memory pair
@@ -185,8 +186,8 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'MVI':
-			//state.updatePair(params[0],bytes);
-			state[params[0]] = bytes[0]; //TODO: Adjust so that it can move something to memory (H register)
+			//state[params[0]] = bytes[0]; //TODO: Adjust so that it can move something to memory (H register)
+			moveData(params[0],bytes[0],state);
 			state.incrementPC(Number(code.size));
 			//state[params[0]] = bytes[0];
 			break;
@@ -197,7 +198,8 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'DAD': //always adds to HL pair //carries
-			result = swap(splitBytes(addRegisterPairs('H',params[0],state)));
+			console.log(params[0]);
+			result = swap(splitBytes(addRegisterPairs('H',params[0],state,true)));
 			state.updatePair('H',result);
 			state.incrementPC(Number(code.size));
 			break;
@@ -232,7 +234,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'MOV':
-			move(params[0],params[1],state);
+			moveReg(params[0],params[1],state);
 			state.incrementPC(Number(code.size));
 			break;
 
@@ -259,11 +261,16 @@ function executeOpcode(opcode,bytes,state){
 			state.incrementPC(Number(code.size));
 			break;
 
-		case'POP':
+		case 'POP':
 			stackPop(params[0],state);
 			state.incrementPC(Number(code.size));
 			break;
 		
+		case 'PUSH':
+			stackPush(params[0],state);
+			state.incrementPC(Number(code.size));
+			break;
+
 		case 'JNZ':
 			if(!state.Z){
 				state.PC = bytes[1] + bytes[0];
@@ -271,7 +278,6 @@ function executeOpcode(opcode,bytes,state){
 			else{
 				state.incrementPC(Number(code.size));
 			}
-			//process.exit();
 			break;
 
 		case 'JMP':
@@ -305,12 +311,28 @@ function executeOpcode(opcode,bytes,state){
 			state.incrementPC(Number(code.size));
 			break;
 
+		case 'CPI':
+			result = addToHex(state.A,-(Number('0x' + bytes[0])),state,true);
+			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'OUT':
+			hardwareOut();
+			state.incrementPC(Number(code.size)); //skip over byte for now
+			break;
+
+		case 'IN':
+			hardwareIn();
+			state.incrementPC(Number(code.size)); //skip over byte for now
+			break;
+
 		default:
 			unimplemented(opcode,bytes,state);
 
 	}
 	
-}
+}  //TODO: XCHG & PUSH have bugs
 
 /**
 Takes a pair of bytes in an array
@@ -353,20 +375,21 @@ function setFlags(opcode,result,state){
 					state.Z = false;
 				}
 				break;
-			/*case 'S':
+			case 'S':
 				if((Number("0x"+result) & 128) === 128){ //result & 10000000. the zeroes mask everything but the MSB
 					state.S = true;
 				} 
 				else{
 					state.S = false;
 				}
-				break;*/
+				break;
 			case 'P':
 				state.P = checkParity(result);	
+				
 				break;
 
 
-			//TODO: How to handle carry and a-carry. How to handle when 2 parts of the number are carried (high and low order)
+			//TODO: 
 			//When do we not touch the carry? do we set/reset always?
 
 
@@ -378,10 +401,10 @@ function setFlags(opcode,result,state){
 Checks the parity of the bytes;
 **/
 function checkParity(hex){
-	let bin = "";
-	for(let i = 0;i < hex.length;i++){
+	let bin = padBytes(Number('0x' + hex).toString('2'),2);
+/*	for(let i = 0;i < hex.length;i++){
 		bin += padBytes(Number('0x' + hex[i]).toString('2'),2); 
-	}
+	}*/
 	let ones = 0;
 	for(let i = 0;i < bin.length;i++){
 		if(bin[i] === '1'){
@@ -428,7 +451,8 @@ Ie:  0xFFFF + 1 = 0x0000
 Returns the value as a string
 **/
 function addToHex(hex,increment,state=null,flagged=false){
-	//let temp = Number(hex).toString('16'); //truncate the 0x prefix   //TODO: May not be necessary
+	
+	//console.log(Number('0x'+hex),increment);
 
 	let size =  hex.length;
 	let temp = hex;
@@ -438,21 +462,15 @@ function addToHex(hex,increment,state=null,flagged=false){
 
 	if(hex < 0){//if neg
 		let max =  Math.pow(16,size); //hex system
-		hex = max+increment;
-		//console.log(hex);
-		/*hex += increment;
-		if(hex < 0){
-			let max =  Math.pow(2,size-1);
-		}*/
-		/*let mask = Math.pow(2,size-1); //creates the mask fo 2's compliment	
-		hex = (-(hex&mask) + (hex&(~mask)));
-		console.log(hex);*/
+		hex = (max+Number('0x'+temp))+increment; 
+		if(flagged){
+			state.S = true; //sets the sign bit
+			state.CY = true;
+		}
 	}
 	else{//if not negative 
-		//console.log(hex.toString('16').length);
-		//console.log(temp.length);
-		if(hex.toString('16').length > temp.length){
-			hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around //0x denotes hex during conversion
+		if(padBytes(hex.toString('16')).length > padBytes(temp).length){
+			hex = (increment - (Math.pow(16,hex.toString('16').length-1)-Number("0x"+temp))); //loops the number around. 0x denotes hex during conversion
 			if(flagged){
 				state.CY = true; //sets carry
 			}
@@ -463,6 +481,7 @@ function addToHex(hex,increment,state=null,flagged=false){
 			}
 		}
 	}
+	//console.log(hex.toString('16'));
 	return hex.toString('16');//padBytes(hex.toString('16'),size);
 
 }
@@ -499,12 +518,13 @@ function addToRP(registerpair,increment,state,flagged=false){
 Adds Register pairs together. ie: HL + BC
 Sets carry.
 **/
-function addRegisterPairs(pair1,pair2,state){
-	pair1 = registerPairTable[pair1]; //gets the register pairs
-	pair2 = registerPairTable[pair2];
-	let reg1 = pair1[0] + pair1[1];
-	let reg2 = pair2[0] + pair2[1];
-	return addToHex(reg1,Number('0x' + reg2),state,true); //flagged for carry
+function addRegisterPairs(pair1,pair2,state,flagged=false){
+	pair1 = registerPairTable[pair1].split(" "); //gets the register pairs
+	pair2 = registerPairTable[pair2].split(" ");
+	let reg1 = state[pair1[0]] + state[pair1[1]];
+	let reg2 = state[pair2[0]] + state[pair2[1]];
+	console.log(reg1,reg2);
+	return addToHex(reg1,Number('0x' + reg2),state,flagged); //flagged for carry
 }
 
 /**
@@ -542,7 +562,7 @@ function rotateLeft(hex,state){
 	let bits = (Number('0x' + hex)).toString('2');
 	let lead = bits[0];
 	bits = bits.substring(1,bits.length) + lead;
-	state.CY = lead; //sets carry
+	state.CY = !!lead; //sets carry
 	let num = Number('0b' + bits);
 	return ""+num; //to string
 }
@@ -555,7 +575,7 @@ function rotateRight(hex,state){
 	let bits = (Number('0x' + hex)).toString('2');
 	let end = bits[bits.length-1];
 	bits = end + bits.substring(0,bits.length-1);
-	state.CY = end; //sets carry
+	state.CY = !!end; //sets carry
 	let num = Number('0b' + bits);
 	return ""+num; //to string
 }
@@ -580,11 +600,14 @@ function DAA(state){
 Returns an error when an unimplemented opcode is run.
 **/
 function unimplemented(opcode,bytes,state){
-	console.log(opcode,bytes,state);
+	console.log(opcode,bytes,state.toString());
 	throw "Error, unimplemented!!";
 }
 
-function move(loc1,loc2,state){
+/*
+Move the contents of one register into another
+**/
+function moveReg(loc1,loc2,state){
 	if(loc1 === 'M'){
 		state.setMemory(state.getPair('H'),state[loc2]);
 	}
@@ -593,6 +616,18 @@ function move(loc1,loc2,state){
 	}
 	else{
 		state[loc1] = state[loc2];
+	}
+}
+
+/*
+Move the data into the register
+**/
+function moveData(reg,hex,state){
+	if(reg === 'M'){
+		state.setMemory(state.getPair('H'),hex);
+	}
+	else{
+		state[reg] = hex;
 	}
 }
 
@@ -645,15 +680,17 @@ function stackPop(pair,state){
 	pair = registerPairTable[pair].split(' ');
 	if(pair.length === 1 && pair[0] === 'PSW'){
 		state.setPSW(state.getMemory(state.SP));
-		state.SP++;
+		state.SP = addToHex(state.SP,1);
 		state.A = state.getMemory(state.SP); 
-		state.SP++;
+		state.SP = addToHex(state.SP,1);
 	}
 	else{
+		console.log(state.getMemory(state.SP));
 		state[pair[1]] = state.getMemory(state.SP);
-		state.SP++;
+		state.SP = addToHex(state.SP,1);
+		console.log(state.getMemory(state.SP));
 		state[pair[0]] = state.getMemory(state.SP);
-		state.SP++;
+		state.SP = addToHex(state.SP,1);
 	}
 
 }
@@ -661,16 +698,16 @@ function stackPop(pair,state){
 function stackPush(pair,state){
 	pair = registerPairTable[pair].split(' ');
 	if(pair.length === 1 && pair[0] === 'PSW'){
+		state.SP = addToHex(state.SP,-1);
 		state.setMemory(state.SP,state.getPSW());
-		state.SP--;
+		state.SP = addToHex(state.SP,-1);
 		state.setMemory(state.SP,state.A);
-		state.SP--;
 	}
 	else{
-		state.setMemory(state.SP,state[pair[1]]);
-		state.SP--;
+		state.SP = addToHex(state.SP,-1);
 		state.setMemory(state.SP,state[pair[0]]);
-		state.SP--;
+		state.SP = addToHex(state.SP,-1);
+		state.setMemory(state.SP,state[pair[1]]);
 	}
 }
 
@@ -680,23 +717,24 @@ function stackCall(state,adr){
 	[hi,lo] = splitBytes(state.PC);
 	state.setMemory(addToHex(state.SP,-1),hi);
 	state.setMemory(addToHex(state.SP,-2),lo);
-	state.SP = (Number('0x' + state.SP) - 2).toString('16');
+	state.SP = addToHex(state.SP,-2);//(Number('0x' + state.SP) - 2).toString('16');
 	state.PC = adr;
+	
 }
 
 function ret(state){
 	let loc1 = state.getMemory(addToHex(state.SP,1)) ;
 	let loc2 = state.getMemory(state.SP);
-	
-	//RET goes back to the instruction after the last 'call'
-	// instruction. Since call has a size of 3, we increment by 3 after
-	//returning to the previous call instruction (to skip it).
-	state.PC = addToHex(loc1 + loc2,3);
+	//console.log(loc1+loc2,state.getMemory(loc1+loc2));
+	let size = opcodeTable[state.getMemory(loc1+loc2)].size;
+	//RET goes back to the instruction after the last instruction that called 
+	//the subroutine.We increment by the size of the calling instruction after
+	//returning (to skip it).
+	state.PC = addToHex(loc1 + loc2,size);
 
 	state.SP = addToHex(state.SP,2);
 	//process.exit();
 }
-
 
 function exchange(state){
 	let temp = state.H;
@@ -708,7 +746,23 @@ function exchange(state){
 }
 
 
-//TODO: Implement OUT, EI, CPI
+/**
+Currently unimplemented
+**/
+function hardwareOut(){
+	console.log("Print to screen....");
+}
+
+
+/**
+Currently unimplemented
+**/
+function hardwareIn(){
+	console.log("get input....");
+}
+
+
+//TODO: Implement OUT, EI
 
 module.exports = {
 	EmulatorState:EmulatorState,

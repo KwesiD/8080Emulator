@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/KwesiD/8080Emulator/issues"
   },
-  "homepage": "https://github.com/KwesiD/8080Emulator#readme"
+  "homepage": "https://github.com/KwesiD/8080Emulator#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  },
+  "devDependencies": {}
 }

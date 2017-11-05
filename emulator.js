@@ -4,15 +4,29 @@ const helpers = require('./parseHelpers');
 const state = new core.EmulatorState();
 const gameData = disassembler.startDisassembly();
 
-const readline = require('readline'); //for debugging
+const readlineSync = require('readline-sync');
+
 
 state.loadGame(gameData); //loads game into memoory
 
 let count = 0;
+let prevcount = 0;
+let steps = 0;
 while(Number("0x" + state.PC) < state.memory.length){
-/*	console.log(Number("0x" + state.PC));
-	console.log(gameData.length);
-	console.log(state.memory[Number("0x" + state.PC)]);*/
+
+
+	if(count-prevcount === steps){
+		while(true){
+			steps = readlineSync.question("How many steps?: ");
+			if(Number(steps) !== NaN){
+				steps = Number(steps);
+				prevcount = count;
+				break;
+			}
+
+		}
+	}
+
 	let temppc = Number('0x' + state.PC);
 	let opcode;
 	let bytes;
@@ -21,7 +35,7 @@ while(Number("0x" + state.PC) < state.memory.length){
 	}
 	catch(e){
 		console.log(e);
-		console.log('\n\nERROR: ' + state.gameFile[Number("0x" + state.PC)],state.PC);
+		console.log('\n\nERROR: ' + state.gameFile[Number("0x" + state.PC)],state.toString());
 		process.exit();
 	}
 	try{
@@ -33,17 +47,10 @@ while(Number("0x" + state.PC) < state.memory.length){
 		process.exit();
 	}
 	console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
-	if(opcode === 'c9'){
-		//process.exit();
-	}
-		/*if(count >= 22){
-		process.exit();
-	}
-	count++;*/
-	//console.log(state.memory[0x1b01] + ">>");
-	/*count++;
+	
+	count++;
 	console.log(count);
-*/
+
 
 }
 
