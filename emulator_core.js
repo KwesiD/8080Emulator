@@ -3,7 +3,7 @@ const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loa
 const helpers = require('./parseHelpers');
 
 //a table containing conversions from single letter register names to registerpairs
-const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'H L'};
+const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'H L','PSW':'PSW'};
 
 //State object constructor
 function EmulatorState(){
@@ -285,7 +285,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ADI':
-			result = addToReg('A',bytes[0],state,true);
+			result = addToReg('A',Number('0x' + bytes[0]),state,true);
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
