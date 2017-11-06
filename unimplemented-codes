@@ -110,11 +110,11 @@
 0xee	XRI D8	2	Z, S, P, CY, AC	A <- A ^ data
 0xef	RST 5	1		CALL $28
 0xf0	RP	1		if P, RET
-0xf1	POP PSW	1		flags <- (sp); A <- (sp+1); sp <- sp+2
+
 0xf2	JP adr	3		if P=1 PC <- adr
 0xf3	DI	1		special
 0xf4	CP adr	3		if P, PC <- adr
-0xf5	PUSH PSW	1		(sp-2)<-flags; (sp-1)<-A; sp <- sp - 2
+ - 2
 0xf6	ORI D8	2	Z, S, P, CY, AC	A <- A | data
 0xf7	RST 6	1		CALL $30
 0xf8	RM	1		if M, RET
@@ -122,6 +122,4 @@
 0xfa	JM adr	3		if M, PC <- adr
 0xfb	EI	1		special
 0xfc	CM adr	3		if M, CALL adr
-0xfd	-			
-0xfe	CPI D8	2	Z, S, P, CY, AC	A - data
 0xff	RST 7	1		CALL $38

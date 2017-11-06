@@ -1,14 +1,12 @@
 const fs = require('fs');
 const opcodeTable = JSON.parse(fs.readFileSync('./opcodes.json', 'utf8')); //loads opcode table
 const helpers = require('./parseHelpers');
-
 //a table containing conversions from single letter register names to registerpairs
 const registerPairTable = {"B":'B C','D':'D E','H':'H L','SP':'SP', 'PC':'PC','M':'H L','PSW':'PSW'};
 
 //State object constructor
 function EmulatorState(){
 	//registers
-	//let a,b,c,d,e,h,l;
 	this.A = '00';
 	this.B = '00';
 	this.C = '00';
@@ -23,8 +21,20 @@ function EmulatorState(){
 	//stack pointer
 	this.SP = 'f000';
 	//memory location
-	this.memory = new Array(0xFFFF).fill('00');//need to modify functions to resolve memory locations first
+	this.memory = new Array(0xFFFF).fill('00');
 	this.gameFile = []; //file ocntaining the disassembled game data
+	//IO 
+	//IO ports
+	this.inputPorts = new Array(8).fill('00'); //8 pins for each
+	this.outputPorts = new Array(8).fill('00');
+	this.inputPorts[0] = 0b00001110; 
+	this.inputPorts[1] = 0b00001000;
+	this.shiftRegister = '0000'; //16 bit shift-register
+	this.shiftOffset = '00'; //offset for shift register
+	/*//IO memory
+	this.inputMemory = new Array(256).fill('00'); //256 (2^8) I/O locations each 
+	this.outputMemory = new Array(256).fill('00');*/
+
 	//flags
 	this.Z = false;
 	this.S = false;
@@ -39,8 +49,6 @@ function EmulatorState(){
 	//pair is a single string that is mapped in the registerPairTable.
 	//Bytes is an array of 0,1,or 2 bytes as strings
 	this.updatePair = (pair,bytes) => {
-		//console.log(pair);
-		//console.log(bytes);
 		pair = registerPairTable[pair].split(' ');
 		if(pair.length === 1){ //stack pointer or program counter
 			if(pair[0] === 'SP'){
@@ -49,9 +57,9 @@ function EmulatorState(){
 			else if (pair[0] === 'PC'){ //pair equal to PC
 				this.PC = bytes[1] + bytes[0];
 			}
-			else{//memory Location
+			/*else{//memory Location
 				//this.memLoc = bytes[1] + bytes[0];
-			}
+			}*/
 		}
 		else{ //if register pair
 			this[pair[0]] = bytes[1];
@@ -198,7 +206,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'DAD': //always adds to HL pair //carries
-			console.log(params[0]);
+			//console.log(params[0]);
 			result = swap(splitBytes(addRegisterPairs('H',params[0],state,true)));
 			state.updatePair('H',result);
 			state.incrementPC(Number(code.size));
@@ -318,13 +326,30 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'OUT':
-			hardwareOut();
+			hardwareOut(bytes[0],state);
 			state.incrementPC(Number(code.size)); //skip over byte for now
 			break;
 
 		case 'IN':
-			hardwareIn();
+			hardwareIn(bytes[0],state);
 			state.incrementPC(Number(code.size)); //skip over byte for now
+			break;
+
+		case 'EI':
+			interrupts(true,state); //enable interrupts
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'DI':
+			interrupts(false,state); //disable interrupts
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'JZ':
+			if(state.Z){
+				state.PC = bytes[1] + bytes[0];
+			}
+			state.incrementPC(Number(code.size));
 			break;
 
 		default:
@@ -523,7 +548,7 @@ function addRegisterPairs(pair1,pair2,state,flagged=false){
 	pair2 = registerPairTable[pair2].split(" ");
 	let reg1 = state[pair1[0]] + state[pair1[1]];
 	let reg2 = state[pair2[0]] + state[pair2[1]];
-	console.log(reg1,reg2);
+	//console.log(reg1,reg2);
 	return addToHex(reg1,Number('0x' + reg2),state,flagged); //flagged for carry
 }
 
@@ -685,10 +710,10 @@ function stackPop(pair,state){
 		state.SP = addToHex(state.SP,1);
 	}
 	else{
-		console.log(state.getMemory(state.SP));
+		//console.log(state.getMemory(state.SP));
 		state[pair[1]] = state.getMemory(state.SP);
 		state.SP = addToHex(state.SP,1);
-		console.log(state.getMemory(state.SP));
+		//console.log(state.getMemory(state.SP));
 		state[pair[0]] = state.getMemory(state.SP);
 		state.SP = addToHex(state.SP,1);
 	}
@@ -749,20 +774,51 @@ function exchange(state){
 /**
 Currently unimplemented
 **/
-function hardwareOut(){
-	console.log("Print to screen....");
+function hardwareOut(port,state){
+	//console.log("Output to device....");
+	switch(Number('0x' + port)){
+		case 2:
+			state.shiftOffset = (Number('0x' + state.A) & (0x7)).toString('16'); //shift offset is the 3 least sig. bytes. 0x7 = 00000111 
+			break;
+		case 4:
+			let temp = state.shiftRegister;
+			state.shiftRegister = state.A + state.shiftRegister.substring(0,2);
+			break;
+		default:
+			state.outputPorts[Number('0x' + port)] = state.A;
+			break;
+	}
+	
 }
 
 
 /**
 Currently unimplemented
 **/
-function hardwareIn(){
-	console.log("get input....");
+function hardwareIn(port,state){
+	//console.log("get input....");
+	if(port === '3'){
+		let shift1 = Number('0x' + state.shiftRegister.substring(0,2)); //convert these lines into my own version
+		let shift2 = Number('0x' + state.shiftRegister.substring(2,4));
+		let v = (shift1<<8) | shift0;    
+        state.A = ((v >> (8-Number('0x' + state.shiftOffset))) & 0xff);  
+	}
+	else{
+		state.A = state.inputPorts[Number('0x' + port)];
+	}
+	
+}
+
+/**
+Toggle interrupts. Placeholder...
+**/
+function interrupts(enabled,state){
+	console.log('Interrupts: ' + enabled,state.toString());
 }
 
 
-//TODO: Implement OUT, EI
+
+//TODO: Implement EI
 
 module.exports = {
 	EmulatorState:EmulatorState,
