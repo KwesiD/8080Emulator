@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/KwesiD/8080Emulator#readme",
   "dependencies": {
+    "browserify": "^14.5.0",
     "express": "^4.16.2",
+    "hbs": "^4.0.1",
     "input-event": "^1.2.2",
     "iohook": "^0.1.9",
     "keypress": "^0.2.1",

@@ -4,7 +4,7 @@ const helpers = require('./parseHelpers');
 const state = new core.EmulatorState();
 const gameData = disassembler.startDisassembly();
 const readlineSync = require('readline-sync');
-
+const child = require('child_process');
 
 state.loadGame(gameData); //loads game into memory
 
@@ -42,6 +42,10 @@ while(Number("0x" + state.PC) < state.memory.length){
 	}
 	try{
 		//keypress(state);
+		let val = child.execSync('a.exe') + "";
+		if(val){
+			console.log(val);
+		}
 		core.executeOpcode(opcode,bytes,state);
 	}
 	catch(e){
