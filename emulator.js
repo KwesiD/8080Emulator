@@ -4,12 +4,15 @@ const helpers = require('./parseHelpers');
 const state = new core.EmulatorState();
 const gameData = disassembler.startDisassembly();
 const readlineSync = require('readline-sync');
-const iohook = require('iohook'); //for keyboard input
-state.loadGame(gameData); //loads game into memoory
+
+
+state.loadGame(gameData); //loads game into memory
+
 
 let count = 0;
 let prevcount = 0;
 let steps = 0;
+
 while(Number("0x" + state.PC) < state.memory.length){
 	//(d)ebug mode
 	if(process.argv.indexOf('-d') !== -1){
@@ -38,7 +41,7 @@ while(Number("0x" + state.PC) < state.memory.length){
 		process.exit();
 	}
 	try{
-		keypress(state);
+		//keypress(state);
 		core.executeOpcode(opcode,bytes,state);
 	}
 	catch(e){
@@ -62,6 +65,13 @@ while(Number("0x" + state.PC) < state.memory.length){
 }
 
 
-function keypress(state){
+function getKeys(state){
+
+
+		/*switch(event.keychar){
+			console.log()
+		}
+		state.inputPorts[0] |= 32; //00100000*/
 
 }
+
