@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+
+<body>
+
+Hi
+</body>
+</html>
+
+
+<script src="/lib/keypress/keypress.js"></script>
+<script src="/lib/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io.connect('http://localhost:3000');
+socket.on('private',(data) => {
+	console.log(data);
+	socket.emit('private', {msg: 'Thank you for your message'})
+});
+
+const listener = new window.keypress.Listener();
+listener.simple_combo("left", function() {
+   socket.emit('private','left');
+});
+
+</script>

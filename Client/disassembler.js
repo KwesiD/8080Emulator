@@ -29,6 +29,29 @@ function startDisassembly(){
 }
 
 
+/**Disasembly using direct input of file name during call**/
+function startDisassembly(game){
+	console.log("Loading OpCodes");
+	
+
+	console.log("Loading game rom");
+	const data = fs.readFileSync(__dirname + "/" + game);
+	let hex = (new Buffer(data,'utf8')).toString('hex');
+	hex = helpers.splitBytes(hex); //parse data to array of bytes
+	//const dump = disassemble(hex);  //disassemble file
+	let pc = 0; //program counter
+	const romSize = hex.length;
+	const gameData = [];
+	while(pc < romSize){
+		pc += disassemble(hex,pc,gameData);
+	}
+
+	return gameData;
+}
+
+
+
+
 function disassemble(hexdump,pc,gameData){
 	//console.log('Disassembling file');
 	let ele = hexdump[pc]; //current element

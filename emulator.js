@@ -4,16 +4,26 @@ const helpers = require('./parseHelpers');
 const state = new core.EmulatorState();
 const gameData = disassembler.startDisassembly();
 const readlineSync = require('readline-sync');
-const child = require('child_process');
+
 
 state.loadGame(gameData); //loads game into memory
 
+
+/*process.stdin.on('data',(data) => {
+	console.log("Thanks!");
+});
+*/
+
+process.on('message',(data) => {
+	console.log("Emulator: " + data);
+});
 
 let count = 0;
 let prevcount = 0;
 let steps = 0;
 
 while(Number("0x" + state.PC) < state.memory.length){
+
 	//(d)ebug mode
 	if(process.argv.indexOf('-d') !== -1){
 		if(count-prevcount === steps){
@@ -42,10 +52,6 @@ while(Number("0x" + state.PC) < state.memory.length){
 	}
 	try{
 		//keypress(state);
-		let val = child.execSync('a.exe') + "";
-		if(val){
-			console.log(val);
-		}
 		core.executeOpcode(opcode,bytes,state);
 	}
 	catch(e){

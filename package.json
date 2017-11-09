@@ -23,7 +23,8 @@
     "input-event": "^1.2.2",
     "iohook": "^0.1.9",
     "keypress": "^0.2.1",
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.7",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {}
 }
