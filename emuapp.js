@@ -10,9 +10,15 @@ const io = require('socket.io')(server);
 const { fork } = require('child_process');
 const emulator = fork('emulator.js',['invaders']);
 
-
-emulator.on('data',(data) => {
-	console.log(data + "");
+let arr;
+emulator.on('message',(data) => {
+	if(data === 'loop'){
+		emulator.send('loop');
+	}
+	else{
+		console.log('logged');
+		arr = data;
+	}
 });
 
 
@@ -30,7 +36,7 @@ app.get('/',function(req,res){
 
 io.on('connection',function connection(socket) {
 	console.log('connected');
-	socket.emit('private','You\'re connected!');
+	//socket.emit('private','You\'re connected!');
 	socket.on('private',(data) => {
 		//console.log(data);
 		if(!data.msg){
@@ -38,6 +44,7 @@ io.on('connection',function connection(socket) {
 			emulator.send(data);
 		}
 	});
+	socket.emit('private',arr)
 
 });
 

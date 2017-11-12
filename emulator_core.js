@@ -22,7 +22,7 @@ function EmulatorState(){
 	this.SP = 'f000';
 	//memory location
 	this.memory = new Array(0xFFFF).fill('00');
-	this.gameFile = []; //file ocntaining the disassembled game data
+	this.gameFile = []; //file containing the disassembled game data
 	//IO 
 	//IO ports
 	this.inputPorts = new Array(8).fill('00'); //8 pins for each
@@ -42,6 +42,9 @@ function EmulatorState(){
 	this.AC = false;
 	this.CY = false;
 
+
+	//interrupts enabled?
+	this.interrupts = false;
 
 	//Maybe move this to a general function.....?
 
@@ -326,12 +329,12 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'OUT':
-			hardwareOut(bytes[0],state);
+			hardwareOut(bytes[0],state,Number(code.size));
 			state.incrementPC(Number(code.size)); //skip over byte for now
 			break;
 
 		case 'IN':
-			hardwareIn(bytes[0],state);
+			hardwareIn(bytes[0],state,Number(code.size));
 			state.incrementPC(Number(code.size)); //skip over byte for now
 			break;
 
@@ -774,7 +777,7 @@ function exchange(state){
 /**
 Currently unimplemented
 **/
-function hardwareOut(port,state){
+function hardwareOut(port,state,size){
 	//console.log("Output to device....");
 	switch(Number('0x' + port)){
 		case 2:
@@ -795,12 +798,18 @@ function hardwareOut(port,state){
 /**
 Currently unimplemented
 **/
-function hardwareIn(port,state){
+function hardwareIn(port,state,size){
 	//console.log("get input....");
-	if(port === '3'){
-		let shift1 = Number('0x' + state.shiftRegister.substring(0,2)); //convert these lines into my own version
+	if(port === '1'){
+		state.incrementPC(Number(size));
+		throw {
+			name:'Input'
+		};
+	}
+	else if(port === '3'){
+		let shift1 = Number('0x' + state.shiftRegister.substring(0,2));
 		let shift2 = Number('0x' + state.shiftRegister.substring(2,4));
-		let v = (shift1<<8) | shift0;    
+		let v = (shift1<<8) | shift0;                                     //convert these lines into my own version
         state.A = ((v >> (8-Number('0x' + state.shiftOffset))) & 0xff);  
 	}
 	else{
@@ -813,9 +822,9 @@ function hardwareIn(port,state){
 Toggle interrupts. Placeholder...
 **/
 function interrupts(enabled,state){
+	state.interrupts = enabled;
 	console.log('Interrupts: ' + enabled,state.toString());
 }
-
 
 
 //TODO: Implement EI
