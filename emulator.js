@@ -10,6 +10,7 @@ state.loadGame(gameData); //loads game into memory
 let count = 0;
 let prevcount = 0;
 let steps = 0;
+let lastInterrupt = Date.now();
 
 
 process.on('message',(data) => {
@@ -48,11 +49,11 @@ function runEmulator(){
 		let opcode;
 		let bytes;
 		if(state.PC === '0ada'){
-			//console.log("here");
-			exportImage(state);
-			process.send('loop');
+			console.log("here");
+			//exportImage(state);
+			//process.send('loop');
 			//break;
-			//process.exit();
+			process.exit();
 		}
 		try{
 			[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
@@ -76,7 +77,7 @@ function runEmulator(){
 			}
 			else{
 				console.log(e);
-				onsole.log('\n\nERROR: ' + opcode,bytes,'\t',state.gameFile[Number("0x" + state.PC)]);
+				console.log('\n\nERROR: ' + opcode,bytes,'\t',state.gameFile[Number("0x" + state.PC)]);
 				
 				//(c)ontinue even if unimplemented
 				if(process.argv.indexOf('-c') === -1){
@@ -92,10 +93,18 @@ function runEmulator(){
 			console.log(count);
 		}
 
-	if(state.interrupts){
-		process.send('loop');
-		break;
-	}
+
+
+		if((Date.now() - lastInterrupt) > 1.0/60.0){
+			if(state.interruptsEnabled){
+				generateInterrupt(state,2);
+				exportImage(state);
+				process.send('loop');
+				state.interruptsEnabled = false;
+				lastInterrupt = Date.now();
+				break;
+			}
+		}
 
 	}
 }
@@ -122,4 +131,8 @@ function padBytes(bytes,mul=4){
 		bytes = "0" + bytes; 
 	}
 	return bytes;
+}
+
+function generateInterrupt(state,num){
+	core.rst(state,num); //generate the interrupt	
 }

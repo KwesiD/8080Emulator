@@ -44,7 +44,7 @@ function EmulatorState(){
 
 
 	//interrupts enabled?
-	this.interrupts = false;
+	this.interruptsEnabled = false;
 
 	//Maybe move this to a general function.....?
 
@@ -295,6 +295,15 @@ function executeOpcode(opcode,bytes,state){
 			state.PC = bytes[1] + bytes[0];
 			break;
 
+		case 'JC':
+			if(state.CY){
+				state.PC = bytes[1] + bytes[0];
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
 		case 'ADI':
 			result = addToReg('A',Number('0x' + bytes[0]),state,true);
 			setFlags(code,result,state);
@@ -352,7 +361,12 @@ function executeOpcode(opcode,bytes,state){
 			if(state.Z){
 				state.PC = bytes[1] + bytes[0];
 			}
-			state.incrementPC(Number(code.size));
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+		case 'RST':
+			rst(state)
 			break;
 
 		default:
@@ -739,6 +753,13 @@ function stackPush(pair,state){
 	}
 }
 
+function pushDirect(state,pair){
+	state.SP = addToHex(state.SP,-1);
+	state.setMemory(state.SP,state[pair[0]]);
+	state.SP = addToHex(state.SP,-1);
+	state.setMemory(state.SP,state[pair[1]]);
+}
+
 function stackCall(state,adr){
 	let lo; //high and low order bits of PC
 	let hi;
@@ -822,14 +843,25 @@ function hardwareIn(port,state,size){
 Toggle interrupts. Placeholder...
 **/
 function interrupts(enabled,state){
-	state.interrupts = enabled;
+	state.interruptsEnabled = enabled;
 	console.log('Interrupts: ' + enabled,state.toString());
 }
 
+function rst(state,num){
+	num <<= 3;
+	num &= 0b111000;
+	num = padBytes(num.toString('16'),2);
+	pushDirect(state,splitBytes(state.PC));
+	pushDirect(state,splitBytes(num));
+	state.PC = padBytes((8 * num).toString('16'),2);  
 
+
+}
 //TODO: Implement EI
 
 module.exports = {
 	EmulatorState:EmulatorState,
-	executeOpcode:executeOpcode
+	executeOpcode:executeOpcode,
+	rst,rst
 };
+

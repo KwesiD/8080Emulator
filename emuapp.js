@@ -8,7 +8,7 @@ const publicPath = path.resolve(__dirname, "public");
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 const { fork } = require('child_process');
-const emulator = fork('emulator.js',['invaders']);
+const emulator = fork('emulator.js',process.argv.slice(2,process.argv.length));
 
 let arr;
 emulator.on('message',(data) => {
@@ -16,7 +16,7 @@ emulator.on('message',(data) => {
 		emulator.send('loop');
 	}
 	else{
-		console.log('logged');
+		//console.log('logged');
 		arr = data;
 	}
 });
