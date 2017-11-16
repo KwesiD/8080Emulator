@@ -413,6 +413,7 @@ function executeOpcode(opcode,bytes,state){
 		case 'PCHL':
 			state.PC = state.H + state.L;
 			break;
+			
 		case 'STC': //just sets CY
 			state.CY = true;
 			state.incrementPC(Number(code.size));
