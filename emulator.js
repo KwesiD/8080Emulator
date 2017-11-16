@@ -11,6 +11,7 @@ let count = 0;
 let prevcount = 0;
 let steps = 0;
 let lastInterrupt = Date.now();
+let interruptNum = 2;;
 
 
 process.on('message',(data) => {
@@ -94,16 +95,18 @@ function runEmulator(){
 		}
 
 
-
-		if((Date.now() - lastInterrupt) > 1.0/60.0){
-			if(state.interruptsEnabled){
-				generateInterrupt(state,2);
-				exportImage(state);
-				process.send('loop');
-				state.interruptsEnabled = false;
-				lastInterrupt = Date.now();
-				break;
-			}
+		/**
+		Interrupt handler
+		**/
+		if(((Date.now() - lastInterrupt) > 1.0/60.0) && state.interruptsEnabled){
+			interruptNum = (interruptNum%2)+1; //toggle before passing to function
+			state.interruptsEnabled = false; //disable interrupts temporarily
+			generateInterrupt(state,interruptNum);
+			exportImage(state);
+			lastInterrupt = Date.now();
+			process.send('loop');
+			break;
+			
 		}
 
 	}
@@ -134,5 +137,8 @@ function padBytes(bytes,mul=4){
 }
 
 function generateInterrupt(state,num){
-	core.rst(state,num); //generate the interrupt	
+	//core.rst(state,num); //generate the interrupt	
+	core.pushDirect(state,core.splitBytes(state.PC));
+	state.PC = padBytes((8 * num).toString('16'),2);
+
 }

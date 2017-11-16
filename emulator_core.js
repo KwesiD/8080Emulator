@@ -125,7 +125,7 @@ function EmulatorState(){
 		this.Z = !!psw[1];
 		this.AC = !!psw[3];
 		this.P = !!psw[5];
-		this.C = !!psw[7];
+		this.CY = !!psw[7];
 	};
 
 	this.incrementPC = (increment) => {
@@ -365,8 +365,57 @@ function executeOpcode(opcode,bytes,state){
 				state.incrementPC(Number(code.size));
 			}
 			break;
+
+		case 'JNC':
+			if(!state.CY){
+				state.PC = bytes[1] + bytes[0];
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
 		case 'RST':
 			rst(state)
+			break;
+
+		case 'RZ':
+			if(state.Z){
+				ret(state);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+		case 'RNZ':
+			if(!state.Z){
+				ret(state);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'RNC':
+			if(!state.CY){
+				ret(state);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'XTHL':
+			exchangeSP(state);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'PCHL':
+			state.PC = state.H + state.L;
+			break;
+		case 'STC': //just sets CY
+			state.CY = true;
+			state.incrementPC(Number(code.size));
 			break;
 
 		default:
@@ -794,6 +843,15 @@ function exchange(state){
 	state.E = temp;
 }
 
+function exchangeSP(state){
+	let temp = state.L;
+	state.L = state.getMemory(state.SP);
+	state.setMemory(state.SP,temp);
+	temp = state.H;
+	state.H = state.getMemory(addToHex(state.SP,1));
+	state.setMemory(addToHex(state.SP,1),temp);
+}
+
 
 /**
 Currently unimplemented
@@ -847,6 +905,9 @@ function interrupts(enabled,state){
 	console.log('Interrupts: ' + enabled,state.toString());
 }
 
+/**
+???
+**/
 function rst(state,num){
 	num <<= 3;
 	num &= 0b111000;
@@ -854,14 +915,15 @@ function rst(state,num){
 	pushDirect(state,splitBytes(state.PC));
 	pushDirect(state,splitBytes(num));
 	state.PC = padBytes((8 * num).toString('16'),2);  
-
-
 }
 //TODO: Implement EI
 
 module.exports = {
 	EmulatorState:EmulatorState,
 	executeOpcode:executeOpcode,
-	rst,rst
+	rst:rst,
+	pushDirect:pushDirect,
+	splitBytes:splitBytes
+
 };
 
