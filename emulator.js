@@ -11,7 +11,7 @@ let count = 0;
 let prevcount = 0;
 let steps = 0;
 let lastInterrupt = Date.now();
-let interruptNum = 2;;
+let interruptNum = 1;
 
 
 process.on('message',(data) => {
