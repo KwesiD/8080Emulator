@@ -654,7 +654,7 @@ function rotateLeft(hex,state){
 	let bits = (Number('0x' + hex)).toString('2');
 	let lead = bits[0];
 	bits = bits.substring(1,bits.length) + lead;
-	state.CY = !!lead; //sets carry
+	state.CY = !!Number(lead); //sets carry
 	let num = Number('0b' + bits);
 	return ""+num; //to string
 }
@@ -664,10 +664,10 @@ Rotates bits to the right.
 Sets carry
 **/
 function rotateRight(hex,state){
-	let bits = (Number('0x' + hex)).toString('2');
+	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let end = bits[bits.length-1];
 	bits = end + bits.substring(0,bits.length-1);
-	state.CY = !!end; //sets carry
+	state.CY = !!Number(end); //sets carry   //!!0 = false but !!'0' = true
 	let num = Number('0b' + bits);
 	return ""+num; //to string
 }

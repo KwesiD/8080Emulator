@@ -10,7 +10,7 @@ state.loadGame(gameData); //loads game into memory
 let count = 0;
 let prevcount = 0;
 let steps = 0;
-let lastInterrupt = Date.now();
+let lastInterrupt = Infinity;
 let interruptNum = 2;
 let saveFile = "";
 let saveFileName = "";
@@ -56,13 +56,13 @@ function runEmulator(){
 			let temppc = Number('0x' + state.PC);
 			let opcode;
 			let bytes;
-			if(state.PC === '0ada'){
+		/*	if(state.PC === '0ada'){
 				console.log("here");
 				//exportImage(state);
 				//process.send('loop');
 				//break;
 				process.exit();
-			}
+			}*/
 			try{
 				[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
 			
@@ -100,6 +100,10 @@ function runEmulator(){
 				saveFile += (count) + "\n";
 			}
 
+			if(state.interruptsEnabled && lastInterrupt === Infinity){
+				lastInterrupt = Date.now(); //only initializes last interrupt once (when lastinterrupt is 0 and interrupts have been just set)
+			}
+
 			/**
 			Interrupt handler
 			**/
@@ -108,7 +112,7 @@ function runEmulator(){
 				state.interruptsEnabled = false; //disable interrupts temporarily
 				generateInterrupt(state,interruptNum);
 				exportImage(state);
-				lastInterrupt = Date.now();
+				lastInterrupt = Infinity;//Date.now();
 				process.send('loop');
 				break;
 				
