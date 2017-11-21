@@ -117,7 +117,7 @@ function EmulatorState(){
 	};
 
 	this.getPSW = () => {
-		return "" + (+this.S) + (+this.Z) + '0' + (+this.AC) + '0' + (+this.P) + '1' + (+this.C); //the extra + converts bool to 1 or 0
+		return "" + (+this.S) + (+this.Z) + '0' + (+this.AC) + '0' + (+this.P) + '1' + (+this.CY); //the extra + converts bool to 1 or 0
 	};
 
 	this.setPSW = (psw) => {
@@ -404,6 +404,24 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'RNC':
 			if(!state.CY){
+				ret(state);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'RC':
+			if(state.CY){
+				ret(state);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'RZ':
+			if(state.Z){
 				ret(state);
 			}
 			else{
@@ -796,7 +814,8 @@ function stackPush(pair,state){
 	pair = registerPairTable[pair].split(' ');
 	if(pair.length === 1 && pair[0] === 'PSW'){
 		state.SP = addToHex(state.SP,-1);
-		state.setMemory(state.SP,state.getPSW());
+		//console.log(state.getPSW(),Number("0b"+state.getPSW()).toString('16'));
+		state.setMemory(state.SP,Number("0b"+state.getPSW()).toString('16'));
 		state.SP = addToHex(state.SP,-1);
 		state.setMemory(state.SP,state.A);
 	}

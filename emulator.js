@@ -14,6 +14,7 @@ let lastInterrupt = Infinity;
 let interruptNum = 2;
 let saveFile = "";
 let saveFileName = "";
+let oldPC;
 
 
 process.on('message',(data) => {
@@ -74,6 +75,7 @@ function runEmulator(){
 			}
 			try{
 				//keypress(state);
+				oldPC = state.PC;
 				core.executeOpcode(opcode,bytes,state);
 			}
 			catch(e){
@@ -110,6 +112,7 @@ function runEmulator(){
 			if(((Date.now() - lastInterrupt)/1000.0 > 1.0/60.0) && state.interruptsEnabled){
 				interruptNum = (interruptNum%2)+1; //toggle before passing to function
 				state.interruptsEnabled = false; //disable interrupts temporarily
+				state.PC = oldPC; //ensures that the emulator returns to the instruction that just ran (rather than returning to the nextPC and skipping that opcode upon return from the interrupt handler
 				generateInterrupt(state,interruptNum);
 				exportImage(state);
 				lastInterrupt = Infinity;//Date.now();
