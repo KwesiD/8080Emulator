@@ -191,7 +191,13 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'DCR':
-			result = addToReg(params[0],-1,state,true); //TODO: will adding negative numbers work? need to test if number falls below 0
+			if(params[0] === 'M'){
+				result = addToHex(state.getMemory(state.getPair('M')),-1,state,true);
+				state.setMemory(state.getPair('M'),result);
+			}
+			else{
+				result = addToReg(params[0],-1,state,true);
+			}
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
@@ -545,7 +551,6 @@ Returns the value as a string
 function addToHex(hex,increment,state=null,flagged=false){
 	
 	//console.log(Number('0x'+hex),increment);
-
 	let size =  hex.length;
 	let temp = hex;
 	increment = Number(increment);
@@ -803,11 +808,13 @@ function stackPush(pair,state){
 	}
 }
 
+/**Pair here does not refer to a register pair but the bytes of the 
+program counter **/
 function pushDirect(state,pair){
 	state.SP = addToHex(state.SP,-1);
-	state.setMemory(state.SP,state[pair[0]]);
+	state.setMemory(state.SP,pair[0]);
 	state.SP = addToHex(state.SP,-1);
-	state.setMemory(state.SP,state[pair[1]]);
+	state.setMemory(state.SP,pair[1]);
 }
 
 function stackCall(state,adr){
@@ -824,7 +831,7 @@ function stackCall(state,adr){
 function ret(state){
 	let loc1 = state.getMemory(addToHex(state.SP,1)) ;
 	let loc2 = state.getMemory(state.SP);
-	//console.log(loc1+loc2,state.getMemory(loc1+loc2));
+	//console.log(loc1,loc2,loc1+loc2,state.getMemory(loc1+loc2));
 	let size = opcodeTable[state.getMemory(loc1+loc2)].size;
 	//RET goes back to the instruction after the last instruction that called 
 	//the subroutine.We increment by the size of the calling instruction after
