@@ -11,7 +11,9 @@ let count = 0;
 let prevcount = 0;
 let steps = 0;
 let lastInterrupt = Date.now();
-let interruptNum = 1;
+let interruptNum = 2;
+let saveFile = "";
+let saveFileName = "";
 
 
 process.on('message',(data) => {
@@ -23,7 +25,12 @@ process.on('message',(data) => {
 	}
 });
 
-
+if(process.argv.indexOf('-o') !== -1){
+	saveFileName = process.argv[process.argv.indexOf('-o') + 1];
+	if(saveFileName === undefined){
+		throw "Output file not defined";
+	}
+}
 
 runEmulator();
 
@@ -31,83 +38,82 @@ function runEmulator(){
 
 	while(Number("0x" + state.PC) < state.memory.length){
 
-		//(d)ebug mode
-		if(process.argv.indexOf('-d') !== -1){
-			if(count-prevcount === steps){
-				while(true){
-					steps = readlineSync.question("How many steps?: ");
-					if(Number(steps) !== NaN){
-						steps = Number(steps);
-						prevcount = count;
-						break;
-					}
+			//(d)ebug mode
+			if(process.argv.indexOf('-d') !== -1){
+				if(count-prevcount === steps){
+					while(true){
+						steps = readlineSync.question("How many steps?: ");
+						if(Number(steps) !== NaN){
+							steps = Number(steps);
+							prevcount = count;
+							break;
+						}
 
+					}
 				}
 			}
-		}
 
-		let temppc = Number('0x' + state.PC);
-		let opcode;
-		let bytes;
-		if(state.PC === '0ada'){
-			console.log("here");
-			//exportImage(state);
-			//process.send('loop');
-			//break;
-			process.exit();
-		}
-		try{
-			[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
-		}
-		catch(e){
-			console.log(e);
-			console.log('\n\nERROR: ' + state.gameFile[Number("0x" + state.PC)],state.toString());
-			process.exit();
-		}
-		try{
-			//keypress(state);
-			core.executeOpcode(opcode,bytes,state);
-		}
-		catch(e){
-			if(e.name === 'Input'){ //wants input from keyboard
-				console.log('hello!');
-				break; //break current loop.
+			let temppc = Number('0x' + state.PC);
+			let opcode;
+			let bytes;
+			if(state.PC === '0ada'){
+				console.log("here");
+				//exportImage(state);
+				//process.send('loop');
+				//break;
+				process.exit();
 			}
-			else if(e.name === 'Output'){
-
+			try{
+				[opcode,bytes] = helpers.parseInstructions(state.gameFile[Number("0x" + state.PC)]);
+			
 			}
-			else{
+			catch(e){
+				console.log(e);
+				console.log('\n\nERROR: ' + state.gameFile[Number("0x" + state.PC)],state.toString());
+				process.exit();
+			}
+			try{
+				//keypress(state);
+				core.executeOpcode(opcode,bytes,state);
+			}
+			catch(e){
 				console.log(e);
 				console.log('\n\nERROR: ' + opcode,bytes,'\t',state.gameFile[Number("0x" + state.PC)]);
 				
+				if(process.argv.indexOf('-o') !== -1){
+					fs.writeFileSync(saveFileName,saveFile);
+				}
 				//(c)ontinue even if unimplemented
 				if(process.argv.indexOf('-c') === -1){
 					process.exit();
 				}
 			}
-		}
 
-		count++;
-		//(l)og out info
-		if(process.argv.indexOf('-l') !== -1){
-			console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
-			console.log(count);
-		}
+			count++;
+			//(l)og out info
+			if(process.argv.indexOf('-l') !== -1){
+				console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
+				console.log(count);
+			}
+			if(process.argv.indexOf('-o') !== -1){
+				saveFile += (opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
+				saveFile += (count) + "\n";
+			}
 
+			/**
+			Interrupt handler
+			**/
+			if(((Date.now() - lastInterrupt)/1000.0 > 1.0/60.0) && state.interruptsEnabled){
+				interruptNum = (interruptNum%2)+1; //toggle before passing to function
+				state.interruptsEnabled = false; //disable interrupts temporarily
+				generateInterrupt(state,interruptNum);
+				exportImage(state);
+				lastInterrupt = Date.now();
+				process.send('loop');
+				break;
+				
+			}
 
-		/**
-		Interrupt handler
-		**/
-		if(((Date.now() - lastInterrupt) > 1.0/60.0) && state.interruptsEnabled){
-			interruptNum = (interruptNum%2)+1; //toggle before passing to function
-			state.interruptsEnabled = false; //disable interrupts temporarily
-			generateInterrupt(state,interruptNum);
-			exportImage(state);
-			lastInterrupt = Date.now();
-			process.send('loop');
-			break;
-			
-		}
 
 	}
 }
