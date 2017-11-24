@@ -121,11 +121,11 @@ function EmulatorState(){
 	};
 
 	this.setPSW = (psw) => {
-		this.S = !!psw[0];
-		this.Z = !!psw[1];
-		this.AC = !!psw[3];
-		this.P = !!psw[5];
-		this.CY = !!psw[7];
+		this.S = !!Number(psw[0]);
+		this.Z = !!Number(psw[1]);
+		this.AC = !!Number(psw[3]);
+		this.P = !!Number(psw[5]);
+		this.CY = !!Number(psw[7]);
 	};
 
 	this.incrementPC = (increment) => {
@@ -174,7 +174,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'STAX':
-			let memloc = state.getPair(params[0]);
+			let memLoc = state.getPair(params[0]);
 			state.setMemory(memLoc,state.A);
 			state.incrementPC(Number(code.size));
 			break;
@@ -448,7 +448,7 @@ function executeOpcode(opcode,bytes,state){
 
 	}
 	
-}  //TODO: XCHG & PUSH have bugs
+}  
 
 /**
 Takes a pair of bytes in an array
@@ -794,9 +794,12 @@ function bitwiseVal(reg,val,state,operator){
 function stackPop(pair,state){
 	pair = registerPairTable[pair].split(' ');
 	if(pair.length === 1 && pair[0] === 'PSW'){
-		state.setPSW(state.getMemory(state.SP));
-		state.SP = addToHex(state.SP,1);
 		state.A = state.getMemory(state.SP); 
+		state.SP = addToHex(state.SP,1);
+		let thispsw = padBytes(Number('0x' + state.getMemory(state.SP)).toString('2'),4); 
+		//console.log(thispsw,state.getMemory(state.SP),state.toString());
+		//process.exit();
+		state.setPSW(thispsw);
 		state.SP = addToHex(state.SP,1);
 	}
 	else{
@@ -839,7 +842,7 @@ function pushDirect(state,pair){
 function stackCall(state,adr){
 	let lo; //high and low order bits of PC
 	let hi;
-	[hi,lo] = splitBytes(state.PC);
+	[hi,lo] = splitBytes(addToHex(state.PC,3));
 	state.setMemory(addToHex(state.SP,-1),hi);
 	state.setMemory(addToHex(state.SP,-2),lo);
 	state.SP = addToHex(state.SP,-2);//(Number('0x' + state.SP) - 2).toString('16');
@@ -851,11 +854,11 @@ function ret(state){
 	let loc1 = state.getMemory(addToHex(state.SP,1)) ;
 	let loc2 = state.getMemory(state.SP);
 	//console.log(loc1,loc2,loc1+loc2,state.getMemory(loc1+loc2));
-	let size = opcodeTable[state.getMemory(loc1+loc2)].size;
+	//let size = opcodeTable[state.getMemory(loc1+loc2)].size;
 	//RET goes back to the instruction after the last instruction that called 
 	//the subroutine.We increment by the size of the calling instruction after
 	//returning (to skip it).
-	state.PC = addToHex(loc1 + loc2,size);
+	state.PC = loc1+loc2;//addToHex(loc1 + loc2,size);
 
 	state.SP = addToHex(state.SP,2);
 	//process.exit();
@@ -928,8 +931,8 @@ function hardwareIn(port,state,size){
 Toggle interrupts. Placeholder...
 **/
 function interrupts(enabled,state){
-	state.interruptsEnabled = enabled;
-	console.log('Interrupts: ' + enabled,state.toString());
+	state.interruptsEnabled = enabled; //enabled is a boolean
+	//console.log('Interrupts: ' + enabled,state.toString());
 }
 
 /**
