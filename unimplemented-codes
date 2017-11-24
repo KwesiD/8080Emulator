@@ -8,7 +8,7 @@
 2
 0x27	DAA	1		special
 
-0x2a	LHLD adr	3		L <- (adr); H<-(adr+1)
+//0x2a	LHLD adr	3		L <- (adr); H<-(adr+1)
 
 
 0x2f	CMA	1		A <- !A
@@ -66,11 +66,6 @@
 
 
 
-0xc4	CNZ adr	3		if NZ, CALL adr
-
-
-
-0xcc	CZ adr	3		if Z, CALL adr
 
 0xce	ACI D8	2	Z, S, P, CY, AC	A <- A + data + CY
 
@@ -79,7 +74,7 @@
 0xd3	OUT D8	2		special
 0xd4	CNC adr	3		if NCY, CALL adr
 
-0xd6	SUI D8	2	Z, S, P, CY, AC	A <- A - data
+//0xd6	SUI D8	2	Z, S, P, CY, AC	A <- A - data
 
 
 

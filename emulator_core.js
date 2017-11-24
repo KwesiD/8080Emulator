@@ -326,6 +326,24 @@ function executeOpcode(opcode,bytes,state){
 			//state.incrementPC(Number(code.size));
 			break;
 
+		case 'CNZ':
+			if(!state.Z){
+				stackCall(state,bytes[1] + bytes[0]);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'CZ':
+			if(state.Z){
+				stackCall(state,bytes[1] + bytes[0]);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
 		case 'ANI':
 			result = bitwiseReg('A',bytes[0],state,'and');
 			setFlags(code,result,state);
@@ -440,6 +458,29 @@ function executeOpcode(opcode,bytes,state){
 			
 		case 'STC': //just sets CY
 			state.CY = true;
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'LHLD':
+			//console.log(params);
+			state.L = state.getMemory(bytes[1] + bytes[0]);
+			state.H = state.getMemory(addToHex(bytes[1] + bytes[0],1));
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'SUI':
+			result = addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
+			setFlags(code,result,state);
+			state.A = result;
+			break;
+
+		case 'RAL':
+			state.A = rotateLeft(state.A,state,true); //carries
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'RAR':
+			state.A = rotateRight(state.A,state,true); //carries
 			state.incrementPC(Number(code.size));
 			break;
 
@@ -673,20 +714,23 @@ function padBytes(bytes,mul=1){
 Rotates bits to the left.
 Sets carry
 **/
-function rotateLeft(hex,state){
-	let bits = (Number('0x' + hex)).toString('2');
+function rotateLeft(hex,state,useCarry=false){
+	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let lead = bits[0];
-	bits = bits.substring(1,bits.length) + lead;
 	state.CY = !!Number(lead); //sets carry
+	if(useCarry){
+		lead = state.CY;
+	}
+	bits = bits.substring(1,bits.length) + lead;
 	let num = Number('0b' + bits);
-	return ""+num; //to string
+	return num.toString('16');
 }
 
 /**
 Rotates bits to the right.
 Sets carry
 **/
-function rotateRight(hex,state){
+function rotateRight(hex,state,useCarry=false){
 	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let end = bits[bits.length-1];
 	bits = end + bits.substring(0,bits.length-1);
