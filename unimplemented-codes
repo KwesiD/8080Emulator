@@ -54,7 +54,7 @@
 0x9f	SBB A	1	Z, S, P, CY, AC	A <- A - A - CY
 **/
 
-
+/**
 0xb8	CMP B	1	Z, S, P, CY, AC	A - B
 0xb9	CMP C	1	Z, S, P, CY, AC	A - C
 0xba	CMP D	1	Z, S, P, CY, AC	A - D
@@ -63,17 +63,17 @@
 0xbd	CMP L	1	Z, S, P, CY, AC	A - L
 0xbe	CMP M	1	Z, S, P, CY, AC	A - (HL)
 0xbf	CMP A	1	Z, S, P, CY, AC	A - A
+**/
 
 
 
-
-
-0xce	ACI D8	2	Z, S, P, CY, AC	A <- A + data + CY
+//	ACI D8	2	Z, S, P, CY, AC	A <- A + data + CY
 
 //0xd0	RNC	1		if NCY, RET
 
 //0xd3	OUT D8	2		special
-0xd4	CNC adr	3		if NCY, CALL adr
+
+//0xd4	CNC adr	3		if NCY, CALL adr
 
 //0xd6	SUI D8	2	Z, S, P, CY, AC	A <- A - data
 
@@ -81,7 +81,7 @@
 
 //0xda	JC adr	3		if CY, PC<-adr
 //0xdb	IN D8	2		special
-0xdc	CC adr	3		if CY, CALL adr
+//0xdc	CC adr	3		if CY, CALL adr
 		
 //0xde	SBI D8	2	Z, S, P, CY, AC	A <- A - data - CY
 

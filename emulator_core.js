@@ -326,6 +326,15 @@ function executeOpcode(opcode,bytes,state){
 			//state.incrementPC(Number(code.size));
 			break;
 
+		case 'CNC':
+			if(!state.CY){
+				stackCall(state,bytes[1] + bytes[0]);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
 		case 'CNZ':
 			if(!state.Z){
 				stackCall(state,bytes[1] + bytes[0]);
@@ -337,6 +346,15 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'CZ':
 			if(state.Z){
+				stackCall(state,bytes[1] + bytes[0]);
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'CC':
+			if(state.CY){
 				stackCall(state,bytes[1] + bytes[0]);
 			}
 			else{
@@ -359,6 +377,19 @@ function executeOpcode(opcode,bytes,state){
 			//console.log(state.A,bytes);
 			result = addToHex(state.A,-(Number('0x' + bytes[0])),state,true);
 			//console.log(state.toString());
+			setFlags(code,result,state);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'CMP':
+			let reg = params[0];
+			if(reg === 'M'){
+				val = state.getMemory(state.H + state.L);
+			}
+			else{
+				val = state[reg];
+			}
+			result = addToHex(state.A,-(val),state,true);
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
@@ -491,14 +522,12 @@ function executeOpcode(opcode,bytes,state){
 		case 'SUI':
 			result = addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
 			setFlags(code,result,state);
+			//console.log(state.toString(),typeof(state.A));
 			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 
 		case 'SBI':
-			if(process.argv.indexOf('-l') === -1){
-			//	process.argv.push('-l');
-			}
 			let temp = Number("0x" + addToHex(bytes[0],Number(+state.CY)));
 			result = addToHex(state.A,-(temp),state,true);
 			setFlags(code,result,state);
@@ -507,7 +536,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ORI':
-			result = state.A | Number("0x" + bytes[0]);//addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
+			result = (state.A | Number("0x" + bytes[0])).toString('16');//addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
 			setFlags(code,result,state);
 			state.A = result;
 			state.incrementPC(Number(code.size));
@@ -552,7 +581,19 @@ function executeOpcode(opcode,bytes,state){
 			toA(params[0],'-',state);
 			state.incrementPC(Number(code.size));
 			break;
-			
+
+		case 'ACI':
+			val = addToHex(bytes[0],state.CY);
+			state.A = addToHex(state.A,val,state,true);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'SPHL':
+			state.SP = state.H + state.L;
+			state.incrementPC(Number(code.size));
+			break;
+
+
 		default:
 			unimplemented(opcode,bytes,state);
 
@@ -677,7 +718,6 @@ Ie:  0xFFFF + 1 = 0x0000
 Returns the value as a string
 **/
 function addToHex(hex,increment,state=null,flagged=false){
-	
 	//console.log(Number('0x'+hex),increment);
 	let size =  hex.length;
 	let temp = hex;
@@ -715,13 +755,16 @@ function addToHex(hex,increment,state=null,flagged=false){
 Add to single register
 **/
 function addToReg(register,increment,state,flagged=false){
-/*	if(register === 'M'){
+	if(register === 'M'){
 		let loc = state.H + state.L;
-		let mem = state.getMemory(loc);
-		state.setMemory(loc);
-	}*/
-	state[register] = addToHex(state[register],increment,state,flagged);
-	return state[register];
+		let mem = addToHex(state.getMemory(loc),increment,state,flagged);
+		state.setMemory(loc,mem);
+		return mem;
+	}
+	else{
+		state[register] = addToHex(state[register],increment,state,flagged);
+		return state[register];
+	}
 }
 /**
 Adds to register pairs
@@ -880,20 +923,24 @@ function bitwiseReg(reg1,reg2,state,operator){
 	else{
 		val = state[reg2];
 	}
+	val = Number("0x" + val);
+	let regVal = Number("0x" + state[reg1]);
 	switch(operator){
 		case 'and':
-			state[reg1] &= val; break;
+			regVal &= val; break;
 		case 'or':
-			state[reg1] |= val; break;
+			regVal |= val; break;
 		case 'xor':
-			state[reg1] ^= val; break;
+			regVal ^= val; break;
 	}
+	state[reg1] = regVal.toString('16');
 	state.CY = false; //resets carry
 	return state[reg1];
 }
 
+/*
 function bitwiseVal(reg,val,state,operator){
-	val = Number(val);
+	//val = Number(val);
 	if(reg === 'M'){
 		val = state.getMemory(state.getPair('H'));
 	}
@@ -910,7 +957,7 @@ function bitwiseVal(reg,val,state,operator){
 	}
 	state.CY = false; //resets carry
 	return state[reg];
-}
+}*/
 
 /**Bitwise Not**/
 function bitNot(hex){
