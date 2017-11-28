@@ -356,7 +356,9 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'CPI':
+			//console.log(state.A,bytes);
 			result = addToHex(state.A,-(Number('0x' + bytes[0])),state,true);
+			//console.log(state.toString());
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
@@ -383,6 +385,15 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'JZ':
 			if(state.Z){
+				state.PC = bytes[1] + bytes[0];
+			}
+			else{
+				state.incrementPC(Number(code.size));
+			}
+			break;
+
+		case 'JM':
+			if(state.S){
 				state.PC = bytes[1] + bytes[0];
 			}
 			else{
@@ -468,10 +479,38 @@ function executeOpcode(opcode,bytes,state){
 			state.incrementPC(Number(code.size));
 			break;
 
+		case 'SHLD':
+			//console.log(params);
+			adr = bytes[1]+bytes[0];
+			state.setMemory(adr,state.L);
+			adr = addToHex(adr,1);
+			state.setMemory(adr,state.H);
+			state.incrementPC(Number(code.size));
+			break;
+
 		case 'SUI':
 			result = addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
 			setFlags(code,result,state);
 			state.A = result;
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'SBI':
+			if(process.argv.indexOf('-l') === -1){
+			//	process.argv.push('-l');
+			}
+			let temp = Number("0x" + addToHex(bytes[0],Number(+state.CY)));
+			result = addToHex(state.A,-(temp),state,true);
+			setFlags(code,result,state);
+			state.A = result;
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'ORI':
+			result = state.A | Number("0x" + bytes[0]);//addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
+			setFlags(code,result,state);
+			state.A = result;
+			state.incrementPC(Number(code.size));
 			break;
 
 		case 'RAL':
@@ -484,6 +523,36 @@ function executeOpcode(opcode,bytes,state){
 			state.incrementPC(Number(code.size));
 			break;
 
+		case 'CMA':
+			state.A = bitNot(state.A);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'CMC':
+			state.CY = !state.CY;
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'ADD':
+			toA(params[0],'+',state);
+			state.incrementPC(Number(code.size));
+			break;
+
+		case 'ADC':
+			toA(params[0],'+',state,true);
+			state.incrementPC(Number(code.size));
+			break;
+	
+		case 'SUB':
+			toA(params[0],'-',state);
+			state.incrementPC(Number(code.size));
+			break;
+			
+		case 'SBB':
+			toA(params[0],'-',state);
+			state.incrementPC(Number(code.size));
+			break;
+			
 		default:
 			unimplemented(opcode,bytes,state);
 
@@ -532,14 +601,14 @@ function setFlags(opcode,result,state){
 					state.Z = false;
 				}
 				break;
-			case 'S':
+			/*case 'S':
 				if((Number("0x"+result) & 128) === 128){ //result & 10000000. the zeroes mask everything but the MSB
 					state.S = true;
 				} 
 				else{
 					state.S = false;
 				}
-				break;
+				break;*/
 			case 'P':
 				state.P = checkParity(result);	
 				
@@ -615,7 +684,7 @@ function addToHex(hex,increment,state=null,flagged=false){
 	increment = Number(increment);
 	hex = Number('0x'+hex);
 	hex += increment; //increment hex
-
+	//console.log(hex);
 	if(hex < 0){//if neg
 		let max =  Math.pow(16,size); //hex system
 		hex = (max+Number('0x'+temp))+increment; 
@@ -646,6 +715,11 @@ function addToHex(hex,increment,state=null,flagged=false){
 Add to single register
 **/
 function addToReg(register,increment,state,flagged=false){
+/*	if(register === 'M'){
+		let loc = state.H + state.L;
+		let mem = state.getMemory(loc);
+		state.setMemory(loc);
+	}*/
 	state[register] = addToHex(state[register],increment,state,flagged);
 	return state[register];
 }
@@ -733,10 +807,13 @@ Sets carry
 function rotateRight(hex,state,useCarry=false){
 	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let end = bits[bits.length-1];
-	bits = end + bits.substring(0,bits.length-1);
 	state.CY = !!Number(end); //sets carry   //!!0 = false but !!'0' = true
+	if(useCarry){
+		end = bits[0];
+	}
+	bits = end + bits.substring(0,bits.length-1);
 	let num = Number('0b' + bits);
-	return ""+num; //to string
+	return num.toString('16');
 }
 
 
@@ -835,6 +912,22 @@ function bitwiseVal(reg,val,state,operator){
 	return state[reg];
 }
 
+/**Bitwise Not**/
+function bitNot(hex){
+	hex = padBytes(Number('0x' + hex).toString('2'),4);
+	let comp = "";
+	hex.split("").forEach((bit) =>{
+		if(bit === '1'){
+			comp += '0';
+		}
+		else{
+			comp += '1';
+		}
+	});
+	comp = Number('0b' + comp).toString('16');
+	return comp;
+}
+
 function stackPop(pair,state){
 	pair = registerPairTable[pair].split(' ');
 	if(pair.length === 1 && pair[0] === 'PSW'){
@@ -924,6 +1017,24 @@ function exchangeSP(state){
 	temp = state.H;
 	state.H = state.getMemory(addToHex(state.SP,1));
 	state.setMemory(addToHex(state.SP,1),temp);
+}
+
+
+function toA(reg,operator,state,carry=false){
+	let val;
+	if(reg === 'M'){
+		val = state.getMemory(state.H+state.L);
+	}
+	else{
+		val = state[reg];
+	}
+	if(carry){
+		val = addToHex(val,state.CY);
+	}
+	if(operator === '-'){
+		val = -Number("0x" + val); 
+	}
+	state.A = addToHex(state.A,val,state,true);
 }
 
 

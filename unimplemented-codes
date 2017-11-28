@@ -1,25 +1,25 @@
 
-0x17	RAL	1	CY	A = A << 1; bit 0 = prev CY; CY = prev bit 7
+//0x17	RAL	1	CY	A = A << 1; bit 0 = prev CY; CY = prev bit 7
 
-0x1f	RAR	1	CY	A = A >> 1; bit 7 = prev bit 7; CY = prev bit 0
+//0x1f	RAR	1	CY	A = A >> 1; bit 7 = prev bit 7; CY = prev bit 0
 0x20	RIM	1		special
 
-0x22	SHLD adr	3		(adr) <-L; (adr+1)<-H
-2
+//0x22	SHLD adr	3		(adr) <-L; (adr+1)<-H
+
 0x27	DAA	1		special
 
 //0x2a	LHLD adr	3		L <- (adr); H<-(adr+1)
 
 
-0x2f	CMA	1		A <- !A
+//0x2f	CMA	1		A <- !A
 0x30	SIM	1		special
 
 
-0x3f	CMC	1	CY	CY=!CY
+//0x3f	CMC	1	CY	CY=!CY
 
 0x76	HLT	1		special
 
-
+/**
 0x80	ADD B	1	Z, S, P, CY, AC	A <- A + B
 0x81	ADD C	1	Z, S, P, CY, AC	A <- A + C
 0x82	ADD D	1	Z, S, P, CY, AC	A <- A + D
@@ -52,6 +52,7 @@
 0x9d	SBB L	1	Z, S, P, CY, AC	A <- A - L - CY
 0x9e	SBB M	1	Z, S, P, CY, AC	A <- A - (HL) - CY
 0x9f	SBB A	1	Z, S, P, CY, AC	A <- A - A - CY
+**/
 
 
 0xb8	CMP B	1	Z, S, P, CY, AC	A - B
@@ -69,20 +70,20 @@
 
 0xce	ACI D8	2	Z, S, P, CY, AC	A <- A + data + CY
 
-0xd0	RNC	1		if NCY, RET
+//0xd0	RNC	1		if NCY, RET
 
-0xd3	OUT D8	2		special
+//0xd3	OUT D8	2		special
 0xd4	CNC adr	3		if NCY, CALL adr
 
 //0xd6	SUI D8	2	Z, S, P, CY, AC	A <- A - data
 
 
 
-0xda	JC adr	3		if CY, PC<-adr
-0xdb	IN D8	2		special
+//0xda	JC adr	3		if CY, PC<-adr
+//0xdb	IN D8	2		special
 0xdc	CC adr	3		if CY, CALL adr
 		
-0xde	SBI D8	2	Z, S, P, CY, AC	A <- A - data - CY
+//0xde	SBI D8	2	Z, S, P, CY, AC	A <- A - data - CY
 
 0xe0	RPO	1		if PO, RET
 
@@ -105,10 +106,10 @@
 
 0xf4	CP adr	3		if P, PC <- adr
  - 2
-0xf6	ORI D8	2	Z, S, P, CY, AC	A <- A | data
+//0xf6	2 D8	2	Z, S, P, CY, AC	A <- A | data
 
 0xf8	RM	1		if M, RET
 0xf9	SPHL	1		SP=HL
-0xfa	JM adr	3		if M, PC <- adr
+//0xfa	JM adr	3		if M, PC <- adr
 
 0xfc	CM adr	3		if M, CALL adr
