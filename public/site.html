@@ -17,6 +17,8 @@
 <script>
 const socket = io.connect('http://localhost:3000');
 let imgArr;
+const image = new Image();
+document.body.appendChild(image);
 socket.on('private',(data) => {
 	if(typeof data === typeof []){
 		//console.log(data);
@@ -45,10 +47,10 @@ socket.on('private',(data) => {
 		idata.data.set(buffer);
 		ctx.putImageData(idata,0,0);
 		const dataUri = canvas.toDataURL();
-		const image = new Image();
+		//const image = new Image();
 		image.src = dataUri;
 		console.log(dataUri);
-		document.body.appendChild(image);
+		//document.body.appendChild(image);
 
 	}
 	else{

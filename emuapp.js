@@ -18,6 +18,7 @@ emulator.on('message',(data) => {
 	else{
 		//console.log('logged');
 		arr = data;
+		io.sockets.emit('private',arr);
 	}
 });
 

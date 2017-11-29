@@ -148,6 +148,17 @@ function EmulatorState(){
 		string = "{" + string + "}";
 		return string;
 	};
+
+	/*print the first <size> elements on the stack*/
+	this.printStack = (start) => {
+		let loc;
+		let first = 0x2400;
+		let size = 0x2400 - Number("0x" + start);
+		for(let i = 0;i <= size;i++){
+			loc = first-i;
+			console.log((loc).toString('16'),this.memory[loc]);
+		}
+	};
 }
 
 /**
@@ -317,6 +328,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'RET':
+			//state.printStack(state.SP);
 			ret(state);
 			//state.incrementPC(Number(code.size));
 			break;
@@ -363,7 +375,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ANI':
-			result = bitwiseReg('A',bytes[0],state,'and');
+			result = bitwiseVal('A',bytes[0],state,'and');
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
@@ -746,8 +758,14 @@ function addToHex(hex,increment,state=null,flagged=false){
 			}
 		}
 	}
+
+	let mul = size;
+	if(size % 2 === 1){
+		mul = size+1;
+	}
+	mul /= 2;
 	//console.log(hex.toString('16'));
-	return hex.toString('16');//padBytes(hex.toString('16'),size);
+	return padBytes(hex.toString('16'),mul);
 
 }
 
@@ -840,7 +858,8 @@ function rotateLeft(hex,state,useCarry=false){
 	}
 	bits = bits.substring(1,bits.length) + lead;
 	let num = Number('0b' + bits);
-	return num.toString('16');
+	let size  = hex.length/2;
+	return padBytes(num.toString('16'),size);
 }
 
 /**
@@ -856,7 +875,8 @@ function rotateRight(hex,state,useCarry=false){
 	}
 	bits = end + bits.substring(0,bits.length-1);
 	let num = Number('0b' + bits);
-	return num.toString('16');
+	let size  = hex.length/2;
+	return padBytes(num.toString('16'),size);
 }
 
 
@@ -923,6 +943,8 @@ function bitwiseReg(reg1,reg2,state,operator){
 	else{
 		val = state[reg2];
 	}
+	//console.log(val,typeof(val));
+	let size = val.length/2;
 	val = Number("0x" + val);
 	let regVal = Number("0x" + state[reg1]);
 	switch(operator){
@@ -933,31 +955,35 @@ function bitwiseReg(reg1,reg2,state,operator){
 		case 'xor':
 			regVal ^= val; break;
 	}
-	state[reg1] = regVal.toString('16');
+	state[reg1] = padBytes(regVal.toString('16'),size);
 	state.CY = false; //resets carry
 	return state[reg1];
 }
 
-/*
 function bitwiseVal(reg,val,state,operator){
-	//val = Number(val);
+	//console.log(val,typeof(val));
+	let size = val.length/2;
+	val = Number("0x" + val);
+	let regVal;
 	if(reg === 'M'){
-		val = state.getMemory(state.getPair('H'));
+		regVal = state.getMemory(state.getPair('H'));
 	}
 	else{
-		val = state[reg];
+		regVal = state[reg];
 	}
+	regVal = Number("0x" + regVal);
 	switch(operator){
 		case 'and':
-			state[reg] &= val; break;
+			regVal &= val; break;
 		case 'or':
-			state[reg] |= val; break;
+			regVal |= val; break;
 		case 'xor':
-			state[reg] ^= val; break;
+			regVal ^= val; break;
 	}
+	state[reg] = padBytes(regVal.toString('16'),size);
 	state.CY = false; //resets carry
 	return state[reg];
-}*/
+}
 
 /**Bitwise Not**/
 function bitNot(hex){
@@ -1089,10 +1115,9 @@ function toA(reg,operator,state,carry=false){
 Currently unimplemented
 **/
 function hardwareOut(port,state,size){
-	//console.log("Output to device....");
 	switch(Number('0x' + port)){
 		case 2:
-			state.shiftOffset = (Number('0x' + state.A) & (0x7)).toString('16'); //shift offset is the 3 least sig. bytes. 0x7 = 00000111 
+			state.shiftOffset = padBytes((Number('0x' + state.A) & (0x7)).toString('16'),2); //shift offset is the 3 least sig. bytes. 0x7 = 00000111 
 			break;
 		case 4:
 			let temp = state.shiftRegister;
@@ -1110,21 +1135,30 @@ function hardwareOut(port,state,size){
 Currently unimplemented
 **/
 function hardwareIn(port,state,size){
-	//console.log("get input....");
-	if(port === '1'){
-		state.incrementPC(Number(size));
-		throw {
+	//console.log(port);
+	if(port === '01'){
+		//state.incrementPC(Number(size));
+		/*throw {
 			name:'Input'
-		};
+		};*/
+		state.A = padBytes(state.inputPorts[Number('0x' + port)]);
+
 	}
-	else if(port === '3'){
-		let shift1 = Number('0x' + state.shiftRegister.substring(0,2));
+	else if(port === '03'){
+		/*let shift1 = Number('0x' + state.shiftRegister.substring(0,2));
 		let shift2 = Number('0x' + state.shiftRegister.substring(2,4));
-		let v = (shift1<<8) | shift0;                                     //convert these lines into my own version
-        state.A = ((v >> (8-Number('0x' + state.shiftOffset))) & 0xff);  
+		let v = (shift2<<8) | shift1;                                   //convert these lines into my own version
+        state.A = padBytes((v >> (8-Number('0x' + state.shiftOffset))) & 0xff);  */
+        let val = Number('0x' + state.shiftRegister);
+        let mask = 0xff00 >> Number('0x' + state.shiftOffset);
+        val &= mask; //next, shift over by remaining value, (then mask first 8 bytes again??)
+        val >>= 8-Number('0x' + state.shiftOffset);
+        state.A = padBytes((val).toString('16'));
+
+
 	}
 	else{
-		state.A = state.inputPorts[Number('0x' + port)];
+		state.A = padBytes(state.inputPorts[Number('0x' + port)]);
 	}
 	
 }
