@@ -955,6 +955,12 @@ function bitwiseReg(reg1,reg2,state,operator){
 		case 'xor':
 			regVal ^= val; break;
 	}
+	if((regVal & 128) === 128){ //result & 10000000. the zeroes mask everything but the MSB
+		state.S = true;
+	} 
+	else{
+		state.S = false;
+	}
 	state[reg1] = padBytes(regVal.toString('16'),size);
 	state.CY = false; //resets carry
 	return state[reg1];
@@ -979,6 +985,12 @@ function bitwiseVal(reg,val,state,operator){
 			regVal |= val; break;
 		case 'xor':
 			regVal ^= val; break;
+	}
+	if((regVal & 128) === 128){ //result & 10000000. the zeroes mask everything but the MSB
+		state.S = true;
+	} 
+	else{
+		state.S = false;
 	}
 	state[reg] = padBytes(regVal.toString('16'),size);
 	state.CY = false; //resets carry

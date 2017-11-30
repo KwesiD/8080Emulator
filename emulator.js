@@ -94,7 +94,7 @@ function runEmulator(){
 			count++;
 			//(l)og out info
 			if(process.argv.indexOf('-l') !== -1){
-				//state.printStack(state.SP);
+				state.printStack(state.SP);
 				console.log(count);
 				console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
 				
