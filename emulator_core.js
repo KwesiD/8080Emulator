@@ -548,7 +548,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ORI':
-			result = (state.A | Number("0x" + bytes[0])).toString('16');//addToHex(state.A,-(Number('0x'+bytes[0])),state,true);
+			result = (Number("0x" + state.A) | Number("0x" + bytes[0])).toString('16');
 			setFlags(code,result,state);
 			state.A = result;
 			state.incrementPC(Number(code.size));
@@ -756,6 +756,9 @@ function addToHex(hex,increment,state=null,flagged=false){
 			if(flagged){
 				state.CY = false; //resets carry
 			}
+		}
+		if(flagged){
+			state.S = false;
 		}
 	}
 
@@ -1114,10 +1117,13 @@ function toA(reg,operator,state,carry=false){
 		val = state[reg];
 	}
 	if(carry){
-		val = addToHex(val,state.CY);
+		val = addToHex(val,+state.CY);
 	}
 	if(operator === '-'){
-		val = -Number("0x" + val); 
+		val = -Number("0x" + val); //to neg number
+	}
+	else{
+			val = Number("0x" + val); //to number 
 	}
 	state.A = addToHex(state.A,val,state,true);
 }
