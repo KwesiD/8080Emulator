@@ -4,3 +4,4 @@ standard
 node_modules
 *.h
 attractTest
+*.test

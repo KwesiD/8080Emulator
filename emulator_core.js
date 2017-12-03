@@ -55,18 +55,18 @@ function EmulatorState(){
 		pair = registerPairTable[pair].split(' ');
 		if(pair.length === 1){ //stack pointer or program counter
 			if(pair[0] === 'SP'){
-				this.SP = bytes[1] + bytes[0];
+				this.SP = padBytes(bytes[1] + bytes[0]);
 			}
 			else if (pair[0] === 'PC'){ //pair equal to PC
-				this.PC = bytes[1] + bytes[0];
+				this.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			/*else{//memory Location
 				//this.memLoc = bytes[1] + bytes[0];
 			}*/
 		}
 		else{ //if register pair
-			this[pair[0]] = bytes[1];
-			this[pair[1]] = bytes[0];
+			this[pair[0]] = padBytes(bytes[1],1);
+			this[pair[1]] = padBytes(bytes[0],1);
 		}
 
 	};
@@ -113,7 +113,7 @@ function EmulatorState(){
 	};
 
 	this.setMemory = (memLoc,data) => {
-		this.memory[Number('0x' + memLoc)] = data;
+		this.memory[Number('0x' + memLoc)] = padBytes(data);
 	};
 
 	this.getPSW = () => {
@@ -250,13 +250,13 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'STA':
-			adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			adr = padBytes(bytes[1] + bytes[0]); //TODO: should these be swapped???
 			state.setMemory(adr,state.A);
 			state.incrementPC(Number(code.size));
 			break;
 
 		case 'LDA':
-			adr = bytes[1] + bytes[0]; //TODO: should these be swapped???
+			adr = padBytes(bytes[1] + bytes[0]); //TODO: should these be swapped???
 			state.A = state.getMemory(adr);
 			state.incrementPC(Number(code.size));
 			break;
@@ -301,7 +301,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'JNZ':
 			if(!state.Z){
-				state.PC = bytes[1] + bytes[0];
+				state.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			else{
 				state.incrementPC(Number(code.size));
@@ -309,12 +309,12 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'JMP':
-			state.PC = bytes[1] + bytes[0];
+			state.PC = padBytes(bytes[1] + bytes[0]);
 			break;
 
 		case 'JC':
 			if(state.CY){
-				state.PC = bytes[1] + bytes[0];
+				state.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			else{
 				state.incrementPC(Number(code.size));
@@ -428,7 +428,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'JZ':
 			if(state.Z){
-				state.PC = bytes[1] + bytes[0];
+				state.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			else{
 				state.incrementPC(Number(code.size));
@@ -437,7 +437,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'JM':
 			if(state.S){
-				state.PC = bytes[1] + bytes[0];
+				state.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			else{
 				state.incrementPC(Number(code.size));
@@ -446,7 +446,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'JNC':
 			if(!state.CY){
-				state.PC = bytes[1] + bytes[0];
+				state.PC = padBytes(bytes[1] + bytes[0]);
 			}
 			else{
 				state.incrementPC(Number(code.size));
@@ -507,7 +507,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'PCHL':
-			state.PC = state.H + state.L;
+			state.PC = padBytes(state.H + state.L);
 			break;
 			
 		case 'STC': //just sets CY
@@ -524,7 +524,7 @@ function executeOpcode(opcode,bytes,state){
 
 		case 'SHLD':
 			//console.log(params);
-			adr = bytes[1]+bytes[0];
+			adr = padBytes(bytes[1]+bytes[0]);
 			state.setMemory(adr,state.L);
 			adr = addToHex(adr,1);
 			state.setMemory(adr,state.H);
@@ -548,7 +548,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ORI':
-			result = (Number("0x" + state.A) | Number("0x" + bytes[0])).toString('16');
+			result = padBytes((Number("0x" + state.A) | Number("0x" + bytes[0])).toString('16'),1);
 			setFlags(code,result,state);
 			state.A = result;
 			state.incrementPC(Number(code.size));
@@ -601,7 +601,7 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'SPHL':
-			state.SP = state.H + state.L;
+			state.SP = padBytes(state.H + state.L);
 			state.incrementPC(Number(code.size));
 			break;
 
@@ -777,7 +777,7 @@ Add to single register
 **/
 function addToReg(register,increment,state,flagged=false){
 	if(register === 'M'){
-		let loc = state.H + state.L;
+		let loc = padBytes(state.H + state.L);
 		let mem = addToHex(state.getMemory(loc),increment,state,flagged);
 		state.setMemory(loc,mem);
 		return mem;
@@ -815,8 +815,8 @@ Sets carry.
 function addRegisterPairs(pair1,pair2,state,flagged=false){
 	pair1 = registerPairTable[pair1].split(" "); //gets the register pairs
 	pair2 = registerPairTable[pair2].split(" ");
-	let reg1 = state[pair1[0]] + state[pair1[1]];
-	let reg2 = state[pair2[0]] + state[pair2[1]];
+	let reg1 = padBytes(state[pair1[0]],1) + padBytes(state[pair1[1]],1);
+	let reg2 = padBytes(state[pair2[0]],1) + padBytes(state[pair2[1]],1);
 	//console.log(reg1,reg2);
 	return addToHex(reg1,Number('0x' + reg2),state,flagged); //flagged for carry
 }
@@ -826,7 +826,7 @@ Adds values to the stackpointer or
 program counter.
 **/
 function addToPCSP(register,increment,state,flagged=false){
-	let bytes = state[register];
+	let bytes = padBytes(state[register]);
 	state[register] = addToHex(bytes,increment,state,flagged);
 	/*let byte1 = addToHex(bytes.substring(0,2),increment,state,flagged);//only work on higher order register
 	let byte2 = addToHex(bytes.substring(2,4),increment);
@@ -1071,7 +1071,7 @@ function stackCall(state,adr){
 	state.setMemory(addToHex(state.SP,-1),hi);
 	state.setMemory(addToHex(state.SP,-2),lo);
 	state.SP = addToHex(state.SP,-2);//(Number('0x' + state.SP) - 2).toString('16');
-	state.PC = adr;
+	state.PC = padBytes(adr);
 	
 }
 
@@ -1083,7 +1083,7 @@ function ret(state){
 	//RET goes back to the instruction after the last instruction that called 
 	//the subroutine.We increment by the size of the calling instruction after
 	//returning (to skip it).
-	state.PC = loc1+loc2;//addToHex(loc1 + loc2,size);
+	state.PC = padBytes(loc1+loc2);//addToHex(loc1 + loc2,size);
 
 	state.SP = addToHex(state.SP,2);
 	//process.exit();

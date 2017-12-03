@@ -49,7 +49,7 @@ socket.on('private',(data) => {
 		const dataUri = canvas.toDataURL();
 		//const image = new Image();
 		image.src = dataUri;
-		console.log(dataUri);
+		//console.log(dataUri);
 		//document.body.appendChild(image);
 
 	}
@@ -61,8 +61,18 @@ socket.on('private',(data) => {
 
 const listener = new window.keypress.Listener();
 listener.simple_combo("left", function() {
-   socket.emit('private','left');
+   socket.emit('key','left');
 });
-
-
+listener.simple_combo("c", function() {
+   socket.emit('key','c');
+});
+listener.simple_combo("right", function() {
+   socket.emit('key','right');
+});
+listener.simple_combo("space", function() {
+   socket.emit('key','space');
+});
+listener.simple_combo("1", function() {
+   socket.emit('key','1');
+});
 </script>

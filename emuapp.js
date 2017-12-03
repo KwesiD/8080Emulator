@@ -38,7 +38,7 @@ app.get('/',function(req,res){
 io.on('connection',function connection(socket) {
 	console.log('connected');
 	//socket.emit('private','You\'re connected!');
-	socket.on('private',(data) => {
+	socket.on('key',(data) => {
 		//console.log(data);
 		if(!data.msg){
 			console.log("Server: " + data);

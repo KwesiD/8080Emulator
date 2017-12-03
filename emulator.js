@@ -17,12 +17,25 @@ let saveFileName = "";
 //let oldPC;
 
 
+
 process.on('message',(data) => {
 	if(data === 'loop'){
 		runEmulator();
 	}
 	else{
-		console.log("Emulator: " + data);
+		let curr;
+		switch(data){
+			case 'c':
+				curr = Number('0x' + state.inputPorts[1]) | 0b00000001;
+				state.inputPorts[1] = curr.toString('16'); 
+				console.log("inserted count:",state.inputPorts);
+				break;
+			case '1':
+				curr = Number('0x' + state.inputPorts[1]) | 0b00000100;
+				state.inputPorts[1] = curr.toString('16'); 
+				//console.log("inserted count:",state.inputPorts);
+				break;
+		}
 	}
 });
 
@@ -92,13 +105,28 @@ function runEmulator(){
 			}
 
 			count++;
+
+			
+/*
+			if(r && state.PC === '0381'){
+				process.exit();
+			}
+
+
+			if(!r && state.PC === '0381'){
+				r = true;
+			}*/
+
+
 			//(l)og out info
 			if(process.argv.indexOf('-l') !== -1){
-				state.printStack(state.SP);
+				//state.printStack(state.SP);
 				console.log(count);
-				console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
-				
+				console.log(opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');	
 			}
+
+
+
 			if(process.argv.indexOf('-o') !== -1){
 				saveFile += (opcode,bytes,'\t',state.gameFile[temppc],state.toString(),'\n');
 				saveFile += (count) + "\n";

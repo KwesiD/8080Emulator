@@ -1,0 +1,392 @@
+
+799361
+67 [ '' ] 	 1a59	67 	MOV H,A
+ {A: 27,B: 00,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1a5a,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799362
+c1 [ '' ] 	 1a5a	c1 	POP B
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1a5b,SP: 23e0,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799363
+c9 [ '' ] 	 1a5b	c9 	RET
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1455,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799364
+c5 [ '' ] 	 1455	c5 	PUSH B
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1456,SP: 23e0,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799365
+e5 [ '' ] 	 1456	e5 	PUSH H
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1457,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799366
+1a [ '' ] 	 1457	1a 	LDAX D
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 1458,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0000,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799367
+d3 [ '04' ] 	 1458	d3 04	OUT D8 04
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 145a,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799368
+db [ '03' ] 	 145a	db 03	IN D8 03
+ {A: f0,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 145c,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799369
+2f [ '' ] 	 145c	2f 	CMA
+ {A: f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 145d,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799370
+a6 [ '' ] 	 145d	a6 	ANA M
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 145e,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799371
+77 [ '' ] 	 145e	77 	MOV M,A
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 0f,PC: 145f,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799372
+23 [ '' ] 	 145f	23 	INX H
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: 10,PC: 1460,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799373
+13 [ '' ] 	 1460	13 	INX D
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1461,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799374
+af [ '' ] 	 1461	af 	XRA A
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1462,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799375
+d3 [ '04' ] 	 1462	d3 04	OUT D8 04
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1464,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799376
+db [ '03' ] 	 1464	db 03	IN D8 03
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1466,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799377
+2f [ '' ] 	 1466	2f 	CMA
+ {A: ff,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1467,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799378
+a6 [ '' ] 	 1467	a6 	ANA M
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1468,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799379
+77 [ '' ] 	 1468	77 	MOV M,A
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 10,PC: 1469,SP: 23de,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799380
+e1 [ '' ] 	 1469	e1 	POP H
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 0f,PC: 146a,SP: 23e0,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799381
+01 [ '20', '00' ] 	 146a	01 20 00	LXI B,D16 0020
+ {A: 00,B: 00,C: 20,D: 1c,E: 91,H: 27,L: 0f,PC: 146d,SP: 23e0,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799382
+09 [ '' ] 	 146d	09 	DAD B
+ {A: 00,B: 00,C: 20,D: 1c,E: 91,H: 27,L: 2f,PC: 146e,SP: 23e0,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799383
+c1 [ '' ] 	 146e	c1 	POP B
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 2f,PC: 146f,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799384
+05 [ '' ] 	 146f	05 	DCR B
+ {A: 00,B: 00,C: 38,D: 1c,E: 91,H: 27,L: 2f,PC: 1470,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799385
+c2 [ '55', '14' ] 	 1470	c2 55 14	JNZ adr 1455
+ {A: 00,B: 00,C: 38,D: 1c,E: 91,H: 27,L: 2f,PC: 1473,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799386
+c9 [ '' ] 	 1473	c9 	RET
+ {A: 00,B: 00,C: 38,D: 1c,E: 91,H: 27,L: 2f,PC: 0413,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799387
+c1 [ '' ] 	 413	c1 	POP B
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: 2f,PC: 414,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799388
+e1 [ '' ] 	 414	e1 	POP H
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 38,L: 7c,PC: 415,SP: 23e8,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799389
+d1 [ '' ] 	 415	d1 	POP D
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 7c,PC: 416,SP: 23ea,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799390
+3a [ '2c', '20' ] 	 416	3a 2c 20	LDA adr 202c
+ {A: 04,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 7c,PC: 419,SP: 23ea,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799391
+85 [ '' ] 	 419	85 	ADD L
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 7c,PC: 41a,SP: 23ea,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799392
+6f [ '' ] 	 41a	6f 	MOV L,A
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 41b,SP: 23ea,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799393
+32 [ '29', '20' ] 	 41b	32 29 20	STA adr 2029
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 41e,SP: 23ea,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799394
+cd [ '91', '14' ] 	 41e	cd 91 14	CALL adr 1491
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1491,SP: 23e8,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799395
+cd [ '74', '14' ] 	 1491	cd 74 14	CALL adr 1474
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1474,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799396
+7d [ '' ] 	 1474	7d 	MOV A,L
+ {A: 80,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1475,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799397
+e6 [ '07' ] 	 1475	e6 07	ANI D8 07
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1477,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0004,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799398
+d3 [ '02' ] 	 1477	d3 02	OUT D8 02
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1479,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799399
+c3 [ '47', '1a' ] 	 1479	c3 47 1a	JMP adr 1a47
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1a47,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799400
+c5 [ '' ] 	 1a47	c5 	PUSH B
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1a48,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799401
+06 [ '03' ] 	 1a48	06 03	MVI B, D8 03
+ {A: 00,B: 03,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1a4a,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799402
+7c [ '' ] 	 1a4a	7c 	MOV A,H
+ {A: 38,B: 03,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1a4b,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799403
+1f [ '' ] 	 1a4b	1f 	RAR
+ {A: 1c,B: 03,C: 38,D: 1c,E: 90,H: 38,L: 80,PC: 1a4c,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799404
+67 [ '' ] 	 1a4c	67 	MOV H,A
+ {A: 1c,B: 03,C: 38,D: 1c,E: 90,H: 1c,L: 80,PC: 1a4d,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799405
+7d [ '' ] 	 1a4d	7d 	MOV A,L
+ {A: 80,B: 03,C: 38,D: 1c,E: 90,H: 1c,L: 80,PC: 1a4e,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799406
+1f [ '' ] 	 1a4e	1f 	RAR
+ {A: c0,B: 03,C: 38,D: 1c,E: 90,H: 1c,L: 80,PC: 1a4f,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799407
+6f [ '' ] 	 1a4f	6f 	MOV L,A
+ {A: c0,B: 03,C: 38,D: 1c,E: 90,H: 1c,L: c0,PC: 1a50,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799408
+05 [ '' ] 	 1a50	05 	DCR B
+ {A: c0,B: 02,C: 38,D: 1c,E: 90,H: 1c,L: c0,PC: 1a51,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799409
+c2 [ '4a', '1a' ] 	 1a51	c2 4a 1a	JNZ adr 1a4a
+ {A: c0,B: 02,C: 38,D: 1c,E: 90,H: 1c,L: c0,PC: 1a4a,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799410
+7c [ '' ] 	 1a4a	7c 	MOV A,H
+ {A: 1c,B: 02,C: 38,D: 1c,E: 90,H: 1c,L: c0,PC: 1a4b,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799411
+1f [ '' ] 	 1a4b	1f 	RAR
+ {A: 0e,B: 02,C: 38,D: 1c,E: 90,H: 1c,L: c0,PC: 1a4c,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799412
+67 [ '' ] 	 1a4c	67 	MOV H,A
+ {A: 0e,B: 02,C: 38,D: 1c,E: 90,H: 0e,L: c0,PC: 1a4d,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799413
+7d [ '' ] 	 1a4d	7d 	MOV A,L
+ {A: c0,B: 02,C: 38,D: 1c,E: 90,H: 0e,L: c0,PC: 1a4e,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799414
+1f [ '' ] 	 1a4e	1f 	RAR
+ {A: e0,B: 02,C: 38,D: 1c,E: 90,H: 0e,L: c0,PC: 1a4f,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799415
+6f [ '' ] 	 1a4f	6f 	MOV L,A
+ {A: e0,B: 02,C: 38,D: 1c,E: 90,H: 0e,L: e0,PC: 1a50,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799416
+05 [ '' ] 	 1a50	05 	DCR B
+ {A: e0,B: 01,C: 38,D: 1c,E: 90,H: 0e,L: e0,PC: 1a51,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799417
+c2 [ '4a', '1a' ] 	 1a51	c2 4a 1a	JNZ adr 1a4a
+ {A: e0,B: 01,C: 38,D: 1c,E: 90,H: 0e,L: e0,PC: 1a4a,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799418
+7c [ '' ] 	 1a4a	7c 	MOV A,H
+ {A: 0e,B: 01,C: 38,D: 1c,E: 90,H: 0e,L: e0,PC: 1a4b,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799419
+1f [ '' ] 	 1a4b	1f 	RAR
+ {A: 07,B: 01,C: 38,D: 1c,E: 90,H: 0e,L: e0,PC: 1a4c,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799420
+67 [ '' ] 	 1a4c	67 	MOV H,A
+ {A: 07,B: 01,C: 38,D: 1c,E: 90,H: 07,L: e0,PC: 1a4d,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799421
+7d [ '' ] 	 1a4d	7d 	MOV A,L
+ {A: e0,B: 01,C: 38,D: 1c,E: 90,H: 07,L: e0,PC: 1a4e,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799422
+1f [ '' ] 	 1a4e	1f 	RAR
+ {A: f0,B: 01,C: 38,D: 1c,E: 90,H: 07,L: e0,PC: 1a4f,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799423
+6f [ '' ] 	 1a4f	6f 	MOV L,A
+ {A: f0,B: 01,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a50,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799424
+05 [ '' ] 	 1a50	05 	DCR B
+ {A: f0,B: 00,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a51,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799425
+c2 [ '4a', '1a' ] 	 1a51	c2 4a 1a	JNZ adr 1a4a
+ {A: f0,B: 00,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a54,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799426
+7c [ '' ] 	 1a54	7c 	MOV A,H
+ {A: 07,B: 00,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a55,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799427
+e6 [ '3f' ] 	 1a55	e6 3f	ANI D8 3f
+ {A: 07,B: 00,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a57,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: false,AC: false,CY: false,interruptsEnabled: false} 
+
+799428
+f6 [ '20' ] 	 1a57	f6 20	ORI D8 20
+ {A: 27,B: 00,C: 38,D: 1c,E: 90,H: 07,L: f0,PC: 1a59,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799429
+67 [ '' ] 	 1a59	67 	MOV H,A
+ {A: 27,B: 00,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1a5a,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799430
+c1 [ '' ] 	 1a5a	c1 	POP B
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1a5b,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799431
+c9 [ '' ] 	 1a5b	c9 	RET
+ {A: 27,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1494,SP: 23e8,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799432
+af [ '' ] 	 1494	af 	XRA A
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1495,SP: 23e8,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799433
+32 [ '61', '20' ] 	 1495	32 61 20	STA adr 2061
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1498,SP: 23e8,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799434
+c5 [ '' ] 	 1498	c5 	PUSH B
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 1499,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799435
+e5 [ '' ] 	 1499	e5 	PUSH H
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 149a,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799436
+1a [ '' ] 	 149a	1a 	LDAX D
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 149b,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799437
+d3 [ '04' ] 	 149b	d3 04	OUT D8 04
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 149d,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799438
+db [ '03' ] 	 149d	db 03	IN D8 03
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 149f,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799439
+f5 [ '' ] 	 149f	f5 	PUSH PSW
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14a0,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799440
+a6 [ '' ] 	 14a0	a6 	ANA M
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14a1,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799441
+ca [ 'a9', '14' ] 	 14a1	ca a9 14	JZ adr 14a9
+ {A: 00,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14a9,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799442
+f1 [ '' ] 	 14a9	f1 	POP PSW
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14aa,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799443
+b6 [ '' ] 	 14aa	b6 	ORA M
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14ab,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799444
+77 [ '' ] 	 14ab	77 	MOV M,A
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f0,PC: 14ac,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799445
+23 [ '' ] 	 14ac	23 	INX H
+ {A: 0f,B: 01,C: 38,D: 1c,E: 90,H: 27,L: f1,PC: 14ad,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799446
+13 [ '' ] 	 14ad	13 	INX D
+ {A: 0f,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14ae,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: false,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799447
+af [ '' ] 	 14ae	af 	XRA A
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14af,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 0f00,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799448
+d3 [ '04' ] 	 14af	d3 04	OUT D8 04
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14b1,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799449
+db [ '03' ] 	 14b1	db 03	IN D8 03
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14b3,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799450
+f5 [ '' ] 	 14b3	f5 	PUSH PSW
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14b4,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799451
+a6 [ '' ] 	 14b4	a6 	ANA M
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14b5,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799452
+ca [ 'bd', '14' ] 	 14b5	ca bd 14	JZ adr 14bd
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14bd,SP: 23e2,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799453
+f1 [ '' ] 	 14bd	f1 	POP PSW
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14be,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799454
+b6 [ '' ] 	 14be	b6 	ORA M
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14bf,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799455
+77 [ '' ] 	 14bf	77 	MOV M,A
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f1,PC: 14c0,SP: 23e4,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799456
+e1 [ '' ] 	 14c0	e1 	POP H
+ {A: 00,B: 01,C: 38,D: 1c,E: 91,H: 27,L: f0,PC: 14c1,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799457
+01 [ '20', '00' ] 	 14c1	01 20 00	LXI B,D16 0020
+ {A: 00,B: 00,C: 20,D: 1c,E: 91,H: 27,L: f0,PC: 14c4,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
+
+799458
+09 [ '' ] 	 14c4	09 	DAD B
+ {A: 00,B: 00,C: 20,D: 1c,E: 91,H: 28,L: 10,PC: 14c5,SP: 23e6,inputPorts: 14,8,00,00,00,00,00,00,outputPorts: 00,00,00,00,00,00,8e,00,shiftRegister: 000f,shiftOffset: 0000,Z: true,S: false,P: true,AC: false,CY: false,interruptsEnabled: false} 
