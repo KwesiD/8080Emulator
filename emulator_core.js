@@ -402,6 +402,7 @@ function executeOpcode(opcode,bytes,state){
 				val = state[reg];
 			}
 			result = addToHex(state.A,-(val),state,true);
+			state.CY = !state.CY; //CMP has the opposite effect for setting the carry bit
 			setFlags(code,result,state);
 			state.incrementPC(Number(code.size));
 			break;
