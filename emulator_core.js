@@ -575,28 +575,38 @@ function executeOpcode(opcode,bytes,state){
 			break;
 
 		case 'ADD':
-			toA(params[0],'+',state);
+			result = toA(params[0],'+',state);
+			setFlags(code,result,state);
+			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 
 		case 'ADC':
-			toA(params[0],'+',state,true);
+			result = toA(params[0],'+',state,true);
+			setFlags(code,result,state);
+			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 	
 		case 'SUB':
-			toA(params[0],'-',state);
+			result = toA(params[0],'-',state);
+			setFlags(code,result,state);
+			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 			
 		case 'SBB':
-			toA(params[0],'-',state);
+			result = toA(params[0],'-',state);
+			setFlags(code,result,state);
+			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 
 		case 'ACI':
 			val = addToHex(bytes[0],state.CY);
-			state.A = addToHex(state.A,val,state,true);
+			result = addToHex(state.A,val,state,true);
+			setFlags(code,result,state);
+			state.A = result;
 			state.incrementPC(Number(code.size));
 			break;
 
@@ -855,9 +865,10 @@ Sets carry
 function rotateLeft(hex,state,useCarry=false){
 	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let lead = bits[0];
+	let prevCarry = +state.CY;
 	state.CY = !!Number(lead); //sets carry
 	if(useCarry){
-		lead = state.CY;
+		lead = prevCarry;//state.CY;
 	}
 	bits = bits.substring(1,bits.length) + lead;
 	let num = Number('0b' + bits);
@@ -872,9 +883,10 @@ Sets carry
 function rotateRight(hex,state,useCarry=false){
 	let bits = padBytes((Number('0x' + hex)).toString('2'),4);
 	let end = bits[bits.length-1];
+	let prevCarry = +state.CY;
 	state.CY = !!Number(end); //sets carry   //!!0 = false but !!'0' = true
 	if(useCarry){
-		end = bits[0];
+		end = prevCarry;//bits[0];
 	}
 	bits = end + bits.substring(0,bits.length-1);
 	let num = Number('0b' + bits);
@@ -1126,6 +1138,7 @@ function toA(reg,operator,state,carry=false){
 			val = Number("0x" + val); //to number 
 	}
 	state.A = addToHex(state.A,val,state,true);
+	return state.A;
 }
 
 
