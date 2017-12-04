@@ -31,14 +31,19 @@ socket.on('private',(data) => {
 				buffer[pos] = 255*imgArr[pos/4];
 				buffer[pos+1] = 255*imgArr[pos/4];
 				buffer[pos+2] = 255*imgArr[pos/4];
-				buffer[pos+3] = 255//255*imgArr[pos];
-				/*if(imgArr[pos] !== 1 && imgArr[pos] !== 0){
-					console.log(imgArr[pos]);
-				}*/
-				
+				buffer[pos+3] = 255;		
 			}
 		}
-
+/*		for(let y = 0;y < width;y++){
+			for(let x = height-1;x >= 0;x--){
+				let pos = (y*height+x) * 4;
+				buffer[pos] = 255*imgArr[pos/4];
+				buffer[pos+1] = 255*imgArr[pos/4];
+				buffer[pos+2] = 255*imgArr[pos/4];
+				buffer[pos+3] = 255;		
+			}
+		}
+*/
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d');
 		canvas.width = width;

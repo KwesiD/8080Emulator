@@ -167,6 +167,7 @@ function exportImage(state){
 		//console.log('\n' + (0x2400 + i).toString('16') + '\t' + padBytes(Number("0x" + state.memory[i + 0x2400]).toString('16'),2) + '\n');
 	}
 	//process.exit();
+
 	process.send(imageArray);
 	//console.log(imageArray);
 }
@@ -184,4 +185,24 @@ function generateInterrupt(state,num){
 	core.pushDirect(state,core.splitBytes(state.PC));
 	state.PC = padBytes((8 * num).toString('16'),2);
 
+}
+
+/*rotate a matrix in array form 90 deg counter clockwise*/
+function matrixRotate(array){
+	let matrix = new Array(224); //hwidth
+	for(let i = 0;i < matrix.length;i++){
+		matrix[i] = new Array(256);
+	}
+	for(let j = 0,m = 0;j < 224;j++,m++){
+		for(let i = 0,n = 255;i < 255;i++,n--){
+			matrix[m][n] = array[j*255+i];
+		}
+	}
+	let newArray = new Array(224*256);
+	for(let n = 0;n < 255;n++){
+		for(let m = 0;m < 224;m++){
+			newArray.push(matrix[m][n]);
+		}
+	}
+	return newArray;
 }
