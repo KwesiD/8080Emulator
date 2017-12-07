@@ -23,7 +23,7 @@ socket.on('private',(data) => {
 	if(typeof data === typeof []){
 		//console.log(data);
 		imgArr = data;
-		const height = 224,width = 256; //height is actually 256, but its a rotated image
+/*		const height = 224,width = 256; //height is actually 256, but its a rotated image
 		const buffer = new Uint8ClampedArray(width*height*4);
 		for(let y = 0;y < height;y++){
 			for(let x = 0;x < width;x++){
@@ -32,6 +32,19 @@ socket.on('private',(data) => {
 				buffer[pos+1] = 255*imgArr[pos/4];
 				buffer[pos+2] = 255*imgArr[pos/4];
 				buffer[pos+3] = 255;		
+			}
+		}*/
+		const height = 256,width = 224; //height is actually 256, but its a rotated image
+		const buffer = new Uint8ClampedArray(width*height*4);
+		let pos = 0
+		for(let y = 255;y >= 0;y--){
+			for(let x = 0;x < width;x++){
+				let imgArrPos = (height*x+y);
+				buffer[pos] = 255*imgArr[imgArrPos];
+				buffer[pos+1] = 255*imgArr[imgArrPos];
+				buffer[pos+2] = 255*imgArr[imgArrPos];
+				buffer[pos+3] = 255;	
+				pos += 4;
 			}
 		}
 /*		for(let y = 0;y < width;y++){
@@ -63,6 +76,7 @@ socket.on('private',(data) => {
 		socket.emit('private', {msg: 'Thank you for your message'})
 	}
 });
+
 
 const listener = new window.keypress.Listener();
 listener.simple_combo("left", function() {
